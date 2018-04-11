@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> /*这个meta的作用是让字体随着页面而改变成合适的大小*/
+    <title>墨镜</title>
+    <style>
+        body{
+            background-color:#68cdd5;/*背景颜色*/
+        }
+        .container{
+            width: 90%;/*大盒子离两边有一定的距离*/
+            margin: 0 auto;
+        }
+        .return{
+            margin-top: 5%;/*返回按钮离顶部的距离*/
+        }
+        .logo{
+            text-align: center;/*葡萄藤的logo居中，离顶部上面返回按钮的距离*/
+            margin-top: 15%;
+        }
+        /*.logo > img{*/
+            /*height: 60%;*/
+            /*width: 60%;*/
+        /*}*/
+        .font{
+            margin-left: 10%;
+            margin-right: 10%;
+            margin-top: 20%;
+            padding: 0 6%;
+            text-align: center;
+            font-size: 0.25rem;
+            color: white;
+            font-family:"Hiragino Sans GB";
+            /*分别设置文字的左右外边距、离顶部logo的距离、左右内边距、居中、字体设置rem可以更好的适应，字体的样式*/
+        }
+        .ovalleft{
+            padding-bottom: 100%;
+            position: relative;  /*这个和padding-bottom调试的时候发现加不加都没有关系>*/
+            float: left;
+            margin-top: 30%;
+            padding-left: 30%;
+        }
+        .ovalleft > img{
+            /*position: absolute;*/    /*<! 加了绝对定位元素图片会变形>*/
+            /*<! 控制椭圆形的大小 >*/
+            height: 50%;
+            width: 50%;
+        }
+        .ovalright{
+            margin-top: 34%;
+            margin-left: 67.5%;
+        }
+        .ovalright > img{
+            height: 50%;
+            width: 50%;
+
+        }
+
+    </style>
+
+</head>
+<body>
+        <div class="container"><!最大的盒子>
+        <div class="return">
+            <img src="I/task3_03.png" alt="返回"/> <! 返回按钮>
+            </div>
+        <div class="logo">
+            <img src="I/logo.png"/> <!葡萄藤logo >
+            </div>
+        <div class="font"><！描述文字>
+            <p>
+                葡萄藤轻游戏专注于桌游领域，提供在线杀人游戏，捉鬼，炸狼堡等多种聚会游戏，以下线下聚会桌游道具。
+            </p>
+            </div>
+        <div class="ovalleft"><!左边椭圆>
+            <img src="I/task3_11.png"/>
+            </div>
+        <div class="ovalright"><!右边的椭圆>
+            <img src="I/task3_14.png"/>
+            </div>
+        </div>
+</body>
+</html>
