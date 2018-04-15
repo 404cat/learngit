@@ -3,87 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!这个meta的作用是让字体随着页面而改变成合适的大小>
+
     <title>task3</title>
     <style>
+
         body{
-            background-color:#68cdd5;/*背景颜色*/
+
+            margin: 0 auto;
+            padding: 0;
         }
         .container{
-            width: 90%;/*大盒子离两边有一定的距离*/
-            margin: 0 auto;
+            background-color:#68cdd5;/*背景颜色*/
+            overflow: hidden;/*避免子块设置了margin-top后，HTML和body中间有白边的问题*/
         }
-        .return{
-            margin-top: 5%;/*返回按钮离顶部的距离*/
+        .backlogo{
+            margin: 5% 5% 0 5% ;/*返回按钮离顶部和两边的距离*/
+        }
+        .backlogo>img {
+            width: 3rem;
         }
         .logo{
             text-align: center;/*葡萄藤的logo居中，离顶部上面返回按钮的距离*/
             margin-top: 15%;
         }
-        .logo>img{
-            width: 41%;
-        }
 
         .font{
-            margin-left: 10%;
-            margin-right: 10%;
-            margin-top: 20%;
-            /*padding: 0 6%;*/
+            margin: 20% 10% 0 10%;/*中间介绍文字的边距 居中显示*/
             text-align: center;
-            font-size: 0.25rem;
+        }
+        .fontstyle {
+            font-size: 1.1rem;/*字体样式*/
             color: white;
-            font-family:"Hiragino Sans GB";
-            /*分别设置文字的左右外边距、离顶部logo的距离、左右内边距、居中、字体设置rem可以更好的适应，字体的样式*/
+            line-height: 2.25rem;
         }
         .ovalleft{
-            float: left;
-            margin: 30% 10%;
-        }
-        .leftfont{
-            font-size: 0.2rem;
-            color: white;
-            font-family:"Hiragino Sans GB";
-            /*float: left;*/
-            margin: -30% -5%;
+            float: left;/*左边圆图标样式*/
+            margin: 30% 8% 30% 8%;
+            text-align: center;
         }
 
         .ovalright{
-            margin: 30% 10%;
+            margin: 30% 8% 30% 8%;/*右边圆图标样式*/
             float: right;
+            text-align: center;
         }
-        .rightfont{
-            font-size: 0.2rem;
-            color: white;
-            font-family:"Hiragino Sans GB";
-            /*float: left;*/
-            margin: -30% -5%;
-        }
-
 
     </style>
 
 </head>
 <body>
 
-        <div class="container"><!最大的盒子>
-        <div class="return">
-            <img src="I/task3_03.png" height="34" width="34"/></div>
-        <div class="logo">
-            <!--<img src="I/logo.png"  width="171"/>-->
-            <img src="I/images/task3_03.png"/></div>
-        <div class="font">
-            <p>
-                葡萄藤轻游戏专注于桌游领域，提供在线杀人游戏，捉鬼，炸狼堡等多种聚会游戏，以下线下聚会桌游道具。
-            </p></div>
-        <div class="ovalleft"><!左边椭圆>
-            <img src="I/ovalleft.png" height="40" width="40"/>
-                <div class="leftfont"><p>222222</p>
-                </div>
-        </div>
-        <div class="ovalright"><!右边的椭圆>
-            <img src="I/ovalright.png" height="40" width="40"/>
-            <div class="rightfont"><p>BJPTeng</p></div>
-        </div>
-        </div>
+<div class="container"><!--容器 包含各元素-->
+    <div class="backlogo">
+        <img src="/learngit/I/back.png" /></div>
+    <div class="logo">
+
+        <img src="I/logo1.png"/></div>
+    <div class="font fontstyle">
+        <p>
+            葡萄藤轻游戏专注于桌游领域，提供在线杀人游戏，捉鬼，炸狼堡等多种聚会游戏，以下线下聚会桌游道具。
+        </p></div>
+    <div class="ovalleft fontstyle">
+        <img src="I/leftlogo.png" />
+        <br />
+        222222
+    </div>
+
+    <div class="ovalright fontstyle">
+        <img src="I/rightlogo.png" />
+        <br />
+        BJPTeng
+    </div> <div style="clear:both"></div>
+</div>
 </body>
 </html>
