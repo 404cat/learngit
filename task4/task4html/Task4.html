@@ -2,9 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="task4.css">
+
+    <title>task4</title>
 </head>
 <body>
-$END$
+
+    <header class="bg">
+        <div class="headerbg boxflex">
+            <span class="headerfont close">关闭</span>
+            <span class="headerfont login">登录</span>
+            <span class="headerfont signin">注册</span>
+        </div>
+    </header>
+
+    <main class="footer">
+        <div  class="framestyle">
+            <img class="icon" src="../task4Img/phone.png" />
+            <input class="inputstyle borderstyle" type="number" oninput="if(value.length>13)value=value.slice(1,12)"
+                   placeholder="请输入手机号" />
+        </div>
+
+        <div  class="framestyle">
+                <img class="icon" src="../task4Img/locked.png" />
+            <input class="inputstyle borderstyle" type="password" placeholder="请输入密码">
+        </div>
+
+        <div class="bg boxflex1">
+            <!--<span class="headerfont boxflex1">登录</span>-->
+            <button class="headerfont" type="submit">登录</button>
+        </div>
+
+        <a class="footer1" href="#" >忘记密码</a>
+    </main>
 </body>
 </html>
