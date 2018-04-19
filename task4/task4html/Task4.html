@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="task4.css">
-    <style type="text/css"> 
-        <!-- A { text-decoration: none} --> 
-    </style><!-- 这段是取消连接href的下划线-->
+    <style type="text/css">
+        /* < !-- A {
+            text-decoration: none
+        }
+        --> */
+    </style>
+    <!-- 这段是取消连接href的下划线--> 
     <title>task4</title>
 </head>
+
 <body>
 
-    <header class="bg">
-        <div class="headerbg boxflex headerfont"> <!-- 蓝色框颜色、布局、字体-->
-            <span >关闭</span>
-            <span >登录</span>
-            <span >注册</span>
-        </div>
+    <header class="bg headerfont ">
+        <span>关闭</span>
+        <span>登录</span>
+        <span>注册</span>
     </header>
 
-    <main class="footer"><!-- 右对齐，主要作用与最下方的文本-->
+    <main class="footer">
+        <!-- 右对齐，主要作用与最下方的文本-->
         <!--白色边框样式-->
-        <div  class="framestyle"> 
+        <div class="framestyle">
             <img class="icon" src="../task4Img/phone.png" />
             <!--input样式、type为number、后面的代码是限制输入字数、占位文本-->
-            <input class="inputstyle" type="number" oninput="if(value.length>13)value=value.slice(1,12)"
-                   placeholder="请输入手机号" /> 
+            <input class="inputstyle" type="number" oninput="if(value.length>13)value=value.slice(1,12)" placeholder="请输入手机号" />
         </div>
 
-        <div  class="framestyle">
-                <img class="icon" src="../task4Img/locked.png" />
+        <div class="framestyle">
+            <img class="icon" src="../task4Img/locked.png" />
             <input class="inputstyle" type="password" placeholder="请输入密码">
         </div>
 
@@ -39,7 +43,8 @@
             <button class="headerfont" type="submit">登录</button>
         </div>
 
-        <a class="footer1" href="#" >忘记密码</a>
+        <a class="footer1" href="#">忘记密码</a>
     </main>
 </body>
+
 </html>
