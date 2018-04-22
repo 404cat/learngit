@@ -28,7 +28,7 @@ header {
 
 footer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     position: fixed;
     bottom: 0;
