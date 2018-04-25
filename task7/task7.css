@@ -1,9 +1,17 @@
 
+html {
+    font-size: 625%;
+}
+
+body {
+    font-size: .14rem;
+}
+
 button {
     margin: 0;
     outline: none;
     border-style: none;
-    background-color: #29bde0;
+    background-color: #29bde0;    
     height: 44px;
     width: 100%;
     text-align: left;
@@ -15,23 +23,117 @@ button:focus{
     outline: 0;
 }
 
-/* .ul-border {
-    border: 1px solid #C9C9C9;
-} */
+p {
+    margin: 0;
+}
 
-
+header {
+    position: fixed;
+    margin-bottom: 0.6rem;
+    background-color: #29bde0;
+    top: 0;
+    width: 100%;
+}
 
 .navbar-size {
     width: 17px;
     height: 13.5px;
     margin-left: 15px;
 }
-.list-border {
-    font-size: 14px;
+/* -------------- */
+.main-style {
+    padding: 0.2rem;
+    margin-top: 0.4rem;
+}
+
+
+.main-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 0.6rem;
+    color: #9a9a9a;
+    font-weight: 300;
+    font-size: 0.17rem;
+    border: 1px solid #C9C9C9;
+    border-radius: 2%;
+    background-color: #fff;
+    margin-bottom: 0.15rem;
+}
+
+.arrow3 {
+    width: .15rem;
+    height: .15rem;
+    border-top: .03rem solid #E7E7E7;
+    border-right: .03rem solid #E7E7E7;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 0.2rem;
+}
+.main-content2 {
+    border: 1px solid #C9C9C9;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.content-font1 {
+    height: .45rem;
+    font-size: .14rem;
     color: #FBB435;
     border-bottom: 1px solid #FBB435;
+    margin-bottom: .15rem;
 }
-.button-style {
+
+.content-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-content3 {
+    margin: 0 0.4rem;
+    height: .67rem;
+    font-size: .16rem;
+    font-weight: 300;
+    color: #ffffff;
+    background-color: #69d1e9;
+}
+
+.into-icon {
+    position: absolute;
+    right: .3rem;
+    width: 0;
+    height: 0;
+    border-top: .15rem solid transparent;
+    border-left: .2rem solid #FBB435;
+    border-bottom: .15rem solid transparent;
+}
+
+.content-font2 {
+    text-align: center;
+    margin: .15rem .4rem;
+    font-size: .12rem;
+    color: #787878;
+}
+
+
+
+.dot {
+    margin: 0.02rem;
+    float: left;
+    width: 0.1rem;
+    height: 0.1rem;
+    background: #F0F0F0;
+    border-radius: 50px;
+}
+
+.dot:hover {
     background-color: #69D1E9;
-    width: 7
+}
+
+.dot-style {
+    /* padding-bottom: 0.3rem; */
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
