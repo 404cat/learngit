@@ -1,0 +1,175 @@
+html {
+    font-size: 625%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: .14rem;
+    /* background-color: #29BDE0; */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: .5rem;
+    background-color: #29BDE0;
+    border-bottom: 1px solid #74d4eb;
+}
+
+main {
+    margin-top: .5rem;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin-top: .05rem; 
+    font-size: .15rem;
+    font-weight: 300;
+    color: #fff;
+}
+
+ul>ul {
+    overflow: hidden;
+}
+
+ul>ul>li {
+    float: left;
+    margin: .05rem .22rem 0 0;
+}
+/* ---------------- */
+
+.home-icon {
+    width: .255rem;
+    height: .21rem;
+}
+
+.header-font {
+    font-size: .17rem;
+    color: #fff;
+    font-weight: 300;
+}
+
+.info-icon {
+    width: .2rem;
+    height: .2rem;
+}
+/* ------------------ */
+.color {
+    background-color: #29BDE0;
+}
+.main-top {
+    margin: .32rem .39rem;
+    
+}
+
+.win-style {
+    padding-top: .3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.win-photo {
+    position: relative;
+    width: 1.755rem;
+    height: 1.025rem;
+}
+.win-font {
+    position: absolute;
+    top: 1.46rem;
+    font-size: .24rem;
+    color: #fff;
+}
+
+.paragraph {
+    font-size: .17rem;
+    color: #ffc865;
+    margin-bottom: .3rem;
+}
+/* ------------------------ */
+
+.main-color {
+    background-color: #fff;
+}
+
+.main-middle {
+    background-color: #fff;
+}
+.middle-style {
+    height: .82rem;
+    border-bottom: 1px solid #dddddd;
+}
+
+.middle-font1 {
+    float: left;
+    font-size: .15rem;
+    color: #515151;
+}
+
+.middle-font2 {
+    float: right;
+    font-size: .1rem;
+    color: #c7c7c7;
+}
+
+.middle-font3 {
+    font-size: .13rem;
+    color: #a6a6a6;
+}
+
+.middle-style>ul {
+    margin: .12rem .39rem;
+}
+
+.middle-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 .15rem .6rem;
+    height: .4rem;
+    font-size: .2rem;
+    color: #29bde0;
+}
+.bottom-font2 {
+    font-size: .14rem;
+}
+/* -------------------- */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: .65rem;
+    background: rgba(41,189,224,0.5);
+    
+}
+
+.button-style {
+    width: 1.35rem;
+    height: .43rem;
+    color: #fff;
+    font-weight: 300;
+    font-size: .2rem;
+    border-radius: .05rem;
+}
+
+.button-left {
+    background: #f66f6f;
+}
+
+.button-right {
+    background-color: #fbb435;
+}
