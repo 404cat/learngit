@@ -11,19 +11,77 @@ body {
 
 header {
     position: fixed;
+    z-index: 1;
     top: 0;
     width: 100%;
-    z-index: 1;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     height: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #29BDE0;
     border-bottom: 1px solid #74d4eb;
 }
+/* 页眉样式 */
 
 main {
     margin-top: .5rem;
+}
+
+/* ---------------- */
+
+.home-icon {
+    margin-left: .2rem;
+    width: .255rem;
+    height: .21rem;
+}
+/* 页眉‘房子’的图标 */
+
+.header-font {
+    font-size: .17rem;
+    font-weight: 300;
+    color: #fff;
+}
+/* 页眉中间的字体 */
+
+.info-icon {
+    margin-right: .2rem;
+    width: .2rem;
+    height: .2rem;
+}
+/* 页面右边的图标 */
+
+/* --------内容---------- */
+.color {
+    background-color: #29BDE0;
+}
+
+.main-top {
+    margin: .32rem .39rem 0;
+}
+
+.win-style {
+    display: flex;
+    justify-content: center;
+    padding-top: .3rem;
+}
+
+.win-photo {
+    position: relative;
+    width: 1.755rem;
+    height: 1.025rem;
+}
+.win-font {
+    position: absolute;
+    top: 1.46rem;
+    font-size: .24rem;
+    color: #fff;
+}
+/* 内容区胜利的图标和字体 */
+
+.paragraph {
+    margin-bottom: .3rem;
+    font-size: .17rem;
+    color: #ffc865;
 }
 
 ul{
@@ -47,64 +105,13 @@ ul>ul>li {
     float: left;
     margin: .05rem .22rem 0 0;
 }
-/* ---------------- */
+/* 内容区第二部分的文字 */
 
-.home-icon {
-    width: .255rem;
-    height: .21rem;
-}
-
-.header-font {
-    font-size: .17rem;
-    color: #fff;
-    font-weight: 300;
-}
-
-.info-icon {
-    width: .2rem;
-    height: .2rem;
-}
-/* ------------------ */
-.color {
-    background-color: #29BDE0;
-}
-.main-top {
-    margin: .32rem .39rem;
-    
-}
-
-.win-style {
-    padding-top: .3rem;
-    display: flex;
-    justify-content: center;
-}
-
-.win-photo {
-    position: relative;
-    width: 1.755rem;
-    height: 1.025rem;
-}
-.win-font {
-    position: absolute;
-    top: 1.46rem;
-    font-size: .24rem;
-    color: #fff;
-}
-
-.paragraph {
-    font-size: .17rem;
-    color: #ffc865;
-    margin-bottom: .3rem;
-}
-/* ------------------------ */
-
-.main-color {
-    background-color: #fff;
-}
-
+/* -----------内容区文字部分------------- */
 .main-middle {
     background-color: #fff;
 }
+
 .middle-style {
     height: .82rem;
     border-bottom: 1px solid #dddddd;
@@ -130,21 +137,17 @@ ul>ul>li {
 .middle-style>ul {
     margin: .12rem .39rem;
 }
+/* 内容区白色背景字体部分 因为ul 、li 字体不一样，所以创建class覆盖 */
 
 .middle-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 .15rem .6rem;
-    height: .4rem;
-    font-size: .2rem;
-    color: #29bde0;
+    margin: 0 0 .7rem;
 }
+
 .bottom-font2 {
     font-size: .14rem;
 }
-/* -------------------- */
 
+/* ----------页脚---------- */
 footer {
     position: fixed;
     bottom: 0;
@@ -158,11 +161,11 @@ footer {
 }
 
 .button-style {
-    width: 1.35rem;
+    width: 42%;
     height: .43rem;
-    color: #fff;
     font-weight: 300;
     font-size: .2rem;
+    color: #fff;
     border-radius: .05rem;
 }
 
