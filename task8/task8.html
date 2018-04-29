@@ -29,33 +29,86 @@
         </div>
     </header>
 
-    <nav class="navbar"><!--菜单栏-->
+    <nav class="navbar navbar-expand-md navbar-light nav-padding"><!--菜单栏-->
         <div class="container justify-content-end">
-            <div class="row ">
-                    <ul class="col text text-right">
-                        <li>首页</li>
-                        <li>职业</li>
-                        <li>推荐</li>
-                        <li>关于</li>
+            <button class="navbar-toggler button-margin" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="col text text-center navbar-nav justify-content-end">
+                        <li class="nav-item">首页</li>
+                        <li class="nav-item">职业</li>
+                        <li class="nav-item">推荐</li>
+                        <li class="nav-item">关于</li>
                     </ul>
-            </div>
+            </div> 
         </div>  
     </nav>
     <main>
-        <div>
-            <!--轮播图-->
-        </div>
+        <div id="carousel-picture" class="carousel slide" data-interval="5000" data-ride="carousel"><!--轮播图-->
+            <ol class="carousel-indicators">
+                <li data-target="carousel-picture" data-slide-to="0" class="active"></li>
+                <li data-target="carousel-picture" data-slide-to="1"></li>
+                <li data-target="carousel-picture" data-slide-to="2"></li>
+            </ol><!-- ol 图片中间的指示器 -->
 
-        <div>
-            <!--内容区第一行-->
-        </div>
-        <div>
-            <!--内容区第二行-->
-        </div>
-        <div>
-            <!--内容区第三行-->
-        </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="http://jns.img.bucket.ks3-cn-beijing.ksyun.com/skill/1/0d9944f1-6aad-4894-b42e-72dadcfef058.png" alt="first slide">     
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="http://jns.img.bucket.ks3-cn-beijing.ksyun.com/skill/1/d4511b09-f892-49e0-b9d1-ed73a185ce2e.jpeg" alt="second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="http://jns.img.bucket.ks3-cn-beijing.ksyun.com/skill/1/84f3b285-b2a3-4e4f-b7e4-c4bbd1288b58.jpg" alt="third slode">
+                </div>
+            </div> <!--inner结尾 图片组-->
+
+            <a class="carousel-control-prev" href="#carousel-picture" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-picture" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">next</span>
+            </a><!-- a左右控制器 -->
+        </div><!--轮播图-->
     </main>
+
+        <div class="container content-gap">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="main-rocket text-center">
+                        <img src="../task8/I/@2X/rocket.png" alt="rocket">
+                        <h4>高效</h4>
+                        <p>将五到七年的成长时间，缩短到一年到三年。</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="main-archive text-center">
+                        <img src="../task8/I/@2X/archive.png" alt="archive">
+                        <h4>规范</h4>
+                        <p>标准的实战教程，不会走弯路</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="main-shape text-center">
+                        <img src="../task8/I/@2X/Shape.png" alt="Shape">
+                        <h4>人脉</h4>
+                        <p>同班好友，同院学长，技术大师，入学就混入职脉圈</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 text-center">
+                    <img src="../task8/I/@2X/user.png" alt="">
+                    <!-- <img src="../task8/I/user.png" alt="user"> -->
+                    <span>12400</span>
+                    <p>累计在线学习人数</p>
+                    <img src="../task8/I/@2X/user.png" alt="user">
+                    <span>12400</span>
+                    <p>学员已经找到满意工作</p>
+                </div>                
+            </div> <!--row结束-->
+        </div> <!--container结束-->
 </body>
 
 </html>

@@ -1,0 +1,80 @@
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+}
+
+/* ----页眉------ */
+.header-font {
+    font-size: 14px;
+    color: #29B078;
+}
+
+.p {
+    float: right;
+    margin: 6px 30px 6px auto;
+    background:url(../I/spritesheet.png)no-repeat;
+    width: 25px;
+    height: 24px;
+}
+
+.header-p1 {
+    background-position: 0 -85px;
+}
+
+.header-p2 {
+    background-position: 0 -109px;
+}
+
+.header-p3 {
+    background-position: 0 -133px;
+} 
+/* 页眉图标组 */
+
+/* -------导航栏---------- */
+nav {
+    background-color: #1DB176;
+}
+.nav-padding {
+    padding-bottom: 0;
+}
+/* 导航栏的背景颜色 */
+
+.button-margin {
+    margin: 10px;
+}
+
+
+.text {
+    padding: 0;
+}
+/* 为了消除col 的padding */
+
+.text > li {
+    padding: 20px 30px 20px 30px;
+    /* font-size: 12px; */
+    border-bottom: 4px solid transparent;
+    color: #fff;
+}
+/* 导航栏菜单字体 */
+
+.text >li:hover {
+    border-bottom: 4px solid #fff;
+}
+/* 鼠标放菜单上border下划线 */
+
+/* --内容区-- */
+
+.content-gap {
+    margin-top: 170px;
+}
+
+.main-plane {
+}
+
+.main-archive {
+}
+
+.main-shape {
+}
