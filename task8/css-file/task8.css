@@ -81,7 +81,12 @@ main {
 }
 
 .content-gap {
-    margin: 70px 0 150px 0;
+    margin: 70px 0 100px 0;
+}
+@media (max-width: 768px) {
+    .content-gap {
+        margin: 50px 0 50px 0;
+    }
 }
 /* 内容一的边距 */
 
@@ -163,6 +168,26 @@ main {
 }
 /* 内容区二边距 */
 
+@media (max-width: 992px) {
+    .triangle-hidden {
+        visibility: hidden;
+    }
+}
+@media (max-width: 768px) {
+    .triangle-hidden2 {
+        visibility: hidden;
+    }
+    .content2-gap {
+        margin: 20px 0 20px;
+    }
+
+    .article {
+        margin: 40px 0;
+    }
+
+}
+/* 宽度小于992px 隐藏三角形 */
+
 .rectangle {
     padding: 20px;
     margin: 30px 0;
@@ -181,12 +206,17 @@ main {
 }
 
 .dot {
-    margin: 10px 3px 150px;
+    margin: 10px 3px 100px;
     float: left;
     width: 20px;
     height: 20px;
     background: #F0F0F0;
     border-radius: 50px;
+}
+@media (max-width: 767px) {
+    .dot {
+    margin: 10px 3px 40px;
+    }
 }
 
 .dot:hover {
@@ -205,10 +235,29 @@ main {
     padding: 50px 0;
 }
 
-.logo-style > li {
+.logo-style > li>img {
     /* border: 1px solid #080103 ; */
     box-shadow: 1px 1px 2px #888888;
     /* margin: 10px; */
+}
+
+@media (max-width: 991px)  {
+    .logo-style >li {
+        /* width: 100%; */
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 767px)  {
+    .logo-style {
+        padding: 20px 0 ;
+    }
+    .logo-style >li {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
 
 .footer-list {
@@ -216,6 +265,7 @@ main {
     margin: 15px 0;
     color: #999999;
 }
+
 
 .footer-list > li {
     float: left;
@@ -231,6 +281,12 @@ main {
     border-bottom: 2px #26A26F solid;
 }
 
+@media (max-width: 992px) {
+    .footer-list >li {
+        width: 20%;
+    }
+}
+
 .footer-color {
     background-color: #26A26F;
     padding: 30px 0;
@@ -242,17 +298,38 @@ main {
 .center-gap2 {
     margin-bottom: 20px;
 }
-.font-gap >a >span{
-    margin-right: 20px;
-    padding-bottom: 8px;
-}
+
 .font-gap >a {
     text-decoration: none;
     color: #fff;
+    font-size: 14px;
 }
 .font-gap >a >span:hover {
     border-bottom: 2px solid #fff;
 }
 .h6-gap {
-    margin-right: 6px;
+    margin-left: 6px;
+}
+@media (max-width:767px) {
+    .left-gap1 {
+        margin-bottom: 20px;
+    }
+    .left-gap1 >h6 {
+        font-weight: 300;
+        font-size: 18px;
+        color: #F0F0F0;
+    }
+    .center-gap2 >h6{
+        font-weight: 300;
+        font-size: 18px;
+        color: #F0F0F0;
+    }
+    .font-gap {
+        margin-bottom: 20px;
+    }
+    .h6-gap {
+        font-size: 18px;
+        font-weight: 300;
+        margin: 0 0 10px 0;
+    }
 }
