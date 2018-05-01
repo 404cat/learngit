@@ -5,11 +5,11 @@ ul {
     overflow: hidden;
 }
 
-
 .header-font {
     font-size: 14px;
     color: #29B078;
 }
+
 /* ----页眉字体------ */
 
 .p {
@@ -49,16 +49,19 @@ nav {
 .menu-padding {
     padding-right: 0;
 }
+
 /* 导航栏字体和上面图标对齐 */
 
 .button-margin {
     margin: 10px;
 }
+
 /* 折叠按钮边距 */
 
 .text {
     padding: 0;
 }
+
 /* 为了消除col 的padding */
 
 .text>li {
@@ -67,11 +70,13 @@ nav {
     border-bottom: 4px solid transparent;
     color: #fff;
 }
+
 /* 导航栏菜单字体 */
 
 .text>li:hover {
     border-bottom: 4px solid #fff;
 }
+
 /* 鼠标放菜单上border下划线 */
 
 /* --内容区↓-- */
@@ -83,11 +88,13 @@ main {
 .content-gap {
     margin: 70px 0 100px 0;
 }
-@media (max-width: 768px) {
+
+@media (max-width: 767px) {
     .content-gap {
         margin: 50px 0 50px 0;
     }
 }
+
 /* 内容一的边距 */
 
 .picture-style {
@@ -109,6 +116,7 @@ main {
 .picture3-size {
     width: 21.5px;
 }
+
 /* 内容一的图片样式 */
 
 .content1-font>h4 {
@@ -145,6 +153,7 @@ main {
     margin: 20px 0;
     font-size: 18px;
 }
+
 /* 如何学习？ */
 
 .round-icon {
@@ -161,11 +170,13 @@ main {
     color: #29B078;
     font-size: 18px;
 }
+
 /* 内容二的圆形图标和字体 */
 
 .content2-gap {
     margin: 40px 0 100px;
 }
+
 /* 内容区二边距 */
 
 @media (max-width: 992px) {
@@ -173,19 +184,19 @@ main {
         visibility: hidden;
     }
 }
-@media (max-width: 768px) {
+
+@media (max-width: 767px) {
     .triangle-hidden2 {
         visibility: hidden;
     }
     .content2-gap {
         margin: 20px 0 20px;
     }
-
     .article {
         margin: 40px 0;
     }
-
 }
+
 /* 宽度小于992px 隐藏三角形 */
 
 .rectangle {
@@ -213,9 +224,10 @@ main {
     background: #F0F0F0;
     border-radius: 50px;
 }
+
 @media (max-width: 767px) {
     .dot {
-    margin: 10px 3px 40px;
+        margin: 10px 3px 40px;
     }
 }
 
@@ -235,24 +247,24 @@ main {
     padding: 50px 0;
 }
 
-.logo-style > li>img {
+.logo-style>li>img {
     /* border: 1px solid #080103 ; */
     box-shadow: 1px 1px 2px #888888;
     /* margin: 10px; */
 }
 
-@media (max-width: 991px)  {
-    .logo-style >li {
+@media (max-width: 991px) {
+    .logo-style>li {
         /* width: 100%; */
         margin-bottom: 20px;
     }
 }
 
-@media (max-width: 767px)  {
+@media (max-width: 767px) {
     .logo-style {
-        padding: 20px 0 ;
+        padding: 20px 0;
     }
-    .logo-style >li {
+    .logo-style>li {
         display: flex;
         justify-content: center;
         width: 100%;
@@ -266,60 +278,72 @@ main {
     color: #999999;
 }
 
-
-.footer-list > li {
+.footer-list>li {
     float: left;
     border-bottom: 2px solid transparent;
 }
 
-.footer-list > li >a {
+.footer-list>li>a {
     text-decoration: none;
     color: #999999;
 }
 
-.footer-list > li:hover {
+.footer-list>li:hover {
     border-bottom: 2px #26A26F solid;
 }
 
 @media (max-width: 992px) {
-    .footer-list >li {
+    .footer-list>li {
         width: 20%;
     }
 }
 
 .footer-color {
     background-color: #26A26F;
-    padding: 30px 0;
+    padding: 20px 0;
 }
 
 .left-gap1 {
     margin-bottom: 64px;
 }
+
 .center-gap2 {
     margin-bottom: 20px;
 }
 
-.font-gap >a {
+.font-gap>a {
     text-decoration: none;
     color: #fff;
     font-size: 14px;
 }
-.font-gap >a >span:hover {
+
+.font-gap>a>span:hover {
     border-bottom: 2px solid #fff;
 }
+
 .h6-gap {
     margin-left: 6px;
 }
+
+.copyright {
+    padding: 15px 0 0;
+    margin: 20px 0;
+    border-top: 1px solid #32C086;
+    font-size: 12px;
+    font-weight: 300;
+    color: #fff;
+}
+
 @media (max-width:767px) {
     .left-gap1 {
         margin-bottom: 20px;
     }
-    .left-gap1 >h6 {
+    .left-gap1>h6 {
         font-weight: 300;
         font-size: 18px;
         color: #F0F0F0;
     }
-    .center-gap2 >h6{
+    .center-gap2>h6 {
         font-weight: 300;
         font-size: 18px;
         color: #F0F0F0;
@@ -331,5 +355,28 @@ main {
         font-size: 18px;
         font-weight: 300;
         margin: 0 0 10px 0;
+    }
+}
+
+@media (max-width:575px) {
+    .max575-hiddenlink {
+        visibility: hidden;
+        margin: 0;
+        padding: 0;
+        height: 0;
+    }
+    .article {
+        margin: 0;
+    }
+    .max575-center {
+        text-align: center !important;
+    }
+    .content1-leftgap {
+        padding: 40px 0 22px 0px;
+        text-align: center;
+    }
+    .max575-hiddencall {
+        visibility: hidden;
+        height: 0;
     }
 }
