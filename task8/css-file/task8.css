@@ -89,11 +89,6 @@ main {
     margin: 70px 0 100px 0;
 }
 
-@media (max-width: 767px) {
-    .content-gap {
-        margin: 50px 0 50px 0;
-    }
-}
 
 /* 内容一的边距 */
 
@@ -179,24 +174,6 @@ main {
 
 /* 内容区二边距 */
 
-@media (max-width: 992px) {
-    .triangle-hidden {
-        visibility: hidden;
-    }
-}
-
-@media (max-width: 767px) {
-    .triangle-hidden2 {
-        visibility: hidden;
-    }
-    .content2-gap {
-        margin: 20px 0 20px;
-    }
-    .article {
-        margin: 40px 0;
-    }
-}
-
 /* 宽度小于992px 隐藏三角形 */
 
 .rectangle {
@@ -225,11 +202,7 @@ main {
     border-radius: 50px;
 }
 
-@media (max-width: 767px) {
-    .dot {
-        margin: 10px 3px 40px;
-    }
-}
+
 
 .dot:hover {
     background-color: #29B078;
@@ -253,25 +226,6 @@ main {
     /* margin: 10px; */
 }
 
-@media (max-width: 991px) {
-    .logo-style>li {
-        /* width: 100%; */
-        margin-bottom: 20px;
-    }
-}
-
-@media (max-width: 767px) {
-    .logo-style {
-        padding: 20px 0;
-    }
-    .logo-style>li {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 20px;
-    }
-}
-
 .footer-list {
     list-style: inside;
     margin: 15px 0;
@@ -292,11 +246,6 @@ main {
     border-bottom: 2px #26A26F solid;
 }
 
-@media (max-width: 992px) {
-    .footer-list>li {
-        width: 20%;
-    }
-}
 
 .footer-color {
     background-color: #26A26F;
@@ -334,6 +283,19 @@ main {
     color: #fff;
 }
 
+@media (max-width: 991px) {
+    .logo-style>li {
+        /* width: 100%; */
+        margin-bottom: 20px;
+    }
+    .triangle-hidden {
+        visibility: hidden;
+    }
+    .footer-list>li {
+        width: 20%;
+    }
+}
+
 @media (max-width:767px) {
     .left-gap1 {
         margin-bottom: 20px;
@@ -355,6 +317,30 @@ main {
         font-size: 18px;
         font-weight: 300;
         margin: 0 0 10px 0;
+    }
+    .content-gap {
+        margin: 50px 0 50px 0;
+    }
+    .triangle-hidden2 {
+        visibility: hidden;
+    }
+    .content2-gap {
+        margin: 20px 0 20px;
+    }
+    .article {
+        margin: 40px 0;
+    }
+    .dot {
+        margin: 10px 3px 40px;
+    }
+    .logo-style {
+        padding: 20px 0;
+    }
+    .logo-style>li {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 20px;
     }
 }
 
