@@ -89,6 +89,7 @@ main {
     margin: 70px 0 100px 0;
 }
 
+
 /* 内容一的边距 */
 
 .picture-style {
@@ -201,6 +202,8 @@ main {
     border-radius: 50px;
 }
 
+
+
 .dot:hover {
     background-color: #29B078;
 }
@@ -217,39 +220,24 @@ main {
     padding: 50px 0;
 }
 
-.logo-style>li {
-    width: 20%;
-    background-color: #fff;
-    box-shadow: 1px 1px 1px #888888;
+.logo-style>li>img {
+    /* border: 1px solid #080103 ; */
+    box-shadow: 1px 1px 2px #888888;
+    /* margin: 10px; */
 }
 
-/* 内容区结束 */
-
 .footer-list {
-    /* list-style: inside; */
+    list-style: inside;
     margin: 15px 0;
     color: #999999;
 }
 
 .footer-list>li {
     float: left;
-    width: 10%;
     border-bottom: 2px solid transparent;
 }
 
-.footer-list>li>a::before {
-    content: "";
-    margin-right: 5px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: #999;
-    display: inline-block;
-}
-
 .footer-list>li>a {
-    display: flex;
-    align-items: center;
     text-decoration: none;
     color: #999999;
 }
@@ -257,6 +245,7 @@ main {
 .footer-list>li:hover {
     border-bottom: 2px #26A26F solid;
 }
+
 
 .footer-color {
     background-color: #26A26F;
@@ -294,14 +283,10 @@ main {
     color: #fff;
 }
 
-/* 页脚 */
-
 @media (max-width: 991px) {
     .logo-style>li {
         /* width: 100%; */
-        text-align: center;
-        width: 100%;
-        margin-bottom: 8px;
+        margin-bottom: 20px;
     }
     .triangle-hidden {
         visibility: hidden;
@@ -312,8 +297,26 @@ main {
 }
 
 @media (max-width:767px) {
-    .text>li {
-        margin: 0;
+    .left-gap1 {
+        margin-bottom: 20px;
+    }
+    .left-gap1>h6 {
+        font-weight: 300;
+        font-size: 18px;
+        color: #F0F0F0;
+    }
+    .center-gap2>h6 {
+        font-weight: 300;
+        font-size: 18px;
+        color: #F0F0F0;
+    }
+    .font-gap {
+        margin-bottom: 20px;
+    }
+    .h6-gap {
+        font-size: 18px;
+        font-weight: 300;
+        margin: 0 0 10px 0;
     }
     .content-gap {
         margin: 50px 0 50px 0;
@@ -327,10 +330,6 @@ main {
     .article {
         margin: 40px 0;
     }
-    /* 内容区’如何学习‘ */
-    .footer-list>li {
-        width: 20%;
-    }
     .dot {
         margin: 10px 3px 40px;
     }
@@ -343,38 +342,17 @@ main {
         width: 100%;
         margin-bottom: 20px;
     }
-    /* 合作企业 */
-    .left-gap1 {
-        margin-bottom: 20px;
-    }
-    .left-gap1>h6 {
-        font-weight: 300;
-        font-size: 18px;
-        color: #333;
-    }
-    .center-gap2>h6 {
-        font-weight: 300;
-        font-size: 18px;
-        color: #333;
-    }
-    .font-gap {
-        margin-bottom: 20px;
-    }
-    .h6-gap {
-        margin: 0 0 10px 0;
-        font-size: 18px;
-        font-weight: 300;
-        color: #333 !important;
-    }
-    /* 页脚 */
 }
 
 @media (max-width:575px) {
+    .max575-hiddenlink {
+        visibility: hidden;
+        margin: 0;
+        padding: 0;
+        height: 0;
+    }
     .article {
         margin: 0;
-    }
-    .content1-leftgap {
-        border: none;
     }
     .max575-center {
         text-align: center !important;
@@ -386,8 +364,5 @@ main {
     .max575-hiddencall {
         visibility: hidden;
         height: 0;
-    }
-    .footer-list>li {
-        width: 30%;
     }
 }
