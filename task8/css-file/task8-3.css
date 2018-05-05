@@ -156,8 +156,7 @@ main {
     height: 100%;
     color: #fff;
     font-weight: 300;
-    background: rgba(0, 0, 0, .7);
-    transition: transform .5s ease-in;
+    background-color: #fff;
 }
 
 .hide-content h5 {
@@ -179,9 +178,10 @@ main {
 .table-style:hover .hide-content {
     display: block;
 }
-.hide-content:hover {
-    transform: rotate(360deg) scale(1);
 
+.hide-content:hover {
+    background: rgba(0, 0, 0, .7);
+    transition:background-color .5s linear;    
 }
 
 /* 显示隐藏内容 */
