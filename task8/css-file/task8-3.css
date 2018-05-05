@@ -156,7 +156,8 @@ main {
     height: 100%;
     color: #fff;
     font-weight: 300;
-    background: rgba(0, 0, 0, .7)
+    background: rgba(0, 0, 0, .7);
+    transition: transform .5s ease-in;
 }
 
 .hide-content h5 {
@@ -177,6 +178,10 @@ main {
 
 .table-style:hover .hide-content {
     display: block;
+}
+.hide-content:hover {
+    transform: rotate(360deg) scale(1);
+
 }
 
 /* 显示隐藏内容 */
@@ -281,56 +286,7 @@ i::after {
 
 /* 表格第四行 表格结束 */
 
-footer {
-    padding: 20px 0;
-    background-color: #26A26F;
-}
 
-footer a {
-    text-decoration: none !important;
-    color: #fff;
-    font-weight: 300;
-}
-
-footer h6 {
-    color: #fff;
-}
-
-.content-left>h6 {
-    margin-bottom: 64px;
-}
-
-.content-left>span {
-    color: #fff;
-}
-
-.content-center>h6 {
-    margin-bottom: 20px;
-}
-
-.content-center>p {
-    margin-bottom: 20px;
-}
-
-.vchat-site {
-    text-align: end;
-}
-
-.vchat-site>h6 {
-    margin-right: 7px;
-    color: #fff;
-    font-weight: 300;
-}
-
-.copyright {
-    text-align: center;
-    padding: 10px 0;
-    margin: 10px 0;
-    font-size: 12px;
-    border-top: 1px solid #32C086;
-}
-
-/* 页脚内容 */
 
 @media (max-width:767px) {
     .navbar-list-style {
@@ -355,7 +311,7 @@ footer h6 {
         box-shadow: 1px 1px 1px #999;
     }
     /* 图片区前面的标题 */
-    .content-left>h6 {
+    /* .content-left>h6 {
         color: #333;
     }
     .content-center>h6 {
@@ -371,7 +327,7 @@ footer h6 {
     }
     .vchat-site h6 {
         color: #333;
-    }
+    } */
     /* 页脚样式 */
 }
 

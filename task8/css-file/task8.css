@@ -71,6 +71,11 @@ nav {
     color: #fff;
 }
 
+.text >li >a {
+    text-decoration:none;
+    color: #fff;
+}
+
 /* 导航栏菜单字体 */
 
 .text>li:hover {
@@ -220,7 +225,11 @@ main {
 .logo-style>li {
     width: 20%;
     background-color: #fff;
+}
+
+.logo-style li:hover {
     box-shadow: 1px 1px 1px #888888;
+
 }
 
 /* 内容区结束 */
@@ -301,7 +310,7 @@ main {
         /* width: 100%; */
         text-align: center;
         width: 100%;
-        margin-bottom: 8px;
+        /* margin-bottom: 8px; */
     }
     .triangle-hidden {
         visibility: hidden;
@@ -341,7 +350,7 @@ main {
         display: flex;
         justify-content: center;
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 4px;
     }
     /* 合作企业 */
     .left-gap1 {
@@ -388,6 +397,6 @@ main {
         height: 0;
     }
     .footer-list>li {
-        width: 30%;
+        width: 50%;
     }
 }
