@@ -269,7 +269,7 @@ main {
 
 .footer-color {
     background-color: #26A26F;
-    padding: 20px 0;
+    padding: 20px 0 0 0;
 }
 
 .left-gap1 {
@@ -295,8 +295,8 @@ main {
 }
 
 .copyright {
-    padding: 15px 0 0;
-    margin: 20px 0;
+    padding: 10px 0;
+    margin: 20px 0 0 0;
     border-top: 1px solid #32C086;
     font-size: 12px;
     font-weight: 300;

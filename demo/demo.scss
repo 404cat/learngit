@@ -1,0 +1,26 @@
+a {
+    &:hover {
+        color: aqua;
+    }
+    body .text1, .text & & {
+        font-weight: 800;
+        font-size: 100px;
+    }
+    &-height {background-color: black;}
+}
+
+$hehe:right;
+.sas {
+    &-one {
+        display: block;
+        text-align: $hehe;}
+}
+ul {
+    li {
+        ul{
+            li & {
+                display: block;
+            }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../bootstrap-4.0.0-dist/jQuery.js"></script>
+    <link rel="stylesheet" href="../bootstrap-4.0.0-dist/css/bootstrap.css">
+    <script src="../bootstrap-4.0.0-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../task8/css-file/task8-2.css" type="text/css">
+    <title>测试</title>
+</head>
+<style>
+    .div1 {
+        /* position: relative; */
+        /* left: 100px; */
+        /* top: 100px; */
+        /* float: left; */
+        /* position: absolute;
+        top: 50px;
+        left: 50px; */
+        width: 200px;
+        height: 200px;
+        background-color: #0FF;
+        /* transition: transform .5s linear; */
+    }
+    .div1:hover {
+        /* -webkit-transform: rotate(50deg); */
+        background-color: black;
+        transition: 2s ease-in-out;
+        transform: rotate(30deg);
+        /* -moz-transform: translate(50px 50px);
+        -webkit-transform: translate(50px 50px);
+        -o-transform: translate(50px 50px); */
+        
+    }
+
+    #div2 {
+        width: 200px;
+        height: 200px;
+        /* position: absolute; */
+        /* top:0; left: 0; bottom: 0; right: 0; */
+        background: black;
+        /* transform: translate(30px 30px); */
+        /* width: 30px; */
+        /* height: 30px; */
+    }
+    div#div2:hover {
+        /* transform:rotate(180deg) scale(2); */
+        /* -o-transform: translate(5px 5px); */
+        transform: skew(30deg, -10deg)
+    }
+</style>
+
+<body>
+    <div class="div1">1</div>
+
+    <div id="div2">2</div>
+</body>
+
+</html>

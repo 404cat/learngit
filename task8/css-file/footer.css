@@ -1,5 +1,5 @@
 footer {
-    padding: 20px 0;
+    padding: 20px 0 0 0;
     background-color: #26A26F;
 }
 
@@ -42,7 +42,7 @@ footer h6 {
 .copyright {
     text-align: center;
     padding: 10px 0;
-    margin: 10px 0;
+    margin: 10px 0 0 0;
     font-size: 12px;
     font-weight: 300;
     color: #fff;
