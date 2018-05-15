@@ -1,25 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../demo/demo.min.css">
     <title>Document</title>
 </head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        font-size: 625%;
+    }
+
+    body {
+        position: relative;
+        font-size: .16rem;
+    }
+
+    header {
+        position: relative;
+        z-index: 1;
+        background: turquoise;
+        height: 60px;
+        overflow: hidden;
+        /* transition: all 0.5s; */
+    }
+
+    header i {
+        display: inline-block;
+        margin: .2rem;
+        width: .16rem;
+        height: .02rem;
+        border-top: .02rem solid #fff;
+        border-bottom: .02rem solid #fff;
+        background: #fff;
+        padding: .04rem 0;
+        background-clip: content-box;
+    }
+
+    ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        width: 0;
+        background: #f0f0f0;
+    }
+
+    li {
+        width: 100%;
+        height: 50px;
+        border-bottom: 1px solid #333;
+    }
+
+    #ti:checked~.text {
+        width: 50%;
+        /* transform: translateX(50%); */
+        transition: all 0.5s;
+    }
+
+    #ti:checked~ .header {
+        overflow: hidden;
+        margin-left: 50%;
+    }
+
+    input {
+        display: none;
+    }
+</style>
+
 <body>
-    <span class="sas-one" href="">Lorem ipsum dolor sit.</span>
-    <div class="text">
-        <a href="">Lorem ipsum dolor sit amet.</a>
+    <input type="checkbox" id="ti">
+    <div class="header">
+        <header>
+            <label for="ti">
+                <i></i>
+            </label>
+            <span>Lorem, ipsum dolor sit amet conse</span>
+        </header>
+        <div>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. At minima debitis iste, eligendi, delectus quo commodi officiis
+            distinctio nisi doloremque repellendus corporis illum sint id accusantium quaerat sunt totam veniam.
+        </div>
     </div>
-    <ul>
-        <li>
-            <ul>
-                <li>
-                    
-                </li>
-            </ul>
-        </li>
+
+    <ul class="text">
+        <li>Lorem, ipsum.</li>
+        <li>Lorem ipsum </li>
+        <li>Lorem,.</li>
+        <li>Lorem ipsum.</li>
     </ul>
+
 </body>
+
 </html>
