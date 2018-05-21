@@ -39,70 +39,62 @@
         <div></div>
         <div></div>
     </div>
+    <button type="submit" onclick="play()">开始</button>
+    <button type="submit" onclick="stop()">停止</button>
     <script>
-        var div1 = document.getElementById("text").getElementsByTagName("div"); //获取引用
-        var lengthNum = div1.length; //获取元素的length值
-        document.writeln("length长度" + lengthNum + "<br>");
-        var number = 100; //获取随机数循环次数
-        var randomNum; //用于存储length的随机数
-        var threeArray = new Array(3); //创建一个length长度为3的数组，存放需要改变元素
-        var x = 0; //创建的数组初始角标；   
         // ----------------
 
-        // for (var i = 0; i < 9; i++) { //控制外循环
-        //     document.writeln("外循环次数" + i + "-");
-        //     document.write("<br>"); //打印外循环的次数
+        var div1 = document.getElementById("text").getElementsByTagName("div"); //获取引用
+        var array = []; //存放不重复的随机数
+        var x = div1.length; //节点引用的length值，这里用
+        var stopRepeat = null;//重置间歇调用
 
-        for (var i = 0; i < 3; i++) { //控制内循环
-            var randomNum = Math.floor(Math.random() * (lengthNum)); //获取0-8的随机整数； 
-            document.writeln("随机length:" + randomNum + "!" + "<br>"); //打印随机到的length
-            // for (var i=0; i<threeArray.length; i++) {
-            //     if (threeArray[i]==randomNum){
-            //         return false;
-            //     }
-            // }
-            threeArray[x] = div1[randomNum]; //元素的随机坐标值放入新的数组；
-            x++; //新数组length自增；
-        }
-        
-        //     if (x = 4) { //如果新的数组长度超过3 ，退出循环
-        //         break;
-        //     }
-        // }
-
-        for (var i = 0; i < threeArray.length; i++) {
-            threeArray[i].style.background = "red";
-            document.writeln(threeArray[i]);
-            // threeArray[1].style.background="red";
-            // document.writeln(threeArray[1]);
-            // threeArray[2].style.background="red";
-            // document.writeln(threeArray[2]);
+        function play() { //开始执行函数，重置间歇调用（如果不重置的话不停的点击就会不停的穿件间歇调用），开始间歇调用；
+            color();
+            clearInterval(stopRepeat);
+            stopRepeat = setInterval(function () {
+                color();
+            }, 1000)
         }
 
+        function stop() {//停止间歇调用
+            clearInterval(stopRepeat);
+        }
 
+        function color() { //获取随机数组，重置颜色，获取三个节点赋予随机颜色
+            array = [];
 
+            for (; array.length < x;) { //获得随机数组
+                generateRandom();
+            }
+            resetColor();
 
+            for (var i = 0; i < 3; i++) { //获得3个节点，赋予随机颜色
+                var randomNum = array[i]; //随机数组赋值到变量
+                div1[randomNum].style.background = color_random(); //循环到的随机坐标，赋予随机颜色
+            }
+        }
 
+        function resetColor() { //重置颜色
+            for (let i = 0; i < div1.length; i++) {
+                div1[i].style.background = "yellow";
+            }
+        }
 
-        // div1[1].style.background="red";
-        // 获取所有节点
-        // div1.style.backgroundColor="";
-        // var nodesCnt = div1.length;
-        // document.write(nodesCnt);
-        // document.write("<br>");
-        // 节点的个数赋值给变量、节点打印出来是9个
-        // var rndIndex = Math.random()*nodesCnt;
-        // rndIndex=Math.round(rndIndex);
-        // var rndIndex1 = Math.random()* nodesCnt;
-        // rndIndex1 = Math.round(rndIndex1);
-        // var rndIndex2 = Math.random()* nodesCnt;
-        // rndIndex2 = Math.round(rndIndex2);
-        // 随机获取一个子节点的下标
-        // document.write(rndIndex);
-        // document.write("<br>");
-        // document.write(rndIndex1);
-        // document.write("<br>");
-        // document.write(rndIndex2);
+        function generateRandom() { //获取不重复的随机数字的函数，调用这个函数时会拿随机数和数组中的数组遍历比较，如果有重复的就再次执行这个函数，直到取到不重复为止；
+            var rand = parseInt(Math.random() * x);
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] == rand) {
+                    return;
+                }
+            }
+            array.push(rand);
+        }
+
+        function color_random() { //获得随机颜色
+            var color = Math.floor(Math.random() * 16777216).toString(16);
+            return '#000000'.slice(0, -color.length) + color;
+        }
     </script>
 </body>
 
