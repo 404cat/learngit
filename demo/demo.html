@@ -8,95 +8,102 @@
     <title>Document</title>
 </head>
 
+
+
 <style>
-    * {
-        margin: 0;
-        padding: 0;
+    #text {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
 
-    html {
-        font-size: 625%;
-    }
+    #text>div {
+        width: 28vw;
+        height: 28vw;
+        background: yellow;
+        margin-bottom: 10px;
+        border-radius: 10px;
 
-    body {
-        position: relative;
-        font-size: .16rem;
-    }
-
-    header {
-        position: relative;
-        z-index: 1;
-        background: turquoise;
-        height: 60px;
-        overflow: hidden;
-        /* transition: all 0.5s; */
-    }
-
-    header i {
-        display: inline-block;
-        margin: .2rem;
-        width: .16rem;
-        height: .02rem;
-        border-top: .02rem solid #fff;
-        border-bottom: .02rem solid #fff;
-        background: #fff;
-        padding: .04rem 0;
-        background-clip: content-box;
-    }
-
-    ul {
-        position: absolute;
-        top: 0;
-        left: 0;
-        overflow: hidden;
-        width: 0;
-        background: #f0f0f0;
-    }
-
-    li {
-        width: 100%;
-        height: 50px;
-        border-bottom: 1px solid #333;
-    }
-
-    #ti:checked~.text {
-        width: 50%;
-        /* transform: translateX(50%); */
-        transition: all 0.5s;
-    }
-
-    #ti:checked~ .header {
-        overflow: hidden;
-        margin-left: 50%;
-    }
-
-    input {
-        display: none;
     }
 </style>
 
 <body>
-    <input type="checkbox" id="ti">
-    <div class="header">
-        <header>
-            <label for="ti">
-                <i></i>
-            </label>
-            <span>Lorem, ipsum dolor sit amet conse</span>
-        </header>
-        <div>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. At minima debitis iste, eligendi, delectus quo commodi officiis
-            distinctio nisi doloremque repellendus corporis illum sint id accusantium quaerat sunt totam veniam.
-        </div>
+    <div id="text">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
+    <script>
+        var div1 = document.getElementById("text").getElementsByTagName("div"); //获取引用
+        var lengthNum = div1.length; //获取元素的length值
+        document.writeln("length长度" + lengthNum + "<br>");
+        var number = 100; //获取随机数循环次数
+        var randomNum; //用于存储length的随机数
+        var threeArray = new Array(3); //创建一个length长度为3的数组，存放需要改变元素
+        var x = 0; //创建的数组初始角标；   
+        // ----------------
 
-    <ul class="text">
-        <li>Lorem, ipsum.</li>
-        <li>Lorem ipsum </li>
-        <li>Lorem,.</li>
-        <li>Lorem ipsum.</li>
-    </ul>
+        // for (var i = 0; i < 9; i++) { //控制外循环
+        //     document.writeln("外循环次数" + i + "-");
+        //     document.write("<br>"); //打印外循环的次数
 
+        for (var i = 0; i < 3; i++) { //控制内循环
+            var randomNum = Math.floor(Math.random() * (lengthNum)); //获取0-8的随机整数； 
+            document.writeln("随机length:" + randomNum + "!" + "<br>"); //打印随机到的length
+            // for (var i=0; i<threeArray.length; i++) {
+            //     if (threeArray[i]==randomNum){
+            //         return false;
+            //     }
+            // }
+            threeArray[x] = div1[randomNum]; //元素的随机坐标值放入新的数组；
+            x++; //新数组length自增；
+        }
+        
+        //     if (x = 4) { //如果新的数组长度超过3 ，退出循环
+        //         break;
+        //     }
+        // }
+
+        for (var i = 0; i < threeArray.length; i++) {
+            threeArray[i].style.background = "red";
+            document.writeln(threeArray[i]);
+            // threeArray[1].style.background="red";
+            // document.writeln(threeArray[1]);
+            // threeArray[2].style.background="red";
+            // document.writeln(threeArray[2]);
+        }
+
+
+
+
+
+
+        // div1[1].style.background="red";
+        // 获取所有节点
+        // div1.style.backgroundColor="";
+        // var nodesCnt = div1.length;
+        // document.write(nodesCnt);
+        // document.write("<br>");
+        // 节点的个数赋值给变量、节点打印出来是9个
+        // var rndIndex = Math.random()*nodesCnt;
+        // rndIndex=Math.round(rndIndex);
+        // var rndIndex1 = Math.random()* nodesCnt;
+        // rndIndex1 = Math.round(rndIndex1);
+        // var rndIndex2 = Math.random()* nodesCnt;
+        // rndIndex2 = Math.round(rndIndex2);
+        // 随机获取一个子节点的下标
+        // document.write(rndIndex);
+        // document.write("<br>");
+        // document.write(rndIndex1);
+        // document.write("<br>");
+        // document.write(rndIndex2);
+    </script>
 </body>
 
 </html>
