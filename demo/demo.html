@@ -1,101 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./demo.css">
     <title>Document</title>
 </head>
-
-
-
-<style>
-    #text {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    #text>div {
-        width: 28vw;
-        height: 28vw;
-        background: yellow;
-        margin-bottom: 10px;
-        border-radius: 10px;
-
-    }
-</style>
-
 <body>
-    <div id="text">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <button type="submit" onclick="play()">开始</button>
-    <button type="submit" onclick="stop()">停止</button>
-    <script>
-        // ----------------
-
-        var div1 = document.getElementById("text").getElementsByTagName("div"); //获取引用
-        var array = []; //存放不重复的随机数
-        var x = div1.length; //节点引用的length值，这里用
-        var stopRepeat = null;//重置间歇调用
-
-        function play() { //开始执行函数，重置间歇调用（如果不重置的话不停的点击就会不停的穿件间歇调用），开始间歇调用；
-            color();
-            clearInterval(stopRepeat);
-            stopRepeat = setInterval(function () {
-                color();
-            }, 1000)
-        }
-
-        function stop() {//停止间歇调用
-            clearInterval(stopRepeat);
-        }
-
-        function color() { //获取随机数组，重置颜色，获取三个节点赋予随机颜色
-            array = [];
-
-            for (; array.length < x;) { //获得随机数组
-                generateRandom();
-            }
-            resetColor();
-
-            for (var i = 0; i < 3; i++) { //获得3个节点，赋予随机颜色
-                var randomNum = array[i]; //随机数组赋值到变量
-                div1[randomNum].style.background = color_random(); //循环到的随机坐标，赋予随机颜色
-            }
-        }
-
-        function resetColor() { //重置颜色
-            for (let i = 0; i < div1.length; i++) {
-                div1[i].style.background = "yellow";
-            }
-        }
-
-        function generateRandom() { //获取不重复的随机数字的函数，调用这个函数时会拿随机数和数组中的数组遍历比较，如果有重复的就再次执行这个函数，直到取到不重复为止；
-            var rand = parseInt(Math.random() * x);
-            for (var i = 0; i < array.length; i++) {
-                if (array[i] == rand) {
-                    return;
-                }
-            }
-            array.push(rand);
-        }
-
-        function color_random() { //获得随机颜色
-            var color = Math.floor(Math.random() * 16777216).toString(16);
-            return '#000000'.slice(0, -color.length) + color;
-        }
-    </script>
+        <div class="container">
+                <div class="carousel">
+                    <input type="radio" id="carousel-1" name="carousel[]" checked>
+                    <input type="radio" id="carousel-2" name="carousel[]">
+                 <input type="radio" id="carousel-3" name="carousel[]">
+                    <input type="radio" id="carousel-4" name="carousel[]">
+                    <input type="radio" id="carousel-5" name="carousel[]">
+                    <ul class="carousel__items">
+                        <li class="carousel__item"><img src="http://jns.img.bucket.ks3-cn-beijing.ksyun.com/skill/1/0d9944f1-6aad-4894-b42e-72dadcfef058.png" alt=""></li>
+                        <li class="carousel__item"><img src="http://jns.img.bucket.ks3-cn-beijing.ksyun.com/skill/1/d4511b09-f892-49e0-b9d1-ed73a185ce2e.jpeg" alt=""></li>
+                        <li class="carousel__item"><img src="http://jns.img.bucket.ks3-cn-beijing.ksyun.com/skill/1/3a15425b-c947-4222-8558-0bf01cc36513.png" alt=""></li>
+                        <li class="carousel__item"><img src="http://jns.img.bucket.ks3-cn-beijing.ksyun.com/skill/1/d4511b09-f892-49e0-b9d1-ed73a185ce2e.jpeg" alt=""></li>
+                        <li class="carousel__item"><img src="http://jns.img.bucket.ks3-cn-beijing.ksyun.com/skill/1/d4511b09-f892-49e0-b9d1-ed73a185ce2e.jpeg" alt=""></li>
+                    </ul>
+                 <div class="carousel__prev">
+                    <label for="carousel-1"></label>
+                    <label for="carousel-2"></label>
+                    <label for="carousel-3"></label>
+                    <label for="carousel-4"></label>
+                    <label for="carousel-5"></label>
+                 </div>
+                 <div class="carousel__next">
+                   <label for="carousel-1"></label>
+                   <label for="carousel-2"></label>
+                   <label for="carousel-3"></label>
+                   <label for="carousel-4"></label>
+                   <label for="carousel-5"></label>
+                 </div>
+                 <div class="carousel__nav">
+                   <label for="carousel-1"></label>
+                   <label for="carousel-2"></label>
+                   <label for="carousel-3"></label>
+                   <label for="carousel-4"></label>
+                   <label for="carousel-5"></label>
+                 </div>
+               </div>
+             </div>
 </body>
-
 </html>

@@ -7,36 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<style>
+    span {
+        display: inline-block;
+        float: right;
+        width: 100px;
+        margin: 0 10px 10px;
+        padding: 5px;
+        border: 1px solid;
+    }
+</style>
 
 <body>
-
-    <button type="submit" onclick="text()">点击</button>
-
-    <script>
-        var array = new Array;
-        var x = 9;
-
-        for (; array.length < x;) {
-            generateRandom();
-        }
-
-        function generateRandom() {
-            var rand = parseInt(Math.random() * x);
-            for (var i = 0; i < array.length; i++) {
-                if (array[i] == rand) {
-                    return;
-                }
-            }
-            array.push(rand);
-        }
-
-        function text() {
-            for (var i = 0; i < 20; i++) {
-            generateRandom();
-               document.write( array.length[i]);
-            }
-        }
-    </script>
+    <span>Lorem ipsum dolor sit.</span>
+    <span>Lorem ipsum dolor sit amet consectetur.</span>
+    
 </body>
 
 </html>

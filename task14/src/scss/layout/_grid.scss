@@ -1,3 +1,4 @@
+/*栅格系统*/
 .container {
     width: 100%;
     padding-left: 15px;
@@ -33,8 +34,7 @@ $text2: (null:null, sm:576px, md:768px, lg:992px, xl:1200px); //声明一个map
     $px in $map {
         @if $size==null {
             @for $i from 1 through 12 {
-                col-#{$i} {
-                    display: flex;
+                .col-#{$i} {
                     padding-right: 15px;
                     padding-left: 15px;
                     width: 100%;
@@ -48,8 +48,7 @@ $text2: (null:null, sm:576px, md:768px, lg:992px, xl:1200px); //声明一个map
         @else {
             @media screen and (min-width: $px) {
                 @for $i from 1 through 12 {
-                    col-#{$size}-#{$i} {
-                        display: flex;
+                    .col-#{$size}-#{$i} {
                         flex: 0 0 $value*$i;
                         padding-right: 15px;
                         padding-left: 15px;
@@ -57,11 +56,10 @@ $text2: (null:null, sm:576px, md:768px, lg:992px, xl:1200px); //声明一个map
                         position: relative;
                         min-height: 1px;
                         max-width: $value*$i;
-                    }
+                    }//
                 }
             }
         }
     }
 }
-
 @include text2($text2);

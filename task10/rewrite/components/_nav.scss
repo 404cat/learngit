@@ -12,36 +12,36 @@ $blue:#1D7AD9;
     padding: 5px 0;
     background-clip: content-box;
 }
-//菜单按钮（三条横线）
 
+//菜单按钮（三条横线）
 nav {
     background: #f9f9f9;
     .container {
         @include d-right-alignment;
         padding-top: 25px;
-        padding-bottom: 25px;//导航栏布局
-        @media (max-width:767px) {
+        padding-bottom: 25px; //导航栏布局
+        @media (max-width: 767px) {
             display: block;
             text-align: right;
-        }//响应式
+        } //响应式
         .menu-icon {
             @media (max-width: 767px) {
                 @include menu-icon();
-            }//导航栏按钮
+            } //导航栏按钮
         }
         input {
             display: none;
-        }//隐藏input按钮
+        } //隐藏input按钮
         input:checked~a {
             display: block;
-        }//
+        } //
         a {
             margin-left: 60px;
             button {
                 background: $white;
                 padding: 15px 17px;
                 border-radius: 5px;
-                cursor: pointer;//
+                cursor: pointer; //
                 &:hover {
                     background: $blue;
                     color: $white;
@@ -55,7 +55,7 @@ nav {
                 display: none;
                 text-align: center;
                 margin: 0;
-            }//小于767后隐藏按钮
+            } //小于767后隐藏按钮
         }
     }
 }
