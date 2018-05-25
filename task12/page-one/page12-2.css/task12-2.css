@@ -135,6 +135,9 @@ footer {
   align-items: center;
   padding: .1rem 0;
   background: #fff; }
+  footer button {
+    outline: none;
+    border: none; }
   footer button:nth-child(1) {
     font-size: .17rem;
     width: 35%;
