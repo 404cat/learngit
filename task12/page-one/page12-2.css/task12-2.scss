@@ -14,30 +14,29 @@ ul {
 }
 
 header {
-    position: relative;
     line-height: .44rem; // 页眉样式
-    .header-style {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        text-align: center;
-        background-color: #5FC0CD;
-        color: #fff;
-        font-size: .18rem; // 页眉内容
-        span::before {
-            content: "";
-            position: absolute;
-            left: .17rem;
-            top: 50%;
-            display: inline-block;
-            width: .1rem;
-            height: .1rem;
-            border: solid transparent;
-            border-left: .03rem solid #fff;
-            border-top: .03rem solid #fff;
-            transform: translateY(-50%) rotate(-45deg);
-        } // 返回箭头
-    }
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    background-color: #5FC0CD;
+    color: #fff;
+    font-size: .18rem; // 页眉内容
+    span::before {
+        content: "";
+        position: absolute;
+        left: .17rem;
+        top: 50%;
+        display: inline-block;
+        width: .1rem;
+        height: .1rem;
+        border: solid transparent;
+        border-left: .03rem solid #fff;
+        border-top: .03rem solid #fff;
+        transform: translateY(-50%) rotate(-45deg);
+    } // 返回箭头
+    // }
 }
 
 .people-info {
@@ -45,7 +44,7 @@ header {
     align-items: center;
     margin-top: .44rem;
     height: 1.63rem;
-    background: url(../I/background.png)no-repeat;
+    background: url(../I/background.png) no-repeat;
     background-size: cover; // 内容信息栏背景图
     .head-portrait {
         background: url(../I/spritesheet.png)no-repeat;
@@ -108,12 +107,12 @@ main {
             span {
                 color: #333;
                 font-size: .16rem;
-            }//第二行通用样式
+            } //第二行通用样式
             span:nth-child(1) {
                 padding-right: .1rem;
                 margin-right: .1rem;
                 border-right: 1px solid #E1E5E7;
-            }//第二行表格文字样式
+            } //第二行表格文字样式
             @mixin star-icon {
                 content: "";
                 display: inline-block;
@@ -136,8 +135,7 @@ main {
             display: flex;
             align-items: center;
             padding: .17rem;
-            @include border();
-            // 第三行表格开始通用样式
+            @include border(); // 第三行表格开始通用样式
             span:nth-child(1) {
                 display: block;
                 flex-basis: 11%;
@@ -147,25 +145,22 @@ main {
                 font-size: .16rem;
                 color: #999;
                 border-right: 1px solid #E1E5E7;
-            }
-            // 通用样式的左边
+            } // 通用样式的左边
             span:nth-child(2) {
                 display: block;
                 color: #333;
                 font-size: .16rem;
-            }
-            // 表格右边
-         }
-         li:nth-child(3) {
-             span:nth-child(2){
-                 font-weight: 500;
-                 color: #E26163;
-             }
-            //  红色字体
-         }
-         li:nth-child(4) {
+            } // 表格右边
+        }
+        li:nth-child(3) {
+            span:nth-child(2) {
+                font-weight: 500;
+                color: #E26163;
+            } //  红色字体
+        }
+        li:nth-child(4) {
             margin-bottom: .6rem;
-         }//最后一行和底部footer的距离
+        } //最后一行和底部footer的距离
     }
 }
 
@@ -176,16 +171,15 @@ footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: .1rem 0;
-    background: #fff;
-    // height: 1.13rem;
+    padding: .1rem 0;
+    background: #fff; // height: 1.13rem;
     @mixin button-style {
         font-size: .17rem;
         width: 35%;
         height: .44rem;
         border-radius: 5px;
     }
-    button:nth-child(1){
+    button:nth-child(1) {
         @include button-style;
         background-color: #fff;
         border: 1px solid #5FC0CD;
@@ -194,7 +188,7 @@ footer {
             color: #5FC0CD;
         }
     }
-    button:nth-child(2){
+    button:nth-child(2) {
         @include button-style();
         background: #5FC0CD;
         color: #fff;
