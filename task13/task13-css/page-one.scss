@@ -41,6 +41,11 @@ $gray:#9A9A9A;
 // 隐藏内容的箭头修改
 
 // ——————————————————————————————
+
+.box {
+    position: relative;
+}
+
 input {
     display: none;
 }
@@ -99,7 +104,7 @@ header {
 main {
     width: 100vw;
     margin-top: .42rem, ;
-    padding: .14rem .18rem .31rem .18rem;
+    padding: .14rem .18rem 0 .18rem;
 }
 
 // 主内容样式
