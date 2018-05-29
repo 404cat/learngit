@@ -266,13 +266,14 @@ main {
 }
 
 .section-four {
-    padding-left: 15px;
-    padding-right: 15px;
+    // padding-left: 15px;
+    // padding-right: 15px;
     justify-content: space-between;
+    background: $white;
     @media (max-width:991px) {
     }
     span {
-        width: 20%;
+        width: 19%;
         background: $white;
         @media (max-width:991px) {
             @include flex-s-center;
