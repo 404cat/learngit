@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,78 @@
 </head>
 
 <style>
-  div {
-    color: red;
+  ul {
+    list-style: none;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    outline: none;
+  }
+
+  input {
+    outline: none;
+    border: 1px solid #333;
+
+  }
+
+  input [type="number"] {
+    -webkit-appearance: textfield;
   }
 </style>
 
 <body>
-  <div>Lorem ipsum dolor sit.</div>
-  <div>Lorem ipsum dolor sit.</div>
-  <div>Lorem ipsum dolor sit.</div>
-  <div>Lorem ipsum dolor sit.</div>
-  <div>Lorem ipsum dolor sit.</div>
-  
+
+  <div id="one">
+    <span>杀手
+      <em>my</em> 人</span>
+  </div>
+
+  <div>
+    <ul>
+      <li>
+        <span>
+          杀手
+          <span id="killer"> </span>人
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <input type="text" id="import" oninput="text()">
+
+
+  <script type="text/javascript">
+    var a = document.getElementById("one");
+    console.log(a);
+
+    /* ______ */
+    var num = 0;
+    var form = 0;
+    var killer1 = document.getElementById("killer"); /* 获取需要添加数字的span引用 */
+
+    function getnum() {
+      form = document.getElementById("import").value; /* 获取输入值 */
+      // form = 5; 
+      return form;
+    }
+
+    function clear() {
+      killer1.innerHTML = "";
+    }
+    text();
+
+    function text() {
+      clear();
+      getnum();
+      if (form == 5)
+        killer1.innerHTML = "5";
+    }
+  var a = +'4';
+  console.log(typeof a);
+
+  </script>
 </body>
+
 </html>
