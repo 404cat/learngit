@@ -24,14 +24,25 @@ function playChangeNum() {
 } /* input输入值后调用该函数 */
 
 function deal() {
+    identity = [];/* 初始化身份数组 */
+    sessionStorage.clear();/* 清除本地储存 */
+    playChangeNum();/* 每次点击发牌重新分配身份 */
+    addIdentityArray(); /* 身份添加进数组 函数 */
+    shuffle(identity); /* 身份数组乱序 函数*/
+    textarray(); /* 转为json格式，存入sessionStorage */
     if (impotContent < 5 || impotContent > 20) {
         popupMenu.style.display = "flex";
+    } /* 如果输入内容不正确，跳出提示框 */
+    else {
+        window.location.href = "lookIdentity.html"; /* 跳转至下一个页面 */
     }
-} /* 输入人数不正确弹出提示窗 */
+} /* 点击发牌 */
 
 function closePopup() {
     popupMenu.style.display = "none";
-}/* 点击确定、点击取消后隐藏弹窗 */
+} /* 点击确定、点击取消后隐藏弹窗 */
+
+/* ——————————————————功能函数区———————————————————— */
 
 function clearNumber() {
     killerNumber = "";
@@ -49,7 +60,7 @@ function getInput() {
     } /* 限制只能输入数字 */
     impotContent = document.getElementById("inputText").value;
     impotContent = ~~impotContent; /* 输入的数值会变成string类型，~~转换成number类型 */
-    console.log(typeof impotContent);
+    console.log("input内容类型为 " + typeof impotContent);
     return impotContent;
 } /* 获取input内容 */
 
@@ -151,3 +162,43 @@ function judgeNumber() {
             break;
     } /*  */
 } /* 输入的人数判断、分配人数 */
+
+var identity = new Array(); /* 存放身份数组 */
+
+function addIdentityArray() {
+    for (var i = 0; i < killerNumber; i++) {
+        identity.push("杀手");
+    }
+    for (var i = 0; i < policeNumber; i++) {
+        identity.push("警察");
+    }
+    for (var i = 0; i < roturierNumber; i++) {
+        identity.push("村民");
+    }
+    for (var i = 0; i < 1; i++) {
+        identity.push("狙击手");
+        identity.push("医生");
+    }
+} /* 身份添加至数组 */
+
+
+function shuffle(array) {
+    var _array = array.concat();
+
+    for (var i = _array.length; i--;) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = _array[i];
+        _array[i] = _array[j];
+        _array[j] = temp;
+    }
+    return _array;
+} /* 洗牌算法 数组乱序 */
+
+function textarray() {
+    identity = shuffle(identity);
+    console.log(identity);
+    identity = JSON.stringify(identity);
+    sessionStorage.setItem("identity", identity);
+} /* 转为json格式，存入sessionStorage */
+
+/* ————————————————测试localstorage—————————————————— */

@@ -1,0 +1,1 @@
+var getBox = document.getElementsByClassName("box");

@@ -8,79 +8,40 @@
   <title>Document</title>
 </head>
 
-<style>
-  ul {
-    list-style: none;
-  }
-
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    outline: none;
-  }
-
-  input {
-    outline: none;
-    border: 1px solid #333;
-
-  }
-
-  input [type="number"] {
-    -webkit-appearance: textfield;
-  }
-</style>
-
 <body>
+  <script>
+    // function a() {
+    //   console.log("执行a函数");
+    //   setTimeout(function () {
+    //     console.log("执行a函数的延迟函数")
+    //   }, 1000)
+    // }
 
-  <div id="one">
-    <span>杀手
-      <em>my</em> 人</span>
-  </div>
+    // function b() {
+    //   console.log("执行函数b");
+    // }
 
-  <div>
-    <ul>
-      <li>
-        <span>
-          杀手
-          <span id="killer"> </span>人
-        </span>
-      </li>
-    </ul>
-  </div>
+    // a();
+    // b();
+    /* 执行结果为
+    17:03:16.047 demo.html:14 执行a函数
+    17:03:16.048 demo.html:21 执行函数b
+    17:03:17.049 demo.html:16 执行a函数的延迟函数 */
 
-  <input type="text" id="import" oninput="text()">
+    // 同步函数
+    var a = 0;
 
-
-  <script type="text/javascript">
-    var a = document.getElementById("one");
-    console.log(a);
-
-    /* ______ */
-    var num = 0;
-    var form = 0;
-    var killer1 = document.getElementById("killer"); /* 获取需要添加数字的span引用 */
-
-    function getnum() {
-      form = document.getElementById("import").value; /* 获取输入值 */
-      // form = 5; 
-      return form;
+    function change() {
+      a = 1;
     }
 
-    function clear() {
-      killer1.innerHTML = "";
+    function print() {
+      console.log(a);
     }
-    text();
-
-    function text() {
-      clear();
-      getnum();
-      if (form == 5)
-        killer1.innerHTML = "5";
-    }
-  var a = +'4';
-  console.log(typeof a);
-
+    change();
+    print(); //1
   </script>
+
 </body>
 
 </html>

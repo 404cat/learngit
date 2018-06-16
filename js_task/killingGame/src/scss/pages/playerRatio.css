@@ -40,6 +40,10 @@ table {
 b, strong {
   font-weight: bolder; }
 
+button {
+  border: none;
+  outline: none; }
+
 [hidden] {
   display: none !important; }
 
@@ -49,13 +53,34 @@ header {
   justify-content: space-between;
   padding: 15px;
   height: 40px;
-  background: #29BDE0; }
+  background: #29BDE0;
+  border-bottom: 1px solid #fff; }
   header .back {
     width: 20px;
     height: 20px;
     border-top: 3px solid #fff;
     border-right: 3px solid #fff;
     transform: rotate(-135deg); }
+  header .header-title {
+    font-size: .2rem;
+    font-weight: 300;
+    color: #fff; }
+  header .header-close {
+    width: 30px;
+    height: 2px;
+    background: #fff;
+    font-size: 0;
+    vertical-align: middle;
+    -webkit-transform: rotate(45deg); }
+    header .header-close:after {
+      content: "";
+      display: inline-block;
+      width: 30px;
+      height: 2px;
+      background: #fff;
+      font-size: 0;
+      vertical-align: middle;
+      -webkit-transform: rotate(-90deg); }
 
 body {
   position: relative; }

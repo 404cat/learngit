@@ -48,6 +48,12 @@ table {
 b , strong {
     font-weight: bolder;
 }
+
+button {
+    border: none;
+    outline: none;
+}
+
 [hidden] {
     display: none !important;
 }
