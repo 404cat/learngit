@@ -87,55 +87,59 @@ header {
       vertical-align: middle;
       -webkit-transform: rotate(-90deg); }
 
-body {
-  background: #29BDE0; }
-
-main {
-  background: #29BDE0;
-  display: flex;
-  margin-bottom: 70px;
-  margin-top: 40px;
-  flex-wrap: wrap; }
-  main .box {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 25px 0;
-    width: 33.3333333333%; }
-    main .box .square {
-      width: 25vw;
-      border: 2px solid #fff;
-      border-radius: 5px; }
-      main .box .square span {
-        display: flex;
-        align-items: center;
-        justify-content: center; }
-      main .box .square span:nth-child(1) {
-        height: 18vw;
-        background: #fdedc5; }
-      main .box .square span:nth-child(2) {
-        height: 7vw;
-        background: #bff2ff; }
-
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #29BDE0;
-  display: flex;
-  padding: 15px;
+header {
   justify-content: center; }
-  footer button {
-    width: 80vw;
-    height: 40px;
-    background: #f7bd4a;
-    border-radius: 10px;
-    box-shadow: 1px 1px 1px #f0f0f0; }
-    footer button span {
-      color: #fff;
-      font-size: 18px;
-      font-weight: 300;
-      letter-spacing: 3px; }
+  header .header-close {
+    position: absolute;
+    right: 2%; }
 
-/*# sourceMappingURL=judgeDiary.css.map */
+.subnav {
+  position: relative;
+  padding: .1rem;
+  margin-top: 40px;
+  height: .42rem;
+  font-size: .14rem;
+  font-weight: 300;
+  background: #b9e9f5; }
+  .subnav i {
+    position: absolute;
+    bottom: -.18rem;
+    display: block;
+    width: 0;
+    height: 0;
+    border: .08rem solid transparent;
+    border-top: 0.12rem solid #b9e9f5; }
+  .subnav p {
+    margin-top: 20px;
+    font-size: .14rem;
+    font-weight: 300;
+    color: #fff; }
+
+.photo {
+  width: 25vw;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: .1rem; }
+  .photo .killIcon {
+    width: .3rem;
+    height: .3rem;
+    background-size: cover;
+    background: url(../../img/icon/knife.png) no-repeat; }
+  .photo .doctorIcon {
+    width: .3rem;
+    height: .3rem;
+    background-size: cover;
+    background: url(../../img/icon/doctor.png) no-repeat; }
+  .photo .sharpIcon {
+    width: .3rem;
+    height: .3rem;
+    background-size: cover;
+    background: url(../../img/icon/sharp.png) no-repeat; }
+  .photo .policeIcon {
+    width: .3rem;
+    height: .3rem;
+    background-size: cover;
+    background: url(../../img/icon/search.png) no-repeat; }
+
+/*# sourceMappingURL=operation.css.map */

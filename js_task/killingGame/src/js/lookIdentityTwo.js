@@ -13,13 +13,19 @@ function inputHtml() {
     getIdentity(); /* 获取身份数组 */
     // getIdentityIndex(); /* 获取身份数组角标 */
     console.log(identityInfoArray);
+    console.log(identityInfoArray.length);
     getCardNum(); /* 获取号码 */
+    console.log("cardnum=" + cardNum);
     getNextNumber(); /* 获取下一个号码 */
     lookNum.innerHTML = cardNum; /* 表头号码 */
-    nextNum.innerHTML = "隐藏并传递给" + nextNumber + "号";
+    if (cardNum == identityInfoArray.length) {
+        nextNum.innerHTML = "法官查看";
+    }
+    else{
+        nextNum.innerHTML = "隐藏并传递给" + nextNumber + "号";
+    }
     inputIdentityWord();
-    console.log("cardnum="+cardNum);
-    console.log("数组角标"+identityindex);
+    console.log("数组角标" + identityindex);
 } /* 输入内容 */
 
 function previous() {
@@ -30,8 +36,12 @@ function previous() {
 
 function nextPage() {
     setIndex();
-    setCardnum();
-    window.location.href = "lookIdentity.html";
+    setCardnum(); /* 点击以后cardnum会+1 */
+    if (cardNum - 1 == identityInfoArray.length) {
+        window.location.href = "judgeDiary.html";
+    } else {
+        window.location.href = "lookIdentity.html";
+    }
 } /* 点击下一页时对号码进行更改 */
 
 function getIdentity() {

@@ -9,18 +9,24 @@ window.onload = initial();
 function initial() {
     getCardNum();
     console.log("页面一载入后cardnum=" + cardNum);
-    if (cardNum == undefined) {
+    if (cardNum == null || cardNum == "initial") {
         cardNum = 1;
     }
     console.log("赋值后" + cardNum);
     inputHtml();
+    console.log(identityindex);
 }; /* 初始样式 */
 
 function previous() {
+    if (cardNum == 1) {
+        window.location.href = "playerRatio.html";
+        return;
+    }
     getCardNum();
     cardNum -= 1;
     setCardnum();
     history.go(-1);
+
 } /* 点击上一页，表头号码 -1 重新储存sessionStorage */
 
 function nextPage() {
@@ -47,7 +53,7 @@ function inputHtml() {
 
 function setIndex() {
     getIndex();
-    if (identityindex == undefined) {
+    if (identityindex == undefined || cardNum == "initial") {
         identityindex = 0;
     } else {
         identityindex += 1;

@@ -10,11 +10,14 @@ body {
 
 main {
     @include layout;
+    margin-bottom: 70px;
+    margin-top: 40px;
     flex-wrap: wrap;
     $width: 100%/3;
     .box {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
         margin: 25px 0;
         width: $width;
         .square {

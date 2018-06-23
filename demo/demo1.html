@@ -8,33 +8,51 @@
     <title>Document</title>
 </head>
 
-<style>
-
-    div {
-        width: 300px;
-        height: 600px;
-        background: green;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
-    span {
-        width: 50px;
-        height: 50px;
-    }
-</style>
-
 <body>
+    <button onclick="text()">zai点击</button>
 
     <div>
         <span></span>
-        <span></span>
     </div>
-    <script type="text/javascript">
-        var b = localStorage.getItem("b");//获取b的值
-        console.log(b);
-    </script>
+    <script>
+        // window.location = text();
 
+        function text() {
+            history.go(-1);
+        }
+
+
+
+    //     let c = ["a","b","c"]
+    //     function text1(){
+    //         console.log("i="+i);
+    //         for (var i=0; i<c.length; i++){
+    //             console.log("回调函数外的I值  "+i);
+    //             setTimeout(function(){
+    //                 console.log("回调函数中的i值： "+i);
+    //             })
+    //         }
+    //     }
+    //     text1();
+
+
+
+    //     console.log(window.c);
+    // console.log(c);
+    
+
+
+
+// var messages = ["嗨！", "我是一个web页面！", "alert()方法非常有趣！"];
+//     for (var i = 0; i < messages.length; i++) {
+//       alert(messages[i]);
+//     }
+
+    // if(true){
+    //     let color = "blue";
+    // }
+    // console.log(color);
+    </script>
 </body>
 
 </html>

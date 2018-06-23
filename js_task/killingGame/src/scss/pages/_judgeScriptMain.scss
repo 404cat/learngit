@@ -4,6 +4,7 @@ body {
 }
 
 main {
+    margin-top: 40px;
     margin-bottom: 60px;
     padding: 10px;
     .dayNum {
@@ -16,6 +17,13 @@ main {
         background: $white;
         border-radius: 5px;
         box-shadow: 1px 1px 1px #fff;
+    }
+    .sunBox {
+        p {
+            border-left: 1px solid #C9C9C9;
+            margin: 0;
+            padding: 0 0px 20px 30px;
+        }
     }
     .box {
         padding: 35px 15px 35px 30px;
@@ -50,7 +58,8 @@ main {
                 line-height: 30px;
                 background: $blue;
                 border-radius: 7px;
-                &::before {
+                cursor: pointer;
+                i {
                     content: "";
                     position: absolute;
                     top: 50%;
@@ -85,7 +94,8 @@ main {
         left: 0;
         margin-left: -16px;
         display: inline-block;
-        background: url(../../img/sun.png) no-repeat;
+        background: url(../../img/moon.png) no-repeat;
+        background-color: #fff;
         background-size: 70%;
         background-position: 50%;
         border: 1px solid #C9C9C9;
@@ -103,7 +113,8 @@ main {
         left: 0;
         margin-left: -16px;
         display: inline-block;
-        background: url(../../img/moon.png) no-repeat;
+        background: url(../../img/sun.png) no-repeat;
+        background-color: #fff;
         background-size: 70%;
         background-position: 50%;
         border: 1px solid #C9C9C9;
@@ -120,7 +131,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(41,189,224,0.5);
+    background: rgba(41, 189, 224, 0.5);
     button {
         width: 40%;
         height: 80%;
