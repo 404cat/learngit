@@ -6,6 +6,11 @@
     flex-wrap: wrap;
 }
 
+
+html {
+    background: $header-blue;
+}
+
 main {
     @include vertical-middle();
     padding: 90px 0;

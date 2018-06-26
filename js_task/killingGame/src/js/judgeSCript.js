@@ -292,6 +292,27 @@ $(function () {
         window.location.href = 'judgeLog.html';
     })
 
+
+    var killnum = 0; /* 记录杀手人数 */
+    var k = 0; /* 记录好人数量 */
+    if (newArray != null) {
+        for (var s = 0; s < newArray.length; s++) {
+            if (newArray[s].identity == '杀手' && newArray[s].state == true) {
+                killnum += 1;
+            } else {
+                if (newArray[s].state == true) {
+                    k += 1;
+                }
+            }
+        }
+        if (killnum >= k) {
+            window.location.href = 'gameover.html';
+        } else if (killnum == 0) {
+            window.location.href = 'gameover.html';
+        }
+    } /* 判断 */
+
+
 }) /* jQuery文档就绪事件结束 */
 
 

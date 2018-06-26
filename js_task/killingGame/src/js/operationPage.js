@@ -1,7 +1,6 @@
 $(function () {
     var log = console.log;
 
-    // var getConfirm = $('#confirm'); /* 获取确定按钮节点 */
     var identityInfoArray; /* 身份数组 */
     var newArray = [];
     var identity;
@@ -14,6 +13,7 @@ $(function () {
     var sharpIndex = new Array(0);
     var doctorIndex = new Array(0);
     var voteIndex = new Array(0);
+    var theyday = new Array(0);
 
     var deliverStep = JSON.parse(sessionStorage.getItem("deliverStep"));
     log("传输的步骤为" + deliverStep);
@@ -68,7 +68,6 @@ $(function () {
             voteIndex.push(a);
             sessionStorage.setItem('voteIndex', JSON.stringify(voteIndex));
         } /* 把从操作页面操作过的角标储存到数组中，到法官台本页面通过遍历数组增加节点 */
-
         sessionStorage.setItem('newArray', JSON.stringify(newArray));
     }
 
@@ -106,11 +105,8 @@ $(function () {
             $('.introduce2').text('点击下方玩家头像，对被查看的玩家进行标记');
             $("#main").on('click', ".box", function () {
                 $('.policeIcon').hide(); /* 图标初始全部隐藏 */
-                // $('.box').find('.identity').css('background', '#fdedc5'); /* 点击前初始颜色 */
-                // $(this).find(".identity").css('background', "#333"); /* 点击后改变颜色 */
                 $('.policeIcon').eq($(this).index()).show(); /* 点击后图标出来 */
                 a = $(this).index(); /* 获取点击的格子角标 */
-
                 changeColor();
             }) /* 点击事件 */
             $('#confirm').click(function () {
@@ -131,8 +127,6 @@ $(function () {
             $('.introduce2').text('点击下方玩家头像，对被狙杀的玩家进行标记');
             $("#main").on('click', ".box", function () {
                 $('.sharpIcon').hide(); /* 图标初始全部隐藏 */
-                // $('.box').find('.identity').css('background', '#fdedc5'); /* 点击前初始颜色 */
-                // $(this).find(".identity").css('background', "#333"); /* 点击后改变颜色 */
                 $('.sharpIcon').eq($(this).index()).show(); /* 点击后图标出来 */
                 a = $(this).index(); /* 获取点击的格子角标 */
 
@@ -178,9 +172,6 @@ $(function () {
             $('.introduce2').text('点击得票数最多的人的头像');
             $("#main").on('click', ".box", function () {
                 $('.doctor').hide(); /* 图标初始全部隐藏 */
-                // $('.box').find('.identity').css('background', '#fdedc5'); /* 点击前初始颜色 */
-                // $(this).find(".identity").css('background', "#333"); /* 点击后改变颜色 */
-                // $('.doctor').eq($(this).index()).show(); /* 点击后图标出来 */
                 a = $(this).index(); /* 获取点击的格子角标 */
 
                 changeColor();
@@ -236,7 +227,6 @@ $(function () {
         }
     } /* 初始化，如果天数大于0，代表进行到了第二天以上，把身份状态为杀死的格子变色； 如何让状态为死亡的格子只在增加天数的时候生成？？ */
 
-
     function changeColor() {
         for (var c = 0; c < newArray.length; c++) {
             if (newArray[c].state == true) {
@@ -249,6 +239,8 @@ $(function () {
             $('.box').eq(a).find(".identity").css('background', "#333"); /* 点击后改变颜色 */
         }
     }
+
+
 
 }) /* jQuery文档就绪事件结束 */
 
