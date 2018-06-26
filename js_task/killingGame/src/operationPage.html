@@ -14,12 +14,14 @@
 <body>
     <header>
         <span class="header-title title">警察查人</span>
-        <span class="header-close"></span>
+        <div class="close-box">
+            <span class="header-close"></span>
+        </div>
     </header>
     <div class="subnav">
-        <span class="introduce1">发言结束</span>
+        <span class="introduce1">查看下面的状态</span>
         <i></i>
-        <p class="introduce2">输入一些内容呢</p>
+        <p class="introduce2">你看吧</p>
     </div>
     <main id="main">
         <div class="box">
@@ -40,9 +42,18 @@
             <span>确定</span>
         </button>
     </footer>
+
+    <div class="popup">
+        <div>
+            <span class="colse-word">确认要退出游戏吗？</span>
+            <button class="affirm">确认</button>
+            <button class="cancel">取消</button>
+        </div>
+    </div>
     <!-- <script src="./js/judgeDiary.js"></script> -->
     <script src="./js/state-machine.js"></script>
     <script src="./js/operationPage.js"></script>
+    <script src="./js/close-button.js"></script>
 </body>
 
 </html>

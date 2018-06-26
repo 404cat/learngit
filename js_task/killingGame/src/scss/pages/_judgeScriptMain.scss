@@ -20,9 +20,17 @@ main {
     }
     .sunBox {
         p {
-            border-left: 1px solid #C9C9C9;
             margin: 0;
             padding: 0 0px 20px 30px;
+            font-size: 13px;
+            border-left: 1px solid #C9C9C9;
+        }
+    }
+    .moonBox {
+        p {
+            border-left: 1px solid #C9C9C9;
+            margin: 0;
+            padding: 20px 0 0 30px;
         }
     }
     .box {
@@ -84,7 +92,7 @@ main {
 
 /* main */
 
-#sun {
+.sun {
     position: relative;
     &::before {
         content: "";
@@ -103,7 +111,7 @@ main {
     }
 }
 
-#moon {
+.moon {
     position: relative;
     &::before {
         content: "";
