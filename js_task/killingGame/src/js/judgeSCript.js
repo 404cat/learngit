@@ -2,7 +2,7 @@ $(function () {
     var log = console.log;
     var num = 0; /*  */
     // var init = true; /* 内容区导航栏状态初始为true */
-
+    var days = ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天', '第七天', '第八天', '第九天', '第十天'];
     var collapse = $('.dayNum'),
         /* 折叠 */
         getBox = $('.box'),
@@ -16,33 +16,60 @@ $(function () {
         getVote = $('.allVote');
     /* 以上获取的是每个导引栏的节点 */
 
-    function previous() {
+    $('.back').click(function () {
         window.location.href = "judgeDiary.html";
-    } /* 返回法官日记 */
+    }) /* 返回法官日记 */
 
-    function deliver(state) {
-        sessionStorage.setItem("deliverStep", JSON.stringify(state));
-    } /* 传递状态至下一个页面 */
+    $('.header-close').click(function () {
+        sessionStorage.clear();
+        window.location.href = "playerRatio.html";
+    })
 
     collapse.eq(num).click(function () {
         getBox.eq(num).toggle();
     }) /* 点击每一天后下面的内容折叠 */
 
+    var step; /* 这个变量是为了判断运行到第几步了 */
+    function nextPage() {
+        step = JSON.parse(sessionStorage.getItem('step'));
+        if (step == undefined) {
+            step = 1;
+        } else {
+            step += 1;
+        }
+        sessionStorage.setItem("step", JSON.stringify(step));
+        window.location.href = "operationPage.html";
+    } /* 每执行下一页，代表已经进行了一个步骤了，通过step在changeClicked方法中进行判断操作 */
+
     var identityInfoArray = JSON.parse(sessionStorage.getItem("identity")); /* 获取身份数组，这个是在第一个页面生成的 */
-    var getState = JSON.parse(sessionStorage.getItem('deliverStep')) /* 获取点击下一页储存的当前状态（步骤） */
-    
     var clickedIndex = JSON.parse(sessionStorage.getItem('clickedIndex')); /* 获取被操作的身份角标 */
-    var identityNum = clickedIndex + 1; /* 被点击后的身份号码 */
 
-    switch (getState) {
-        case "kill":
-            $('.sunBox').append('<p>' + identityNum + '号被杀手杀死了，真实身份是' + identityInfoArray[clickedIndex] + '</p>');
-            break;
-        case "police":
-        $('.sunBox').append('<p>' + identityNum + '号被警察查看身份，真实身份是' + identityInfoArray[clickedIndex] + '</p>');
-            break;
-    } /* 用getstate来判断是从那个操作页面返回的，再进行相应的添加节点 */
+    /* 动态添加P标签 */
+    step = JSON.parse(sessionStorage.getItem('step'));
+    if (step != undefined) {
+        for (var i = 0; i < clickedIndex.length; i++) {
+            var b = clickedIndex[i] + 1;
+            if (i == 0) {
+                $('.sunBox').append('<p>' + b + '号被杀手杀死了，真实身份是' + identityInfoArray[clickedIndex[i]] + '</p>');
+            }
+            if (i == 1) {
+                $('.sunBox').append('<p>' + b + '号被警察查看身份，真实身份是' + identityInfoArray[clickedIndex[i]] + '</p>');
+            }
+            if (i == 2) {
+                $('.sunBox').append('<p>' + b + '号被狙击手狙杀，真实身份是' + identityInfoArray[clickedIndex[i]] + '</p>');
+            }
+            if (i == 3) {
+                $('.sunBox').append('<p>' + b + '号被医生治疗，真实身份是' + identityInfoArray[clickedIndex[i]] + '</p>');
+            }
+            if (i == 4) {
+                $('.moonBox').append('<p>' + b + '号被投死了，真实身份是' + identityInfoArray[clickedIndex[i]] + '</p>');
+            }
+        }
+    }
 
+    function deliver(state) {
+        sessionStorage.setItem("deliverStep", JSON.stringify(state));
+    } /* 传递状态至下一个页面 */
 
     getkiller.eq(num).click(function () {
         if (fsm.can("kill")) {
@@ -79,10 +106,9 @@ $(function () {
     getGhost.eq(num).click(function () {
         if (fsm.can("ghost")) {
             alert('请亡灵发表遗言');
-            step = JSON.parse(sessionStorage.getItem('step'));
             step += 1;
-            sessionStorage.setItem("step", JSON.stringify(step));
-            changeClicked();
+            $(this).css("backgroundColor", "#888");
+            $(this).find("i").css("borderRightColor", "#888"); /* 点击后背景颜色会改变 */
         }
         fsm.ghost();
     }) /* 点击亡灵发表遗言 */
@@ -90,10 +116,10 @@ $(function () {
     getPlayer.eq(num).click(function () {
         if (fsm.can("player")) {
             alert('请玩家依次发言');
-            step = JSON.parse(sessionStorage.getItem('step'));
             step += 1;
             sessionStorage.setItem("step", JSON.stringify(step));
-            changeClicked();
+            $(this).css("backgroundColor", "#888");
+            $(this).find("i").css("borderRightColor", "#888"); /* 点击后背景颜色会改变 */
         }
         fsm.player();
     }) /* 点击玩家依次发言 */
@@ -101,15 +127,12 @@ $(function () {
     getVote.eq(num).click(function () {
         if (fsm.can("vote")) {
             deliver("vote");
+            log(step);
             nextPage();
         }
         fsm.vote();
     }) /* 点击头票 */
 
-
-
-
-    /* 创建一个状态机 */
     var fsm = new StateMachine({
         init: "none",
         transitions: [{
@@ -178,27 +201,12 @@ $(function () {
                 }
             },
         }
-    })
-
-
-    var step; /* 这个变量是为了判断运行到第几步了 */
-
-
-    function nextPage() {
-        step = JSON.parse(sessionStorage.getItem('step'));
-        if (step == undefined) {
-            step = 1;
-        } else {
-            step += 1;
-        }
-        sessionStorage.setItem("step", JSON.stringify(step));
-        window.location.href = "operationPage.html";
-    } /* 每执行下一页，代表已经进行了一个步骤了，通过step来进行判断操作 */
+    }) /* 创建一个状态机 */
 
     function changeClicked() {
         var loop = [getkiller, getPolice, getSharp, getDoctor, getGhost, getPlayer, getVote];
         step = JSON.parse(sessionStorage.getItem('step'));
-        console.log(step);
+        console.log("执行完了几步：" + step);
         switch (step) {
             case 1:
                 fsm.kill();
@@ -218,21 +226,6 @@ $(function () {
                 fsm.sharp();
                 fsm.doctor();
                 break;
-            case 5:
-                fsm.kill();
-                fsm.police();
-                fsm.sharp();
-                fsm.doctor();
-                fsm.ghost();
-                break;
-            case 6:
-                fsm.kill();
-                fsm.police();
-                fsm.sharp();
-                fsm.doctor();
-                fsm.ghost();
-                fsm.player();
-                break;
             case 7:
                 fsm.kill();
                 fsm.police();
@@ -249,7 +242,6 @@ $(function () {
         }
     } /* 从杀人页面返回来的时候状态和颜色会改变 */
     changeClicked();
-
 }) /* jQuery文档就绪事件结束 */
 
 
@@ -262,6 +254,21 @@ $(function () {
 
 
 
+// case 5:
+//     fsm.kill();
+//     fsm.police();
+//     fsm.sharp();
+//     fsm.doctor();
+//     fsm.ghost();
+//     break;
+// case 6:
+//     fsm.kill();
+//     fsm.police();
+//     fsm.sharp();
+//     fsm.doctor();
+//     fsm.ghost();
+//     fsm.player();
+//     break;
 
 // var obj = {
 //     a: fsm.kill(),

@@ -7,9 +7,15 @@ $(function () {
     var identity;
     var number;
     var state;
-    var deliverStep;
+    var a; /* 点击的格子角标 */
+    var clickedIndex = new Array(0); /* 储存被点击的角标 */
+    var killedIndex = new Array(0);
+    var policeIndex = new Array(0);
+    var sharpIndex = new Array(0);
+    var doctorIndex = new Array(0);
+    var voteIndex = new Array(0);
 
-    deliverStep = JSON.parse(sessionStorage.getItem("deliverStep"));
+    var deliverStep = JSON.parse(sessionStorage.getItem("deliverStep"));
     log("传输的步骤为" + deliverStep);
 
     $('.killIcon').hide();
@@ -17,8 +23,59 @@ $(function () {
     $('.sharpIcon').hide();
     $('.policeIcon').hide();
     /* 图标全部默认隐藏 */
-    var a; /* 点击的格子角标 */
-    // var clickedIndex 
+
+
+    function saveClikedIndex() {
+        assignment(); /* 身份数组 */
+        if (deliverStep != "kill") {
+            clickedIndex = JSON.parse(sessionStorage.getItem("clickedIndex"));
+            log(typeof clickedIndex);
+        }
+        log(clickedIndex);
+        clickedIndex.push(a);
+        sessionStorage.setItem("clickedIndex", JSON.stringify(clickedIndex));
+
+        if (deliverStep == 'kill') {
+            if (killedIndex.length != 0) {
+                killedIndex = JSON.parse(sessionStorage.getItem('killedIndex'));
+            }
+            killedIndex.push(a);
+            sessionStorage.setItem('killedIndex', JSON.stringify(killedIndex));
+        }
+
+        if (deliverStep == 'police') {
+            if (policeIndex != 0) {
+                policeIndex = JSON.parse(sessionStorage.getItem('policeIndex'))
+            }
+            policeIndex.push(a);
+            sessionStorage.setItem('policeIndex', JSON.stringify(policeIndex));
+        }
+
+        if (deliverStep == 'sharp') {
+            if (sharpIndex != 0) {
+                sharpIndex = JSON.parse(sessionStorage.getItem('sharpIndex'));
+            }
+            sharpIndex.push(a);
+            sessionStorage.setItem('sharpIndex', JSON.stringify(sharpShoot));
+        }
+
+        if (deliverStep == 'doctor') {
+            if (doctorIndex != 0) {
+                doctorIndex = JSON.parse(sessionStorage.getItem('doctorIndex'));
+            }
+            doctorIndex.push(a);
+            sessionStorage.setItem('doctorIndex', JSON.stringify(doctorIndex));
+        }
+
+        if (deliverStep == 'vote') {
+            if (voteIndex != 0) {
+                voteIndex = JSON.parse(sessionStorage.getItem('voteIndex'));
+            }
+            voteIndex.push(a);
+            sessionStorage.setItem('voteIndex', JSON.stringify(voteIndex));
+        } /* 把从操作页面操作过的角标储存到数组中，到法官台本页面通过遍历数组增加节点 */
+    }
+
     switch (deliverStep) {
         case "kill":
             $('.title').text('杀手杀人');
@@ -29,7 +86,6 @@ $(function () {
                 $('.box').find('.identity').css('background', '#fdedc5'); /* 点击前初始颜色 */
                 $(this).find(".identity").css('background', "#333"); /* 点击后改变颜色 */
                 $('.killIcon').eq($(this).index()).show(); /* 点击后图标出来 */
-                // sessionStorage.setItem('clickedIndex', JSON.stringify($(this).index()));
                 a = $(this).index(); /* 获取点击的格子角标 */
             }) /* 点击事件 */
             $('#confirm').click(function () {
@@ -38,6 +94,9 @@ $(function () {
                 } else if (newArray[a].identity == '杀手') {
                     alert('不能杀死本职业'); /* 如果身份是杀手就弹窗 */
                 } else {
+                    log(typeof clickedIndex);
+                    saveClikedIndex(); /* 被点击的角标存入数组中 */
+                    newArray[a].state = false;
                     history.go(-1);
                 }
             }) /* 点击确定后执行的函数 , 如果没有点击，弹窗；如果杀死的是一个身份，弹窗；最后如果点击了就返回 */
@@ -45,13 +104,12 @@ $(function () {
         case "police":
             $('.title').text('警察查人');
             $('.introduce1').text('警察请睁眼，警察请选择要查看身份的对象');
-            $('.introduce2').text('点击下方玩家头像，对被杀的玩家进行标记');
+            $('.introduce2').text('点击下方玩家头像，对被查看的玩家进行标记');
             $("#main").on('click', ".box", function () {
                 $('.policeIcon').hide(); /* 图标初始全部隐藏 */
                 $('.box').find('.identity').css('background', '#fdedc5'); /* 点击前初始颜色 */
                 $(this).find(".identity").css('background', "#333"); /* 点击后改变颜色 */
                 $('.policeIcon').eq($(this).index()).show(); /* 点击后图标出来 */
-                sessionStorage.setItem('clickedIndex', JSON.stringify($(this).index()));
                 a = $(this).index(); /* 获取点击的格子角标 */
             }) /* 点击事件 */
             $('#confirm').click(function () {
@@ -60,6 +118,72 @@ $(function () {
                 } else if (newArray[a].identity == '警察') {
                     alert('不能查看自己的身份'); /* 如果身份是杀手就弹窗 */
                 } else {
+                    saveClikedIndex();
+                    history.go(-1);
+                }
+            }) /* 点击确定后执行的函数 , 如果没有点击，弹窗；如果杀死的是一个身份，弹窗；最后如果点击了就返回 */
+            break;
+        case "sharp":
+            $('.title').text('狙击狙人');
+            $('.introduce1').text('狙击手请睁眼，请选择要狙杀的对象');
+            $('.introduce2').text('点击下方玩家头像，对被狙杀的玩家进行标记');
+            $("#main").on('click', ".box", function () {
+                $('.sharpIcon').hide(); /* 图标初始全部隐藏 */
+                $('.box').find('.identity').css('background', '#fdedc5'); /* 点击前初始颜色 */
+                $(this).find(".identity").css('background', "#333"); /* 点击后改变颜色 */
+                $('.sharpIcon').eq($(this).index()).show(); /* 点击后图标出来 */
+                a = $(this).index(); /* 获取点击的格子角标 */
+            }) /* 点击事件 */
+            $('#confirm').click(function () {
+                if (a == undefined) {
+                    alert('必须选择一个');
+                } else if (newArray[a].identity == '狙击手') {
+                    alert('不能狙杀同一个身份'); /* 如果身份是杀手就弹窗 */
+                } else {
+                    saveClikedIndex();
+                    newArray[a].state = false;
+                    history.go(-1);
+                }
+            }) /* 点击确定后执行的函数 , 如果没有点击，弹窗；如果杀死的是一个身份，弹窗；最后如果点击了就返回 */
+            break;
+        case "doctor":
+            $('.title').text('医生救人');
+            $('.introduce1').text('医生请睁眼，请选择要医治的对象');
+            $('.introduce2').text('点击下方玩家头像，对被医治的玩家进行标记');
+            $("#main").on('click', ".box", function () {
+                $('.doctor').hide(); /* 图标初始全部隐藏 */
+                $('.box').find('.identity').css('background', '#fdedc5'); /* 点击前初始颜色 */
+                $(this).find(".identity").css('background', "#333"); /* 点击后改变颜色 */
+                $('.doctor').eq($(this).index()).show(); /* 点击后图标出来 */
+                a = $(this).index(); /* 获取点击的格子角标 */
+            }) /* 点击事件 */
+            $('#confirm').click(function () {
+                if (a == undefined) {
+                    alert('必须选择一个');
+                } else {
+                    saveClikedIndex();
+                    newArray[a].state = true;
+                    history.go(-1);
+                }
+            }) /* 点击确定后执行的函数 , 如果没有点击，弹窗；如果杀死的是一个身份，弹窗；最后如果点击了就返回 */
+            break;
+        case "vote":
+            $('.title').text('全民投票');
+            $('.introduce1').text('发言讨论结束，大家请投票');
+            $('.introduce2').text('点击得票数最多的人的头像');
+            $("#main").on('click', ".box", function () {
+                $('.doctor').hide(); /* 图标初始全部隐藏 */
+                $('.box').find('.identity').css('background', '#fdedc5'); /* 点击前初始颜色 */
+                $(this).find(".identity").css('background', "#333"); /* 点击后改变颜色 */
+                $('.doctor').eq($(this).index()).show(); /* 点击后图标出来 */
+                a = $(this).index(); /* 获取点击的格子角标 */
+            }) /* 点击事件 */
+            $('#confirm').click(function () {
+                if (a == undefined) {
+                    alert('必须选择一个');
+                } else {
+                    saveClikedIndex();
+                    newArray[a].state = false;
                     history.go(-1);
                 }
             }) /* 点击确定后执行的函数 , 如果没有点击，弹窗；如果杀死的是一个身份，弹窗；最后如果点击了就返回 */
@@ -99,6 +223,24 @@ $(function () {
     initial();
 
 }) /* jQuery文档就绪事件结束 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
