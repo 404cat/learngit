@@ -48,7 +48,6 @@ function assignment() {
 function initial() {
     assignment();
     for (var i = 0; i < newArray.length; i++) {
-        // console.log(i);
         getMain.appendChild(getBox[i].cloneNode(true)); /* 复制方块 */
         inputIdentity[i].innerHTML = newArray[i].identity;
         inputIdentityNum[i].innerHTML = newArray[i].number;

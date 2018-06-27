@@ -90,6 +90,27 @@ $(function () {
         window.location.href = "operationPage.html";
     } /* 每执行下一页，代表已经进行了一个步骤了，通过step在changeClicked方法中进行判断操作 */
 
+    function opinion(identity1, identity2) {
+        var k = 0; /* 存储身份是否是存活 */
+        if (newArray != null) {
+            for (var m = 0; m < newArray.length; m++) {
+                if (newArray[m].identity == identity1 && newArray[m].state == true) {
+                    k += 1;
+                }
+            }
+        }
+        if (k > 0) {
+            nextPage();
+        } else {
+            alert('该身份已死，直接点击下一步骤');
+            step += 1;
+            $(identity2).eq(daynum).css("backgroundColor", "#888");
+            $(identity2).eq(daynum).find("i").css("borderRightColor", "#888");
+        } /*  */
+    } /* 判断身份是不是等于0 */
+
+
+
     var identityInfoArray = JSON.parse(sessionStorage.getItem("identity")); /* 获取身份数组，这个是在第一个页面生成的 */
     var clickedIndex = JSON.parse(sessionStorage.getItem('clickedIndex')); /* 获取被操作的身份角标 */
     var killedIndex = JSON.parse(sessionStorage.getItem('killedIndex'));
@@ -100,6 +121,11 @@ $(function () {
 
     daynum = JSON.parse(sessionStorage.getItem('dayNum'));
     log("第几天" + daynum);
+
+
+    newArray = JSON.parse(sessionStorage.getItem('newArray'));
+    log(newArray);
+
 
     if (step == 7) {
         daynum += 1;
@@ -159,8 +185,7 @@ $(function () {
     /* 动态添加P标签文本 */
 
 
-    newArray = JSON.parse(sessionStorage.getItem('newArray'));
-    log(newArray);
+
 
 
     function deliver(state) {
@@ -170,7 +195,9 @@ $(function () {
     $('.killer').eq(daynum).click(function () {
         if (fsm.can("kill")) {
             deliver("kill");
-            nextPage();
+            var a = $(this).index();
+            opinion('杀手', '.killer');
+            // nextPage();
         }
         fsm.kill();
     }) /* 点击杀手杀人执行的操作 */
@@ -178,7 +205,10 @@ $(function () {
     $('.police').eq(daynum).click(function () {
         if (fsm.can("police")) {
             deliver("police");
-            nextPage();
+            var a = $(this).index();
+
+            opinion('警察', '.police');
+            // nextPage();
         }
         fsm.police();
     }) /* 点击警察验人执行的操作 */
@@ -186,7 +216,10 @@ $(function () {
     $('.sharpShoot').eq(daynum).click(function () {
         if (fsm.can("sharp")) {
             deliver("sharp");
-            nextPage();
+            // nextPage();
+            var a = $(this).index();
+
+            opinion('狙击手', '.sharpShoot');
         }
         fsm.sharp();
     }) /* 点击狙击执行的操作 */
@@ -194,7 +227,11 @@ $(function () {
     $('.doctor').eq(daynum).click(function () {
         if (fsm.can("doctor")) {
             deliver("doctor");
-            nextPage();
+            var a = $(this).index();
+
+            opinion('医生', '.doctor');
+            // nextPage();
+
         }
         fsm.doctor();
     }) /* 点击医生执行的操作 */
@@ -311,6 +348,7 @@ $(function () {
             window.location.href = 'gameover.html';
         }
     } /* 判断 */
+
 
 
 }) /* jQuery文档就绪事件结束 */

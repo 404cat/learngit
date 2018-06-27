@@ -7,13 +7,12 @@ $(function () {
     var number;
     var state;
     var a; /* 点击的格子角标 */
-    var clickedIndex = new Array(0); /* 储存被点击的角标 */
     var killedIndex = new Array(0);
     var policeIndex = new Array(0);
     var sharpIndex = new Array(0);
     var doctorIndex = new Array(0);
     var voteIndex = new Array(0);
-    var theyday = new Array(0);
+    var theday = new Array(0);
 
     var deliverStep = JSON.parse(sessionStorage.getItem("deliverStep"));
     log("传输的步骤为" + deliverStep);
@@ -31,9 +30,14 @@ $(function () {
 
         if (deliverStep == 'kill') {
             if (daynum != null) {
+                theday = JSON.parse(sessionStorage.getItem('theday'));
                 killedIndex = JSON.parse(sessionStorage.getItem('killedIndex'));
             }
             killedIndex.push(a);
+            log(a);
+            log(typeof theday);
+            theday.push(a);
+            sessionStorage.setItem('theday', JSON.stringify(theday));
             sessionStorage.setItem('killedIndex', JSON.stringify(killedIndex));
         }
 
@@ -47,16 +51,20 @@ $(function () {
 
         if (deliverStep == 'sharp') {
             if (daynum != null) {
+                theday = JSON.parse(sessionStorage.getItem('theday'));
                 sharpIndex = JSON.parse(sessionStorage.getItem('sharpIndex'));
             }
             sharpIndex.push(a);
+            theday.push(a);
             sessionStorage.setItem('sharpIndex', JSON.stringify(sharpIndex));
+            sessionStorage.setItem('theday', JSON.stringify(theday));
         }
 
         if (deliverStep == 'doctor') {
             if (daynum != null) {
                 doctorIndex = JSON.parse(sessionStorage.getItem('doctorIndex'));
             }
+
             doctorIndex.push(a);
             sessionStorage.setItem('doctorIndex', JSON.stringify(doctorIndex));
         }
@@ -81,21 +89,22 @@ $(function () {
                 a = $(this).index(); /* 获取点击的格子角标 */
                 $('.killIcon').eq($(this).index()).show(); /* 点击后图标出来 */
                 changeColor();
-
-
             }) /* 点击格子后判断状态是否存活，对存活的身份进行初始颜色 */
             $('#confirm').click(function () {
                 if (a == undefined) {
                     alert('必须选择一个杀死');
                 } else if (newArray[a].identity == '杀手') {
                     alert('不能杀死本职业'); /* 如果身份是杀手就弹窗 */
+                } else if (newArray[a].state == false) {
+                    alert('该身份已死，请点击有效身份');
                 } else {
                     if (daynum != null) {
                         newArray = JSON.parse(sessionStorage.getItem('newArray'));
                     }
                     newArray[a].state = false; /* 被杀死的状态为false */
                     saveClikedIndex(); /* 被点击的角标存入数组中 */
-                    history.go(-1);
+                    opinion('kill');
+                    // history.go(-1);
                 }
             }) /* 点击确定后执行的函数 , 如果没有点击，弹窗；如果杀死的是一个身份，弹窗；最后如果点击了就返回 */
             break;
@@ -107,7 +116,11 @@ $(function () {
                 $('.policeIcon').hide(); /* 图标初始全部隐藏 */
                 $('.policeIcon').eq($(this).index()).show(); /* 点击后图标出来 */
                 a = $(this).index(); /* 获取点击的格子角标 */
-                changeColor();
+                if (daynum != null) {
+                    theday = JSON.parse(sessionStorage.getItem('theday')); /* 获取当天被杀死的人 */
+                    log(theday);
+                }
+                changeColor('police');
             }) /* 点击事件 */
             $('#confirm').click(function () {
                 if (a == undefined) {
@@ -117,7 +130,8 @@ $(function () {
                 } else {
                     newArray = JSON.parse(sessionStorage.getItem('newArray'));
                     saveClikedIndex();
-                    history.go(-1);
+                    opinion('police');
+                    // history.go(-1);
                 }
             }) /* 点击确定后执行的函数 , 如果没有点击，弹窗；如果杀死的是一个身份，弹窗；最后如果点击了就返回 */
             break;
@@ -129,8 +143,11 @@ $(function () {
                 $('.sharpIcon').hide(); /* 图标初始全部隐藏 */
                 $('.sharpIcon').eq($(this).index()).show(); /* 点击后图标出来 */
                 a = $(this).index(); /* 获取点击的格子角标 */
-
-                changeColor();
+                if (daynum != null) {
+                    theday = JSON.parse(sessionStorage.getItem('theday')); /* 获取当天被杀死的人 */
+                    log(theday);
+                }
+                changeColor('sharp');
             }) /* 点击事件 */
             $('#confirm').click(function () {
                 if (a == undefined) {
@@ -141,7 +158,8 @@ $(function () {
                     newArray = JSON.parse(sessionStorage.getItem('newArray'));
                     newArray[a].state = false;
                     saveClikedIndex();
-                    history.go(-1);
+                    opinion('sharp');
+                    // history.go(-1);
                 }
             }) /* 点击确定后执行的函数 , 如果没有点击，弹窗；如果杀死的是一个身份，弹窗；最后如果点击了就返回 */
             break;
@@ -150,10 +168,16 @@ $(function () {
             $('.introduce1').text('医生请睁眼，请选择要医治的对象');
             $('.introduce2').text('点击下方玩家头像，对被医治的玩家进行标记');
             $("#main").on('click', ".box", function () {
-                $('.doctor').hide(); /* 图标初始全部隐藏 */
-                $('.doctor').eq($(this).index()).show(); /* 点击后图标出来 */
+                $('.doctorIcon').hide(); /* 图标初始全部隐藏 */
+                $('.doctorIcon').eq($(this).index()).show(); /* 点击后图标出来 */
                 a = $(this).index(); /* 获取点击的格子角标 */
-                changeColor();
+                log(a);
+                if (daynum != null) {
+                    theday = JSON.parse(sessionStorage.getItem('theday')); /* 获取当天被杀死的人 */
+                    log(theday);
+                }
+                changeColor('doctor');
+
             }) /* 点击事件 */
             $('#confirm').click(function () {
                 if (a == undefined) {
@@ -162,7 +186,7 @@ $(function () {
                     newArray = JSON.parse(sessionStorage.getItem('newArray'));
                     newArray[a].state = true; /* 医生点击人后的状态变为true，存活 */
                     saveClikedIndex();
-                    history.go(-1);
+                    opinion('doctor');
                 }
             }) /* 点击确定后执行的函数 , 如果没有点击，弹窗；如果杀死的是一个身份，弹窗；最后如果点击了就返回 */
             break;
@@ -173,8 +197,11 @@ $(function () {
             $("#main").on('click', ".box", function () {
                 $('.doctor').hide(); /* 图标初始全部隐藏 */
                 a = $(this).index(); /* 获取点击的格子角标 */
-
-                changeColor();
+                if (daynum != null) {
+                    theday = JSON.parse(sessionStorage.getItem('theday')); /* 获取当天被杀死的人 */
+                    log(theday);
+                }
+                changeColor('vote');
             }) /* 点击事件 */
             $('#confirm').click(function () {
                 if (a == undefined) {
@@ -184,11 +211,16 @@ $(function () {
                     newArray[a].state = false; /* 被杀死的状态为false */
                     saveClikedIndex();
                     log(newArray);
-                    history.go(-1);
+                    theday = new Array(0);
+                    sessionStorage.setItem('theday', JSON.stringify(theday));
+                    opinion('vote');
+                    // history.go(-1);
                 }
             }) /* 点击确定后执行的函数 , 如果没有点击，弹窗；如果杀死的是一个身份，弹窗；最后如果点击了就返回 */
             break;
     } /* 通过上一个页面传输的deliverStep来判断是从那个点击按钮跳转的页面 */
+
+    log(theday);
 
     function getIdentity() {
         identityInfoArray = JSON.parse(sessionStorage.getItem("identity"));
@@ -227,20 +259,58 @@ $(function () {
         }
     } /* 初始化，如果天数大于0，代表进行到了第二天以上，把身份状态为杀死的格子变色； 如何让状态为死亡的格子只在增加天数的时候生成？？ */
 
-    function changeColor() {
+    function changeColor(player) {
         for (var c = 0; c < newArray.length; c++) {
             if (newArray[c].state == true) {
                 $('.box').eq(c).find('.identity').css('background', '#fdedc5'); /* 点击前初始颜色 */
             }
         } /* 遍历，对状态为存活的格子初始颜色 */
         if (newArray[a].state == false) {
-            alert('该身份已死，请点击其他身份'); /* 如果点击状态是死亡，弹窗 */
+            if (deliverStep == player && theday.length <= 2) {
+                var panduan = 0;
+                for (var s = 0; s < theday.length; s++) {
+                    if (a == theday[s]) {
+                        panduan += 1;
+                    }
+                }
+                if (panduan != 0) {
+                    $('.box').eq(a).find(".identity").css('background', "#333"); /* 点击后改变颜色 */
+                } /* 如果变量不是零代表点击的是当天杀死的 */
+                else {
+                    alert('该身份已在以前的天数被杀死，请点击其他身份'); /* 如果点击状态是死亡，弹窗 */
+                } /* 否则弹窗 */
+            } else {
+                alert('该身份已死，请点击其他身份'); /* 如果点击状态是死亡，弹窗 */
+            } /* 进入医生步骤，判断是不是当天杀死 */
         } else {
             $('.box').eq(a).find(".identity").css('background', "#333"); /* 点击后改变颜色 */
+        } /* 如果状态是存活，点击后改变颜色 */
+    } /* 这个函数是在点击格子的时候判断 */
+
+
+    function opinion(player1) {
+        if (daynum != null) {
+            if (deliverStep == player1 && theday.length == 2) {
+                var panduan = 0;
+                for (var s = 0; s < theday.length; s++) {
+                    if (a == theday[s]) {
+                        panduan += 1;
+                    }
+                } /* 如果点击的角标里面有包含被杀死的角标，变量+1，就代表有当天被杀死的 */
+                if (panduan != 0) {
+                    alert('这个身份真的死透了，请点击其他身份'); /* 如果点击状态是死亡，弹窗 */
+                } /* 如果变量不是零代表点击的是当天杀死的 */
+                else {
+                    history.go(-1);
+                } /* 否则弹窗 */
+            } else {
+                history.go(-1);
+            }
+        } else {
+            history.go(-1);
         }
-    }
 
-
+    } /* 这个函数是在点击确定的时候判断 */
 
 }) /* jQuery文档就绪事件结束 */
 
