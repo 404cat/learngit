@@ -91,22 +91,24 @@ $(function () {
     } /* 每执行下一页，代表已经进行了一个步骤了，通过step在changeClicked方法中进行判断操作 */
 
     function opinion(identity1, identity2) {
-        var k = 0; /* 存储身份是否是存活 */
+        var k = false; /* 存储身份是否是存活 */
         if (newArray != null) {
             for (var m = 0; m < newArray.length; m++) {
                 if (newArray[m].identity == identity1 && newArray[m].state == true) {
-                    k += 1;
+                    k = true;
                 }
             }
-        }
-        if (k > 0) {
-            nextPage();
+            if (k == true) {
+                nextPage();
+            } else {
+                alert('该身份已死，直接点击下一步骤');
+                step += 1;
+                $(identity2).eq(daynum).css("backgroundColor", "#888");
+                $(identity2).eq(daynum).find("i").css("borderRightColor", "#888");
+            } /*  */
         } else {
-            alert('该身份已死，直接点击下一步骤');
-            step += 1;
-            $(identity2).eq(daynum).css("backgroundColor", "#888");
-            $(identity2).eq(daynum).find("i").css("borderRightColor", "#888");
-        } /*  */
+            nextPage();
+        }
     } /* 判断身份是不是等于0 */
 
 
