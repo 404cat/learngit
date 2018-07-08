@@ -1,0 +1,26 @@
+<div *ngIf='hero'>
+  <!-- ngIf指令，当返回值是false的时候就会隐藏元素， -->
+  <h2>
+    {{ hero.name | uppercase }} Details
+    <!-- |  这个是管道操作符，把左边的变量都变成了大写字母，是格式化字符串、金额显示数据的好办法 -->
+  </h2>
+  <div>
+    <span>
+      id:{{hero.id}}
+    </span>
+  </div>
+  <div>
+    <span>
+      name:{{hero.name}}
+    </span>
+  </div>
+  <div>
+    <label>
+      name
+      <input [(ngModel)]='hero.name' placeholder="name" type="text">
+      <!-- [(ngModel)] 是angular中的双向绑定写法 -->
+    </label>
+  </div>
+</div>
+
+<button (click)='goBack()'>go back</button>

@@ -1,0 +1,50 @@
+<!-- {{hero}}   当变量是对象的时候就会显示 object-->
+<!-- —————————————————————————————————————— -->
+
+
+<!-- ——————————————————————————————————————— -->
+
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor='let hero of heroes' >
+    <!-- [class.selected]='hero === selectedHero' (click)='onSelect(hero)'> -->
+    
+    <!-- 这个ngFor是一个复写器指令，他会为列表中没想数据复写它的宿主元素
+    </li>是宿主元素，heroes是来时ts中的列表，依次遍历这个列表，hero变量会保存每个迭代保存的当前对象
+    当用户点击遍历出来的英雄后，需要在页面底部显示所选英雄的详情，所以后面添加了一个
+    click事件来鉴定，并通过函数来更新英雄的详情 -->
+    <a routerLink='/detail/{{hero.id}}'>
+      <span class="badge">{{hero.id}}</span>{{hero.name}}
+    </a>
+    <!-- 遍历出来的英雄会储存在hero变量中，通过变量的属性可以获取相应的值 -->
+  </li>
+</ul>
+
+<!-- <app-hero-detail [hero]='selectedHero'></app-hero-detail> -->
+<!-- 利用路由把详情给显示出来2 -->
+
+<!-- <div *ngIf='selectedHero'> -->
+  <!-- ngIf指令，当返回值是false的时候就会隐藏元素， -->
+  <!-- <h2> -->
+    <!-- {{ selectedHero.name | uppercase }} Details -->
+    <!-- |  这个是管道操作符，把左边的变量都变成了大写字母，是格式化字符串、金额显示数据的好办法 -->
+  <!-- </h2> -->
+  <!-- <div>
+    <span>
+      id:{{selectedHero.id}}
+    </span>
+  </div>
+  <div>
+    <span>
+      name:{{selectedHero.name}}
+    </span>
+  </div>
+  <div>
+    <label>
+      name
+      <input [(ngModel)]='selectedHero.name' placeholder="name" type="text"> -->
+      <!-- [(ngModel)] 是angular中的双向绑定写法 -->
+    <!-- </label> -->
+  <!-- </div> -->
+<!-- </div> -->
+<!-- 这一个块分离出来单独形成一个组件 -->

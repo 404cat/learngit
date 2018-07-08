@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-4">
+    <div class=" bg-secondary votes">
+      <div class="value">
+        测试文字 {{ votes }}
+      </div>
+      <div class="label">
+        point
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <a href="{{link}}">
+      {{title}}
+    </a>
+    <ul>
+      <li>
+        <a href (click)="voteUp()">
+          upvote
+        </a>
+      </li>
+
+      <li>
+        <a href (click)="voteDown()">
+          downvote
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

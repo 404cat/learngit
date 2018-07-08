@@ -1,0 +1,101 @@
+@import './reset';
+input {
+    outline: none;
+}
+
+body {
+    .bg-photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(../IMG/图层\ 3.png)no-repeat center center fixed; // filter: blur(2px);
+        background-size: cover;
+        .inner {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: rgba(0, 0, 0, .6);
+        }
+        .login-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 500px;
+            height: 300px;
+            border-radius: 5px;
+            background: #d0d4d9;
+            z-index: 1;
+            box-shadow: 4px 5px 1px #344974;
+            p {
+                margin-bottom: 5px;
+                color: red;
+                font-size: 14px;
+            }
+            .login-word {
+                margin: 20px 0;
+                font-size: 28px;
+                font-weight: 300;
+                color: #03A9F4;
+            }
+            .name-box,
+            .password-box {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+                width: 80%;
+                height: .5rem;
+                background: #fff;
+                border-radius: 5px;
+                .name-icon {
+                    display: inline-block;
+                    background: url(../IMG/people.png)no-repeat;
+                    width: 18px;
+                    height: 17px;
+                    border-right: 1px solid #f0f0f0;
+                    margin-left: 10px;
+                    padding-right: 35px;
+                }
+                .pd-icon {
+                    display: inline-block;
+                    background: url(../IMG/clock.png)no-repeat;
+                    width: 18px;
+                    height: 17px;
+                    border-right: 1px solid #f0f0f0;
+                    margin-left: 10px;
+                    padding-right: 35px;
+                }
+                input {
+                    padding-left: 10px;
+                    width: 90%;
+                    height: 100%;
+                    background: #fff;
+                    border: none;
+                }
+            }
+            button {
+                position: relative;
+                width: 80%;
+                height: .5rem;
+                font-size: 20px;
+                font-weight: 300;
+                color: #fff;
+                letter-spacing: 4px;
+                background: #03A9F4;
+                border-radius: 5px;
+                &:active {
+                    bottom: 3px;
+                    right: 3px;
+                    box-shadow: 3px 3px 3px #333;
+                }
+            }
+        }
+    }
+}

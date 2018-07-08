@@ -1,0 +1,26 @@
+<div class="container form-box">
+  <div class="row">
+    <form class="col">
+      <p class="text-info ">Add a Link</p>
+
+      <div class="form-group ">
+        <label for="title">Title</label>
+        <input name="title" #newtitle class="form-control" placeholder="请输入标题">
+      </div>
+
+      <div class="form-group ">
+        <label for="link">link</label>
+        <input name="link" #newlink class="form-control" placeholder="请输入地址">
+
+        <input [value]="username" (input)="username = $event.target.value">
+        <p>Hello {{username}}!</p><!-- 双向绑定 -->
+
+
+      </div>
+
+      <button type="button" (click)='addArticle(newtitle,newlink)' class="btn btn-primary btn-style ">按钮</button>
+    </form>
+  </div>
+  <app-article></app-article>
+
+</div>

@@ -1,0 +1,15 @@
+ul li {
+  list-style: none;
+}
+
+.votes {
+  padding: 20px;
+  text-align: center;
+  height: 100px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.label {
+  font-size: 30px;
+}

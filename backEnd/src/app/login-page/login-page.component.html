@@ -1,0 +1,19 @@
+<!-- 登录页面 -->
+<div class="bg-photo">
+  <div class="frame-box">
+    <form action="">
+      <p>登录框</p>
+      <div class="name-box">
+        <i></i>
+        <input name="name" #newname type="text" class="user-name">
+      </div>
+      <div class="password-box">
+        <i></i>
+        <input name="password" #newpwd type="password" class="user-password">
+      </div>
+      <button (click)='submit(newname,newpwd)' class="submit">
+        登录
+      </button>
+    </form>
+  </div>
+</div>

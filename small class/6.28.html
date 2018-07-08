@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./state-machine.js"></script>
+    <script src="../jquery/jquery.js"></script>
+    <title>Document</title>
+</head>
+
+<style>
+    span {
+        position: relative;
+        display: inline-block;
+        margin: 10px;
+        line-height: 200px;
+        text-align: center;
+        width: 200px;
+        height: 200px;
+        font-size: 50px;
+        box-shadow: 7px 7px 1px #f0f0f0;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    span:active {
+        top: 10px;
+        left: 10px;
+        zoom: 1;
+    }
+
+    .green {
+        background: green;
+    }
+
+    .yellow {
+        background: yellow;
+    }
+
+    .red {
+        background: red;
+    }
+
+    .clear {
+        background: turquoise;
+    }
+</style>
+
+<body>
+
+    <div>
+        <span class="green">绿灯</span>
+        <span class="yellow">黄灯</span>
+        <span class="red">红灯</span>
+        <span class="clear">复原</span>
+    </div>
+
+
+    <script>
+        var fsm = new StateMachine({
+            init: 'green',
+
+            transitions: [
+
+                {
+                    name: 'warn',
+                    /* 当前行为的名字 */
+                    from: 'green',
+                    /* 当前行为从那个状态来 */
+                    to: 'yellow' /* 当前行为执行完会过渡到那个状态 */
+                },
+
+                {
+                    name: 'panic',
+                    from: 'yellow',
+                    to: 'red'
+
+                },
+
+                {
+                    name: 'calm',
+                    from: 'red',
+                    to: 'yellow'
+                },
+
+                {
+                    name: 'clear',
+                    from: 'yellow',
+                    to: 'green'
+                }
+            ],
+            /* 描述状态变化规则的数组，里面的每一项都是对象； */
+
+            methods: {
+                onInvalidTransition: function (transition, from, to) {
+                    switch (from) {
+                        case 'green':
+                            alert('请点击绿色按钮');
+                            break;
+                        case 'yellow':
+                            alert('请点击黄色按钮');
+                            break;
+                        case 'red':
+                            alert('请点击红色按钮');
+                            break;
+                        case 'yellow':
+                            alert('请点击黄色按钮');
+                            break;
+                    }
+                }
+            }
+
+
+            
+
+
+        }) /* 有限状态机实例 */
+
+
+        $('.green').on('click', function () {
+            console.log(fsm.can('warn'));
+            fsm.warn();
+        })
+
+
+        $('.yellow').on('click', function () {
+            console.log(fsm.can('panic'));
+
+            fsm.panic();
+        })
+
+
+        $('.red').on('click', function () {
+            console.log(fsm.can('calm'));
+
+            fsm.calm();
+        })
+
+
+        $('.clear').on('click', function () {
+
+            fsm.clear();
+        })
+
+
+    </script>
+
+
+</body>
+
+</html>
