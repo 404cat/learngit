@@ -1,12 +1,51 @@
-p {
-    height: 100vh;
-    background: #fff;
+.layout-box {
+  height: 100vh;
 }
 
-.logo {
-    width: 120px;
-    height: 31px;
-    background: rgba(255,255,255,.2);
-    margin: 16px 28px 16px 0;
-    float: left;
+
+:host ::ng-deep .trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+:host ::ng-deep .trigger:hover {
+  color: #fff;
+}
+
+:host ::ng-deep .logo {
+  margin: 18px;
+  line-height: 32px;
+  text-align: center;
+  height: 32px;
+  color: #fff;
+}
+/* 公司logo */
+
+.ant-menu {
+  background: #001529;
+  color: #fff;
+  span {
+    color: #fff;
   }
+  ul,
+  li {
+    background: #001529;
+    color: #fff;
+    div {
+      background: #001529;
+    }
+  }
+}/* 折叠按 */
+
+.ant-menu-inline .ant-menu-item,
+.ant-menu-inline .ant-menu-submenu-title {
+  width: auto;
+}
+/* 覆盖原有的一个width百分比加1 */
+
+.menu-border {
+  border-right: 1px solid #001529;
+}

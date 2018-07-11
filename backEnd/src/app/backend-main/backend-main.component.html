@@ -1,1 +1,57 @@
-<p>aa</p>
+<nz-layout class="layout-box">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzCollapsedWidth]="0" [nzBreakpoint]="'lg'">
+    <div class="logo">萝卜多后台管理系统</div>
+    <ul nz-menu [nzMode]="'inline'" class="menu-border">
+      <li nz-submenu [(nzOpen)]="openMap.sub1" (nzOpenChange)="openHandler('sub1')">
+        <span title><i class="anticon anticon-mail"></i> Navigation One</span>
+        <ul>
+          <li nz-menu-group>
+            <span title>Item 1</span>
+            <ul>
+              <li nz-menu-item>Option 1</li>
+              <li nz-menu-item>Option 2</li>
+            </ul>
+          </li>
+          <li nz-menu-group>
+            <span title>Item 2</span>
+            <ul>
+              <li nz-menu-item>Option 3</li>
+              <li nz-menu-item>Option 4</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu [(nzOpen)]="openMap.sub2" (nzOpenChange)="openHandler('sub2')">
+        <span title><i class="anticon anticon-appstore"></i> Navigation Two</span>
+        <ul>
+          <li nz-menu-item>Option 5</li>
+          <li nz-menu-item>Option 6</li>
+          <li nz-submenu>
+            <span title>Submenu</span>
+            <ul>
+              <li nz-menu-item>Option 7</li>
+              <li nz-menu-item>Option 8</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu [(nzOpen)]="openMap.sub3" (nzOpenChange)="openHandler('sub3')">
+        <span title><i class="anticon anticon-setting"></i> Navigation Three</span>
+        <ul>
+          <li nz-menu-item>Option 9</li>
+          <li nz-menu-item>Option 10</li>
+          <li nz-menu-item>Option 11</li>
+        </ul>
+      </li>
+    </ul>`,
+  </nz-sider>
+  <nz-layout>
+    <nz-header style="background: #fff; padding:0;"></nz-header>
+    <nz-content style="margin:24px 16px 0;">
+      <div style="padding:24px; background: #fff; min-height: 360px;">
+        Content
+      </div>
+    </nz-content>
+    <nz-footer style="text-align: center;">Z Design ©2017 Implement By Luoboduo</nz-footer>
+  </nz-layout>
+</nz-layout>
