@@ -1,5 +1,7 @@
 # BackEnd
 
+这是一个由angular2 写的后台管理页面
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
 ## Development server
