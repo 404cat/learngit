@@ -1,0 +1,23 @@
+.ariticleList {
+    P {
+        padding: 0;
+        margin: 0;
+    }
+}
+.listBox {
+    border: 1px solid #f0f0f0;
+    tr:nth-child(1) {
+        border-bottom: 1px solid #000;
+    }
+    th,td {
+        padding:15px 20px;
+        margin: 0 10px;
+        max-width: 280px;
+        border-top: 1px solid #ddd;
+        white-space: nowrap;
+        text-align: center;
+    }
+    a {
+        margin: 0 15px;
+    }
+}

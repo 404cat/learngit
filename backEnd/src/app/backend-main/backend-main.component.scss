@@ -2,6 +2,33 @@
   height: 100vh;
 }
 
+/* 整个后台主页的高度 */
+
+.header-style {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 30px;
+  span{
+    display: inline-block;
+  }
+  div:nth-child(5) {
+    height: 100%;
+  }
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+    margin: 0 5px;
+    cursor: pointer;
+    &:hover {
+      background: #eee;
+    }
+  }
+}
+
+/* 页眉样式 */
 
 :host ::ng-deep .trigger {
   font-size: 18px;
@@ -15,6 +42,8 @@
   color: #fff;
 }
 
+/* 上面两个样式没找到什么用处~~ 直接黏贴过来的 */
+
 :host ::ng-deep .logo {
   margin: 18px;
   line-height: 32px;
@@ -22,6 +51,7 @@
   height: 32px;
   color: #fff;
 }
+
 /* 公司logo */
 
 .ant-menu {
@@ -38,14 +68,19 @@
       background: #001529;
     }
   }
-}/* 折叠按 */
+}
+
+/* 折叠按钮样式修改 */
 
 .ant-menu-inline .ant-menu-item,
 .ant-menu-inline .ant-menu-submenu-title {
   width: auto;
 }
+
 /* 覆盖原有的一个width百分比加1 */
 
 .menu-border {
   border-right: 1px solid #001529;
 }
+
+/* 覆盖原有样式 */

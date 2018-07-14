@@ -11,17 +11,35 @@
 <body>
 
     <script>
-        function person() {
+        // function person() {
 
+        // }
+
+        // person.prototype.name = 'nico';
+
+        // var person1 = new person();
+
+        // // person1.prototype.name = 'hehe';
+        // console.log(person1.name);
+        // console.log(Object.getPrototypeOf(person1).name);
+
+        function person (name ,age ,job) {
+            this.name = name ;
+            this.age = age;
+            this.job = job;
+            this.friends = ['shelby', 'court'];
+        }
+        person.prototype =  {
+            sayname: function () {
+                console.log(this.name);
+            },
+            in: 'shide',
         }
 
-        person.prototype.name = 'nico';
+        person1 = new person('hehe',12,'nurse');
+        console.log(person.constructor == person);
+        console.log(person1.in);
 
-        var person1 = new person();
-
-        // person1.prototype.name = 'hehe';
-        console.log(person1.name);
-        console.log(Object.getPrototypeOf(person1).name);
 
     </script>
 

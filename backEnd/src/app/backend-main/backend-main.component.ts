@@ -14,7 +14,7 @@ export class BackendMainComponent implements OnInit {
     sub1: true,
     sub2: false,
     sub3: false
-  } /* 折叠菜单只能显示一个 */
+  }; /* 折叠菜单只能显示一个 */
 
   openHandler(value: string): void {
     for (const key in this.openMap) {
@@ -22,9 +22,10 @@ export class BackendMainComponent implements OnInit {
         this.openMap[key] = false;
       }
     }
-
-    constructor() { }
-
-    ngOnInit() { }
-
   }
+
+    constructor() {}
+
+    ngOnInit() {}
+
+}

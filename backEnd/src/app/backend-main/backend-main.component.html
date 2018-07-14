@@ -3,55 +3,52 @@
     <div class="logo">萝卜多后台管理系统</div>
     <ul nz-menu [nzMode]="'inline'" class="menu-border">
       <li nz-submenu [(nzOpen)]="openMap.sub1" (nzOpenChange)="openHandler('sub1')">
-        <span title><i class="anticon anticon-mail"></i> Navigation One</span>
+        <span title>
+          <i class="anticon anticon-mail"></i>信息管理</span>
         <ul>
-          <li nz-menu-group>
-            <span title>Item 1</span>
-            <ul>
-              <li nz-menu-item>Option 1</li>
-              <li nz-menu-item>Option 2</li>
-            </ul>
-          </li>
-          <li nz-menu-group>
-            <span title>Item 2</span>
-            <ul>
-              <li nz-menu-item>Option 3</li>
-              <li nz-menu-item>Option 4</li>
-            </ul>
-          </li>
+          <li nz-menu-item>公司列表</li>
+          <li nz-menu-item>职位列表</li>
         </ul>
       </li>
+      <!-- 折叠按钮第一行 -->
       <li nz-submenu [(nzOpen)]="openMap.sub2" (nzOpenChange)="openHandler('sub2')">
-        <span title><i class="anticon anticon-appstore"></i> Navigation Two</span>
+        <span title>
+          <i class="anticon anticon-appstore"></i>Article 管理</span>
         <ul>
-          <li nz-menu-item>Option 5</li>
-          <li nz-menu-item>Option 6</li>
-          <li nz-submenu>
-            <span title>Submenu</span>
-            <ul>
-              <li nz-menu-item>Option 7</li>
-              <li nz-menu-item>Option 8</li>
-            </ul>
-          </li>
+          <li nz-menu-item>文章列表</li>
+          <li nz-menu-item>文章管理</li>
         </ul>
       </li>
+      <!-- 折叠按钮第二行 -->
       <li nz-submenu [(nzOpen)]="openMap.sub3" (nzOpenChange)="openHandler('sub3')">
-        <span title><i class="anticon anticon-setting"></i> Navigation Three</span>
+        <span title>
+          <i class="anticon anticon-setting"></i>用户管理</span>
         <ul>
-          <li nz-menu-item>Option 9</li>
-          <li nz-menu-item>Option 10</li>
-          <li nz-menu-item>Option 11</li>
+          <li nz-menu-item>用户列表</li>
         </ul>
       </li>
-    </ul>`,
+      <!-- 折叠按钮第三行 -->
+    </ul>
+    <!-- 折叠按钮区域 -->
   </nz-sider>
   <nz-layout>
-    <nz-header style="background: #fff; padding:0;"></nz-header>
-    <nz-content style="margin:24px 16px 0;">
-      <div style="padding:24px; background: #fff; min-height: 360px;">
-        Content
+    <nz-header class="header-style" style="background: #fff; padding:0;">
+      <div>管理员</div>
+      <span>|</span>
+      <div>admin</div>
+      <span>|</span>
+      <div class="fa fa-power-off fa-lg"></div>
+    </nz-header>
+    <!-- 页眉 -->
+    <nz-content style="margin:45px 45px 0;">
+      <div style="padding:24px; background: #fff; height: auto;">
+        <app-article-list></app-article-list>
+        <!-- 文章列表 -->
       </div>
     </nz-content>
+    <!-- 主内容区 -->
     <nz-footer style="text-align: center;">Z Design ©2017 Implement By Luoboduo</nz-footer>
+    <!-- footer 区域 -->
   </nz-layout>
+
 </nz-layout>

@@ -16,7 +16,7 @@ body {
   background-size: cover;
   .frame-box {
     width: 500px;
-    height: 300px;
+    height: 310px;
     border-radius: 5px;
     background: #d0d4d9;
     z-index: 1;
@@ -26,11 +26,17 @@ body {
       flex-direction: column;
       align-items: center;
       padding: 10px;
-      p {
+      .login-word {
         margin: 20px 0;
         font-size: 28px;
         font-weight: 300;
         color: #03A9F4;
+      }
+      .login-info {
+        margin: 0;
+        margin-bottom: 5px;
+        color: red;
+        font-size: 14px;
       }
     }
     /* 输入框的样式，抬头 */

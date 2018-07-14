@@ -1,8 +1,8 @@
 <!-- 登录页面 -->
 <div class="bg-photo">
   <div class="frame-box">
-    <form action="">
-      <p>登录框</p>
+    <form>
+      <p class="login-word">登录框</p>
       <div class="name-box">
         <i></i>
         <input name="name" #newname type="text" class="user-name">
@@ -14,7 +14,7 @@
       <button (click)='submit(newname,newpwd)' class="submit">
         登录
       </button>
-      <p>{{data.message}}</p>
+      <p class="login-info" *ngIf=data.message>{{data.message}}</p>
     </form>
   </div>
 </div>
