@@ -22,7 +22,7 @@
     <td>{{al.title}}</td>
     <!-- 名称 -->
     <td>{{changeType(al.type)}}</td>
-    <!-- 类型 -->
+    <!-- 类型，需要通过方法进行转换 -->
     <td>
       <p>{{al.createAt | date:'yyyy-MM-dd'}}</p>
       <p>{{al.createAt | date:'HH:mm:ss'}}</p>
@@ -39,9 +39,10 @@
     <!-- 状态 -->
     <td>
       <a on-click='changedStatu(al.status,al.id)' >{{changeStatus(al.status)}}</a>
-      <a>编辑</a>
+      <a [routerLink]="['../articleEdit',al.id]">编辑</a>
       <a>删除</a>
     </td>
     <!-- 操作 -->
   </tr>
 </table>
+<!-- <router-outlet></router-outlet> -->

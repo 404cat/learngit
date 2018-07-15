@@ -1,5 +1,5 @@
 import {
-  BrowserModule
+  BrowserModule,
 } from '@angular/platform-browser';
 import {
   BrowserAnimationsModule
@@ -39,6 +39,9 @@ import {
 import {
   ArticleListComponent
 } from './article-list/article-list.component';
+import {
+  ArticleEditComponent
+} from './article-edit/article-edit.component';
 
 /** 配置 angular i18n **/
 import {
@@ -58,8 +61,9 @@ registerLocaleData(zh);
     AppComponent, /* 根组件 */
     LoginPageComponent, /* 登录页 */
     BackendMainComponent, /* 后主页 */
-    CitySelectComponent, /* 省市区联动模块 */
+    CitySelectComponent, /* 省�, �区联动模块 */
     ArticleListComponent, /* article列表 */
+    ArticleEditComponent,
   ],
   imports: [
     BrowserModule, /* 浏览器模块 */

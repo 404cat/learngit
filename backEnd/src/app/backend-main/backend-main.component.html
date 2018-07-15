@@ -15,7 +15,9 @@
         <span title>
           <i class="anticon anticon-appstore"></i>Article 管理</span>
         <ul>
-          <li nz-menu-item>文章列表</li>
+          <li nz-menu-item>
+            <a [routerLink]="['articleList']">文章列表</a>
+          </li>
           <li nz-menu-item>文章管理</li>
         </ul>
       </li>
@@ -42,8 +44,10 @@
     <!-- 页眉 -->
     <nz-content style="margin:45px 45px 0;">
       <div style="padding:24px; background: #fff; height: auto;">
-        <app-article-list></app-article-list>
+        <!-- <app-article-list></app-article-list> -->
         <!-- 文章列表 -->
+        <router-outlet></router-outlet>
+        <!-- 定义路由出口 -->
       </div>
     </nz-content>
     <!-- 主内容区 -->

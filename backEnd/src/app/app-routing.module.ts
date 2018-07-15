@@ -3,11 +3,21 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginPageComponent } from './login-page/login-page.component'; /* 导入登录页 */
 import { BackendMainComponent } from './backend-main/backend-main.component'; /* 导入后台主页 */
+import { ArticleListComponent } from './article-list/article-list.component';
+import { ArticleEditComponent } from './article-edit/article-edit.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full'}, /* 默认路由，应用启动时加载的 */
   { path: 'login', component: LoginPageComponent}, /* 定义登录页路由 */
-  { path: 'backend/main', component: BackendMainComponent}, /* 定义后台主页路由 */
+  { path: 'backend/main', component: BackendMainComponent,
+  children:
+  [
+    { path: 'articleList', component: ArticleListComponent, }, /* 文章列表路由 */
+    { path: 'articleEdit/:id', component: ArticleEditComponent, }, /* 文章编辑 */
+    { path: '', component: ArticleListComponent }, ] /* 后台主页路由重定向 */
+
+  }, /* 定义后台主页路由 */
+
+  { path: '', redirectTo: '/login', pathMatch: 'full'}, /* 默认路由，应用启动时加载的 */
 ];
 /* 添加一个路由定义，当用户点击某个链接或者输入urL时会显示哪个视图，
 path 用于匹配URL 的字符串
