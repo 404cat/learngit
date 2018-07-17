@@ -1,6 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpInterceptorService } from '../http-interceptor.service';
-import { ActivatedRoute } from '@angular/router';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  HttpInterceptorService
+} from '../http-interceptor.service';
+import {
+  ActivatedRoute
+} from '@angular/router';
+
+import {GetSingleDataService } from './get-single-data.service';
 
 @Component({
   selector: 'app-article-list',
@@ -10,53 +19,51 @@ import { ActivatedRoute } from '@angular/router';
 
 export class ArticleListComponent implements OnInit {
 
-  data: any =  {};
-  articleList: Array<string> = [];
+  data: any = {};
+  articleList: Array < string > = [];
   id: any;
-
+  singleData: any;
 
   changeType(value: any) {
     switch (value) {
       case 0:
-      return value = '首页banner';
+        return value = '首页banner';
       case 1:
-      return value = '找职位banner';
+        return value = '找职位banner';
       case 2:
-      return value = '找精英banner';
+        return value = '找精英banner';
       case 3:
-      return value = '行业大图';
+        return value = '行业大图';
     }
   } /* 通过插值表达式调用该方法把类型传递进来在进行判断返回相应文字 */
 
   changeStatusWord(value: any) {
     switch (value) {
       case 1:
-      return value = '草稿';
+        return value = '草稿';
       case 2:
-      return value = '上线';
+        return value = '上线';
     }
   } /* 状态进行判断 */
 
   changeStatus(value: any) {
     switch (value) {
       case 1:
-      return value = '上线';
+        return value = '上线';
       case 2:
-      return value = '下线';
+        return value = '下线';
     }
   }
   /* 改变上下线操作字样 */
 
   constructor(
     private httpInterceptorService: HttpInterceptorService, /* 实例化HTTP请求类 */
-    // private route: ActivatedRoute,
-  ) {
-    // route.params.subscribe(params => {this.id = params['id']; });
-  }
+    private getSingleData: GetSingleDataService, /* 获取点击的单挑数据的服务 */
+  ) { }
 
 
   ngOnInit() {
-    this.getArticle(); /* 初始化获取信息 */
+    this.getArticle(); /* 初始化获取文章信息信息 */
   }
 
   getArticle() {
@@ -64,14 +71,14 @@ export class ArticleListComponent implements OnInit {
       this.data = res.json();
       this.articleList = this.data.data.articleList;
       console.log(this.articleList);
-    }); /* 获取article数据 */
+    }); /* 获取article数据, 在oninit中调用 */
   }
 
   changedStatu(statu: number, id: number, value: any): Boolean {
     if (statu === 1) {
-      statu = 2 ;
-    } else  {
-      statu  = 1 ;
+      statu = 2;
+    } else {
+      statu = 1;
     } /* 状态进行判断，如果是1，需要改变成2 */
     value = `id=${id}&status=${statu}`; /* 把通过点击事件把该行id和状态作为参数请求 */
     console.log(value);
@@ -81,5 +88,10 @@ export class ArticleListComponent implements OnInit {
     }); /* put 更改状态，通过回调函数调用获取文章数据的函数，这样就能实现实时刷新了 */
     return false;
   } /* 点击上下线功能 */
+
+  getdata(al: any) {
+    // console.log(al);
+    this.getSingleData.GetSingleData(al);
+  } /* 获取点击的数据 */
 
 }

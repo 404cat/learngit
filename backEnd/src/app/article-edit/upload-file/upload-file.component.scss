@@ -1,0 +1,35 @@
+.select {
+  margin-top: 20px;
+}
+
+.upload {
+  padding: 4px 10px;
+  height: 20px;
+  line-height: 20px;
+  position: relative;
+  border: 1px solid #999;
+  text-decoration: none;
+  color: #666;
+  input {
+    position: absolute;
+    overflow: hidden;
+    right: 0;
+    top: 0;
+    opacity: 0;
+  }
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 15px 20px;
+  margin: 0 10px;
+  max-width: 280px;
+  border-top: 1px solid #ddd;
+  white-space: nowrap;
+  text-align: center;
+}

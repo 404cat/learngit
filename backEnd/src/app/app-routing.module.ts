@@ -13,7 +13,7 @@ const routes: Routes = [
   [
     { path: 'articleList', component: ArticleListComponent, }, /* 文章列表路由 */
     { path: 'articleEdit/:id', component: ArticleEditComponent, }, /* 文章编辑 */
-    { path: '', component: ArticleListComponent }, ] /* 后台主页路由重定向 */
+    { path: '', redirectTo: 'articleList', pathMatch: 'full' }, ] /* 后台主页路由重定向 */
 
   }, /* 定义后台主页路由 */
 

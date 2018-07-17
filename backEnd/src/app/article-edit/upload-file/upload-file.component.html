@@ -1,0 +1,33 @@
+<div class="select">
+  <a class="upload">
+    选择文件
+    <input class="change" type='file' #files ng2FileSelect [uploader]='uploader' (change)='selectedFileOnChanged(files,$event)'
+    />
+  </a>
+</div>
+
+<table class="uploadInfo">
+  <thead>
+    <tr>
+      <th>图片名</th>
+      <th>文件大小</th>
+      <th>进度</th>
+      <th>操作</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tr *ngIf='fileName!=null'>
+    <td>{{fileName.name}}</td>
+    <td>{{fileName.size/1024/1024 | number:'.1'}}MB</td>
+    <td>
+      <nz-progress [nzPercent]="uploader.progress" [nzShowInfo]="false"></nz-progress>
+    </td>
+    <td>
+      <button (click)='uploadFile()'>submit</button>
+    </td>
+    <td>
+      <button (click)='clear()'>clear</button>
+    </td>
+  </tr>
+</table>
+<img *ngIf="previeShow" [src]="previewImg" alt="" style="max-width: 50%">

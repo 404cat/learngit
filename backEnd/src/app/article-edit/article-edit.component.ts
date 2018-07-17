@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetSingleDataService } from '../article-list/get-single-data.service';
 
 @Component({
   selector: 'app-article-edit',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleEditComponent implements OnInit {
 
-  constructor() { }
+  data: any;
+  constructor (
+    //  public getSingleData: GetSingleDataService,
+    ) { }
 
-  ngOnInit() {
+  ngOnInit(): any {
+    // this.data = this.getSingleData.value;
+    // console.log(this.data.title); /* 初始化获取的单挑数据 */
+    return this.data;
   }
 
 }

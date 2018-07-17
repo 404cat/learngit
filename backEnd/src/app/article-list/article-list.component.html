@@ -39,10 +39,11 @@
     <!-- 状态 -->
     <td>
       <a on-click='changedStatu(al.status,al.id)' >{{changeStatus(al.status)}}</a>
-      <a [routerLink]="['../articleEdit',al.id]">编辑</a>
+      <a on-click='getdata(al)' [routerLink]="['../articleEdit',al.id]" [queryParams]=al>编辑</a>
       <a>删除</a>
     </td>
     <!-- 操作 -->
   </tr>
 </table>
 <!-- <router-outlet></router-outlet> -->
+

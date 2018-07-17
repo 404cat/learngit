@@ -1,3 +1,20 @@
-<p>
-  article-edit works!
-</p>
+<div>
+  <span>标题名称</span>
+  <input  nz-input [(ngModel)]="value">
+</div>
+<div>
+  <span>类型</span>
+  <nz-select nzMode="tags" style="width: 100%;" [(ngModel)]="listOfTagOptions">
+    <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label" [nzValue]="option.value">
+    </nz-option>
+  </nz-select>
+</div>
+<div>
+  <span>说 明</span>
+  <input nz-input [(ngModel)]="value">
+</div>
+<div class="">
+  <span>跳转链接</span>
+  <input nz-input [(ngModel)]="value">
+</div>
+<app-upload-file></app-upload-file>
