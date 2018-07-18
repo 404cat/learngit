@@ -1,20 +1,33 @@
-<div>
-  <span>标题名称</span>
-  <input  nz-input [(ngModel)]="value">
-</div>
-<div>
-  <span>类型</span>
-  <nz-select nzMode="tags" style="width: 100%;" [(ngModel)]="listOfTagOptions">
-    <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label" [nzValue]="option.value">
-    </nz-option>
-  </nz-select>
-</div>
-<div>
-  <span>说 明</span>
-  <input nz-input [(ngModel)]="value">
-</div>
-<div class="">
-  <span>跳转链接</span>
-  <input nz-input [(ngModel)]="value">
+<div class="formbox">
+  <div>
+    <span>
+      <strong>标题名称</strong>
+    </span>
+    <input nz-input [(ngModel)]="title">
+  </div>
+  <div>
+    <span>
+      <strong>类型</strong>
+    </span>
+    <nz-select style="min-width: 30%;" [compareWith]="compareFn" [(ngModel)]="selectedValue" (ngModelChange)="log($event)"
+      nzAllowClear nzPlaceHolder="Choose">
+      <nz-option *ngFor="let option of optionList; let num = index" [nzValue]="option" [nzLabel]="option.label"></nz-option>
+    </nz-select>
+    <nz-select *ngIf='text' style="min-width: 280px;" [compareWith]="compareFn" [(ngModel)]="selectedValueTwo" nzAllowClear nzPlaceHolder="please Choose">
+      <nz-option *ngFor="let option1 of optionListTwo" [nzValue]="option1" [nzLabel]="option1.label"></nz-option>
+    </nz-select>
+  </div>
+  <div>
+    <span>
+      <strong>说明</strong>
+    </span>
+    <input nz-input [(ngModel)]="content">
+  </div>
+  <div class="">
+    <span>
+      <strong>跳转链接</strong>
+    </span>
+    <input nz-input [(ngModel)]="interLink">
+  </div>
 </div>
 <app-upload-file></app-upload-file>

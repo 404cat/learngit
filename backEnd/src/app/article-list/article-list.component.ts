@@ -69,6 +69,7 @@ export class ArticleListComponent implements OnInit {
   getArticle() {
     this.httpInterceptorService.getArticleList().subscribe((res: Response) => {
       this.data = res.json();
+      console.log(this.data);
       this.articleList = this.data.data.articleList;
       console.log(this.articleList);
     }); /* 获取article数据, 在oninit中调用 */

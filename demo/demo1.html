@@ -1,96 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
 <body>
-
-
     <script>
-        var a = new Object();
-        a.name = 'nike';
-        a.age = 29;
-        a.sayname = function () {
-            // alert(a.age);
-            console.log(a.age);
-        }
-        a.sayname();
-        console.log(a.age);
-
-        var numbers = [1, 2, 3, 4, 5];
-        numbers.forEach(function (line, weizhi, benshen) {
-            console.log(line + "." + weizhi + '.' + benshen);
-        }) /* 打印结果  逐行把数组中的值打印出来  */
-
-        function factorial(num) {
-            if (num <= 1) {
-                return 1;
-            } else {
-                console.log("num:  " + num)
-                return num * arguments.callee(num - 1);
-            }
-        }
-
-        factorial(5);
-        /* 函数中的arguments callee 指向函数本身 */
-
-        function person(name, age, job) {
-            this.name = name;
-            this.age = age;
-            this.job = job;
-            this.sayName = function () {
-                console.log(this.name);
-            }
-        }
-
-        var person1 = new person('nie', 29, 'nurse');
-
-        console.log(person1 instanceof person);
-        console.log(person1 instanceof Object);
-
-        // person1.sayName();
-
-        // var o = new Object();
-        // person.call(o, 'cope', 25, 'engineer');
-        // o.sayName();
-
-
-        /* 构造函数 */
-
-
-        // function person() {};
-        // person.prototype.name = 'nicholas';
-        // person.prototype.age = 29;
-        // person.prototype.job = 'nurs';
-        // person.prototype.sayname = function () {
-        //     console.log(this.name);
-        // }
-
-        // var person1 = new person();
-        // person1.name = 'hehe'; /* 这里为实例添加一个name 的属性，如果没有添加的话就会返回原型对象的属性值 */
-        // person1.sayname(); //hehe , 如果在实例中找到了具有给定名字的属性，就会返回这个属性的值，否则就会继续搜索指针指向的原型对象；
-
-
-        // function person(name, age, job) {
-        //     var o = new Object();
-        //     o.name = name;
-        //     o.age = age;
-        //     o.job = job;
-        //     o.sayname = function () {
-        //         console.log(this.name)
-        //     };
-        //     return o;
-        // }
-        // var person1 = person('hehe', 16, 'nurs');
-        // console.log(person1 instanceof Object);
-        // console.log(person1 instanceof person);
-    </script>
-
+        alert(40%7);
+        </script>
 </body>
-
 </html>

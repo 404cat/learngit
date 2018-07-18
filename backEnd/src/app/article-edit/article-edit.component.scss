@@ -1,0 +1,13 @@
+.formbox {
+    div {
+        margin:30px 0;
+        display: flex;
+        span {
+            display: flex;
+            font-weight: 500;
+            min-width: 10%;
+            align-items: center;
+            color: #000;
+        }
+    }
+}

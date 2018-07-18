@@ -1,15 +1,26 @@
 .select {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .upload {
+  position: relative;
   padding: 4px 10px;
   height: 20px;
   line-height: 20px;
-  position: relative;
-  border: 1px solid #999;
   text-decoration: none;
-  color: #666;
+  font-size: 15px;
+  color: #fff;
+  letter-spacing: 2px;
+  background: #03A9F4;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px #f0f0f0;
+  cursor: pointer;
+  &:hover {
+    right: 5px;
+    bottom: 5px;
+    box-shadow: 4px 5px 1px #9fa6ad;
+  }
   input {
     position: absolute;
     overflow: hidden;
