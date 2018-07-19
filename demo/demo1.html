@@ -1,14 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
+    <!-- <h1>闭包和回调</h1>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>7</button>
+    <button>8</button>
+    <button>9</button> -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>学习js回调函数</h1>
+    <button onClick=test()>click me</button>
+    <p>应该能看到调用了两个回调函数</p>
+
+
     <script>
-        alert(40%7);
-        </script>
+        /* 闭包和回调 */
+        // var nodes = document.getElementsByTagName('button');
+        // for (var i = 0; i < nodes.length; i++) {
+        //     nodes[i].addEventListener('click', function () {
+        //         console.log('You clicked element #' + i);
+        //     });
+        // }
+
+        // var nodes = document.getElementsByTagName('button');
+        // for (var i = 0; i < nodes.length; i++) {
+        //     (function (i) {
+        //         console.log(i);
+        //         nodes[i].addEventListener('click', function () {
+        //             console.log('You clicked element #' + i);
+        //         })
+        //     })
+        //     (i);
+        //     console.log("down"+i);
+        // }
+
+
+        // <!-- ———————————————————————————————————————————————————————— -->
+
+        /* 闭包和变量 */
+        // var a = function () {
+        //     var result = new Array();
+
+        //     for (var i = 0; i < 10; i++) {
+        //         result[i] = function (num) {
+        //             return function () {
+        //                 console.log(num);
+        //                 return num;
+        //             }
+        //         }(i)
+        //         console.log(i);
+        //     }
+        //     console.log(result[1]);
+        //     return result;
+        // }()
+
+        // var b = a ;
+        // console.log(b[0]);
+
+
+        // <!-- ———————————————————————————————————————————————————————— -->
+
+        /* 简单回调函数 */
+        // function Buy(name, goods1, callback) {
+        //     alert(name + ' buy ' + goods1);
+        //     if (callback && typeof (callback) === "function"){
+        //         callback();
+        //     }else {
+        //         alert('该参数不是函数');
+        //     }
+        // }
+
+        // Buy('xiaoming', 'apple', () => {
+        //     alert("shopping finish");
+        // });
+
+        // Buy('xiaoming', 'apple','text');
+
+        // Buy('xiaoming', 'apple', function () {
+        //     alert("shopping finish");
+        // });
+
+        // <!-- ———————————————————————————————————————————————————————— -->
+
+        /* A        回调函数的例子 */
+        // function a(callback) {
+        //     alert("我是parent函数a！");
+        //     alert("调用回调函数");
+        //     callback();
+        // }
+
+        // function b() {
+        //     alert("我是回调函数b");
+        // }
+
+        // function c() {
+        //     alert("我是回调函数c");
+        // }
+
+        // function test() {
+        //     a(b);
+        //     a(c);
+        // }
+        // test();
+        // <!-- ———————————————————————————————————————————————————————— -->
+        /* B        使用匿名函数作参数的回调函数 */
+
+        /*   var friends = ["Mike", "Stacy", "Andy", "Rick"];
+
+          friends.forEach(function (Name, index) {
+              alert(index + 1 + ". " + Name); // 1. Mike, 2. Stacy, 3. Andy, 4. Rick
+          }); */
+
+
+        // <!-- ———————————————————————————————————————————————————————— -->
+
+        /* C        使用函数名作回调函数 */
+        // var allUserData = [];
+
+        // function logStuff(userData) {
+        //     if (typeof userData === "string") {
+        //         console.log(userData);
+        //     } else if (typeof userData === "object") {
+        //         for (var item in userData) {
+        //             console.log(item + ": " + userData[item]);
+        //         }
+        //     }
+        // } /* 传入参数的回调函数 */
+
+        // function getInput(options, callback) {
+        //     allUserData.push(options);
+        //     if (typeof callback == 'function') {
+        //         callback(options); //callback = logstuff
+        //     }
+        // }
+
+        // getInput({name: "Rich",speciality: "JavaScript"},
+        //  logStuff);
+
+        // name: Rich
+        // speciality: JavaScript
+
+        // getInput("Rich", logStuff);
+        // Rich
+
+        // <!-- ———————————————————————————————————————————————————————— -->
+
+        // 使用含有this对象的回调函数
+        var clientData = {
+            id: 094545,
+            fullName: "Not Set",
+            setUserName: function (firstName, lastName) {
+                this.fullName = firstName + " " + lastName;
+            }
+        }
+//call() apply()
+        function getUserInput(firstName, lastName, callback) {
+            callback(firstName, lastName); /* 传入了前面两个参数到callback函数中， 也就是 setUseName() */
+        }
+        // clientData.setUserName("Barack", "Obama")
+
+        // getUserInput("Barack", "Obama", clientData.setUserName); /* 调用函数，全局函数中调用的this指向的是全局 */
+        // console.log("full name :  " + clientData.fullName); // Not Set
+        // console.log("window fullname : " + window.fullName); //Barack Obama
+
+        /* 改变this指向 */
+
+        function getUserInput(firstName, lastName, callback, callbackObj) {
+            callback.apply(callbackObj, [firstName, lastName]);
+        }
+        getUserInput("Barack", "Obama", clientData.setUserName, clientData); /* 调用函数*/
+
+        // console.log("full name :  " + clientData.fullName); // Barack Obama
+        console.log("window fullname : " + window.fullName); //undefined
+    </script>
 </body>
+
 </html>
