@@ -6,7 +6,7 @@
   </a>
 </div>
 <img *ngIf="previeShow" [src]="previewImg" alt="" style="max-width: 100%">
-<img *ngIf='!previeShow' src="{{data.img}}" alt="" style="max-width: 100%">
+<img *ngIf='!previeShow && initPreviewShow' src="{{data.img}}" alt="" style="max-width: 100%">
 
 <table class="uploadInfo">
   <thead>

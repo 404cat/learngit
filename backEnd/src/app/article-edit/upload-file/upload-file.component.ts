@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  Output
 } from '@angular/core';
 import {
   FileUploader
@@ -9,7 +10,9 @@ import {
 import {
   ActivatedRoute
 } from '@angular/router';
-
+import {
+  HttpInterceptorService
+} from '../../http-interceptor.service';
 
 @Component({
   selector: 'app-upload-file',
@@ -19,10 +22,12 @@ import {
 export class UploadFileComponent implements OnInit {
 
   fileName: any;
-  previewImg: any;
-  previeShow;
+  previewImg: any; /* 上传的图片录几个 */
+  previeShow; /* 让图片显示的判断 */
+  initPreviewShow; /* 图片初始值 */
+  id: any;
   data: any;
-
+  imgUrl: string;
   public uploader: FileUploader = new FileUploader({
     url: '/carrots-admin-ajax/a/u/img/task',
     method: 'POST',
@@ -43,13 +48,14 @@ export class UploadFileComponent implements OnInit {
       if (status === 200) {
         const tempRes = JSON.parse(response);
         console.log(tempRes.data.url); /* 如果请求成果返回的数据 */
+        // @Output('url') this.imgUrl = tempRes.data.url;
+        // this.imgUrl = tempRes.data.url;
       } else {
         alert('');
       }
     };
     console.log(this.uploader.queue[0]);
   } /* 上传文件 */
-
   selectedFileOnChanged(files: HTMLInputElement, event: any) {
     // 这里是文件选择完成后的操作处理
     this.previeShow = true; /* 布尔值让图片显示出来 */
@@ -71,11 +77,18 @@ export class UploadFileComponent implements OnInit {
   }
   /* 删除上传 */
 
-  constructor(public _activeRouter: ActivatedRoute) {}
+  constructor(public _activeRouter: ActivatedRoute,
+    public httpservice: HttpInterceptorService,
+  ) {}
 
   ngOnInit() {
-    this._activeRouter.queryParams.subscribe(params => {
-      this.data = params; /* 获取利用路由传进来的单挑数据 */
+    this.id = this._activeRouter.snapshot.params['id']; /* 获取点进来的id号码 */
+    console.log(this.id);
+    this.httpservice.getArticleEdit(this.id).subscribe((res: Response) => {
+      this.data = res.json();
+      this.data = this.data.data.article; /* 获取该条id的信息 */
+      console.log(this.data);
+      this.initPreviewShow = true; /* 初始值如果有行业就让他显示出来，在这个Boolean为true的情况下 */
     });
   }
 }

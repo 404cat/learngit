@@ -1,33 +1,49 @@
-<div class="formbox">
-  <div>
-    <span>
-      <strong>标题名称</strong>
-    </span>
-    <input nz-input [(ngModel)]="title">
+{{diagnostic}}
+<form (ngSubmit)='onSubmit()' #editArticle="ngForm">
+  <div class="formbox">
+    <div>
+      <span>
+        <strong>标题名称：</strong>
+      </span>
+      <input nz-input name="articleTitle" #Title='ngModel' required [(ngModel)]="title">
+    </div>
+    <!-- <p> -->
+    <p [hidden]="Title.valid || Title.pristine">* 必须输入一个有效title！</p>
+    <!-- </p> -->
+    <div>
+      <span>
+        <strong>类型：</strong>
+      </span>
+      <nz-select name="selected" style="min-width: 30%;" [compareWith]="compareFn" [(ngModel)]="selectedValue" (ngModelChange)="log($event)"
+        nzAllowClear nzPlaceHolder="Choose">
+        <nz-option *ngFor="let option of optionList; let num = index" [nzValue]="option" [nzLabel]="option.label"></nz-option>
+      </nz-select>
+      <nz-select name="selectedTwo" *ngIf='industryVisible' style="min-width: 280px;" [compareWith]="compareFn" [(ngModel)]="selectedValueTwo"
+        nzAllowClear nzPlaceHolder="please Choose">
+        <nz-option *ngFor="let option1 of optionListTwo" [nzValue]="option1" [nzLabel]="option1.label"></nz-option>
+      </nz-select>
+    </div>
+    <div>
+      <span>
+        <strong>说明：</strong>
+      </span>
+      <input nz-input name="articleContent" #Content=ngModel required [(ngModel)]="content">
+    </div>
+    <!-- <div style="height: 20px;"> -->
+    <p [hidden]="Content.valid || Content.pristine">* 必须输入一个有效说明！</p>
+    <!-- </div> -->
+    <div class="">
+      <span>
+        <strong>跳转链接：</strong>
+      </span>
+      <input name="articleInterLink" #Link=ngModel required nz-input [(ngModel)]="interLink">
+    </div>
+    <!-- <div style="height: 20px;"> -->
+    <p [hidden]="Link.valid || Link.pristine">* 必须输入一个有效链接！</p>
+    <!-- </div> -->
   </div>
-  <div>
-    <span>
-      <strong>类型</strong>
-    </span>
-    <nz-select style="min-width: 30%;" [compareWith]="compareFn" [(ngModel)]="selectedValue" (ngModelChange)="log($event)"
-      nzAllowClear nzPlaceHolder="Choose">
-      <nz-option *ngFor="let option of optionList; let num = index" [nzValue]="option" [nzLabel]="option.label"></nz-option>
-    </nz-select>
-    <nz-select *ngIf='text' style="min-width: 280px;" [compareWith]="compareFn" [(ngModel)]="selectedValueTwo" nzAllowClear nzPlaceHolder="please Choose">
-      <nz-option *ngFor="let option1 of optionListTwo" [nzValue]="option1" [nzLabel]="option1.label"></nz-option>
-    </nz-select>
-  </div>
-  <div>
-    <span>
-      <strong>说明</strong>
-    </span>
-    <input nz-input [(ngModel)]="content">
-  </div>
-  <div class="">
-    <span>
-      <strong>跳转链接</strong>
-    </span>
-    <input nz-input [(ngModel)]="interLink">
-  </div>
-</div>
-<app-upload-file></app-upload-file>
+  <app-upload-file></app-upload-file>
+  <button type="submit" nz-button nzType="primary" [disabled]='!editArticle.form.valid'>立即上线</button>
+  <button type="submit" nz-button nzType="default" [disabled]='!editArticle.form.valid'>存为草稿</button>
+  <button nz-button nzType="danger">取消</button>
+</form>

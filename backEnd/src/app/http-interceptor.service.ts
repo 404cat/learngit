@@ -1,6 +1,8 @@
 /* 封装后台页的HTTP请求 */
 
-import { Injectable } from '@angular/core';
+import {
+  Injectable
+} from '@angular/core';
 
 import {
   Http,
@@ -38,7 +40,16 @@ export class HttpInterceptorService {
     return this.http.put('/carrots-admin-ajax/a/u/article/status', value, putpOptions);
   }
 
-  constructor(public http: Http, )  {
+  getArticleEdit(value: any): any {
+    // console.log('id:   ' + value);
+    return this.http.get('/carrots-admin-ajax/a/article/' + value, options); /* 获取编辑文章的单挑数据 */
+  }
+
+  putEditAticle(id: any, data: any): any {
+    return this.http.put('/carrots-admin-ajax/a/u/article/' + id, data, putpOptions);
+  }
+
+  constructor(public http: Http, ) {
     this.http = http; /* 把实例化的http赋值，这样在下面好调用 */
-   }
+  }
 }

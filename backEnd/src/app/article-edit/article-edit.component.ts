@@ -3,25 +3,38 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  GetSingleDataService
-} from '../article-list/get-single-data.service'; /* 获取单条数据的服务 */
-import {
   ActivatedRoute
 } from '@angular/router';
+import {
+  HttpInterceptorService
+} from '../http-interceptor.service';
+import {
+  FormsModule
+} from '@angular/forms';
+
+let statu;
 
 @Component({
   selector: 'app-article-edit',
   templateUrl: './article-edit.component.html',
   styleUrls: ['./article-edit.component.scss']
 })
+
+
 export class ArticleEditComponent implements OnInit {
+
+  id: string;
   data: any;
   title: string;
   content: string;
   interLink: string;
   type: number;
+  // statu: string;
   selectedValue;
-  text;
+  selectedValueTwo;
+  industryVisible; /* 控制行业显现的Boolean */
+  putData: any;
+
   optionList = [{
       label: '首页banner',
       value: '首页banner',
@@ -80,31 +93,40 @@ export class ArticleEditComponent implements OnInit {
     value: string,
     num: string
   }): void {
-    this.text = false;
+    this.industryVisible = false; /* select change事件把行业显现的Boolean初始 */
     console.log(value.value);
+    statu = value.num;
     if (value.value === '行业大图') {
-      this.text = true;
+      this.industryVisible = true;
     }
-    console.log(value);
-    console.log(value.num);
   }
 
   constructor(
-    public _activeRouter: ActivatedRoute
+    public _activeRouter: ActivatedRoute,
+    public httpservice: HttpInterceptorService,
   ) {}
 
   ngOnInit(): any {
-    this._activeRouter.queryParams.subscribe(params => {
-      this.data = params;
+    this.id = this._activeRouter.snapshot.params['id']; /* 获取点进来的id号码 */
+    console.log(this.id);
+    this.httpservice.getArticleEdit(this.id).subscribe((res: Response) => {
+      this.data = res.json();
+      this.data = this.data.data.article; /* 获取该条id的信息 */
       console.log(this.data);
-      this.title = this.data.title;
-      this.content = this.data.content;
-      this.interLink = this.data.url;
-
-      this.type = this.data.type - 0;
-      this.selectedValue = this.optionList[this.type];
-      /* input表单的内容初始化 */
+      this.title = this.data.title; /* 初始化title */
+      this.content = this.data.content; /* 初始化说明 */
+      this.interLink = this.data.url; /* 初始化跳转链接 */
+      this.selectedValue = this.optionList[+this.data.type]; /* 初始化类型 */
+      if (+this.data.type === 3) {
+        this.industryVisible = true;
+      }
+      this.selectedValueTwo = this.optionListTwo[+this.data.industry]; /* 初始化行业 */
     });
+  }
+
+  onSubmit(): any {
+    this.putData = `title=${this.title}&status=${statu}&img=${'s'}`;
+    console.log(this.putData);
   }
 
 }
