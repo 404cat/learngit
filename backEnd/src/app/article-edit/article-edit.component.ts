@@ -1,5 +1,6 @@
 import {
   Component,
+  Input,
   OnInit
 } from '@angular/core';
 import {
@@ -11,9 +12,10 @@ import {
 import {
   FormsModule
 } from '@angular/forms';
+import { AfterViewInit, ViewChild } from '@angular/core';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 let statu;
-
 @Component({
   selector: 'app-article-edit',
   templateUrl: './article-edit.component.html',
@@ -34,6 +36,9 @@ export class ArticleEditComponent implements OnInit {
   selectedValueTwo;
   industryVisible; /* 控制行业显现的Boolean */
   putData: any;
+  @Input() imgUrl ;
+  // @ViewChild(UploadFileComponent) child: UploadFileComponent;
+
 
   optionList = [{
       label: '首页banner',
@@ -127,6 +132,10 @@ export class ArticleEditComponent implements OnInit {
   onSubmit(): any {
     this.putData = `title=${this.title}&status=${statu}&img=${'s'}`;
     console.log(this.putData);
+  }
+  geturl(event: any) {
+    this.imgUrl = event;
+    console.log(this.imgUrl);
   }
 
 }
