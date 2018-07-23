@@ -4,6 +4,20 @@
         margin: 0;
     }
 }
+
+.listTitle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+    span {
+        color: #000;
+        font-weight: 500;
+        font-family: fantasy;
+        font-size: 20px;
+    }
+}
+
 .listBox {
     width: 100%;
     border: 1px solid #f0f0f0;

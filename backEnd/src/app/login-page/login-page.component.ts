@@ -35,7 +35,7 @@ export class LoginPageComponent implements OnInit {
     this.loginpage.getData(postData).subscribe((res: Response) => {
       this.data = res.json();
       if (this.data.message === 'success') {
-        this.router.navigateByUrl('backend/main');
+        // this.router.navigateByUrl('backend/main');
       }
     });
 

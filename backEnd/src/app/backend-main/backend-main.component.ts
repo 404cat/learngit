@@ -2,6 +2,9 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import {
+  HttpInterceptorService
+} from '../http-interceptor.service';
 
 @Component({
   selector: 'app-backend-main',
@@ -9,6 +12,8 @@ import {
   styleUrls: ['./backend-main.component.scss']
 })
 export class BackendMainComponent implements OnInit {
+  page;
+  size;
 
   openMap = {
     sub1: true,
@@ -24,8 +29,19 @@ export class BackendMainComponent implements OnInit {
     }
   }
 
-    constructor() {}
+  constructor(
+    private httpservice: HttpInterceptorService,
+  ) {}
 
-    ngOnInit() {}
-
+  ngOnInit() {
+    this.getArticle();
+  }
+  getArticle() {
+    this.httpservice.getSearchData().subscribe((Response) => {
+      console.log(Response.json());
+      this.size = Response.json();
+      this.size = this.size.data.size;
+      console.log(this.size);
+    });
+  }
 }

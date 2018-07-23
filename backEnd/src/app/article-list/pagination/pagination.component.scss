@@ -1,0 +1,19 @@
+.pagination-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;   
+    .listSize {
+        display: flex;
+        align-items: center;
+        span {
+            white-space: nowrap;
+        }
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;   
+}

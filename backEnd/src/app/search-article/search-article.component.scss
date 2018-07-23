@@ -1,0 +1,19 @@
+.search {
+  margin-bottom: 30px;
+  border-bottom: 3px solid #888;
+  >div {
+    display: flex;
+    margin-bottom: 30px;
+    span {
+      display: flex;
+      flex-basis: 10%;
+      font-size: 15px;
+      margin-right: 20px;
+    }
+  }
+}
+
+[nz-button] {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}

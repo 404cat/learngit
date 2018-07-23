@@ -11,8 +11,6 @@ import {
 } from '../http-interceptor.service';
 import {
   FormsModule,
-  // FormBuilder,
-  // FormGroup
 } from '@angular/forms';
 import {
   AfterViewInit,
@@ -20,23 +18,19 @@ import {
 } from '@angular/core';
 import {
   UploadFileComponent
-} from './upload-file/upload-file.component';
-import {
-  flatten
-} from '../../../node_modules/@angular/router/src/utils/collection';
+} from '../article-edit/upload-file/upload-file.component';
 import {
   Location
 } from '@angular/common';
 
-// let statu;
 @Component({
-  selector: 'app-article-edit',
-  templateUrl: './article-edit.component.html',
-  styleUrls: ['./article-edit.component.scss']
+  selector: 'app-new-article',
+  templateUrl: './new-article.component.html',
+  styleUrls: ['./new-article.component.scss']
 })
 
 
-export class ArticleEditComponent implements OnInit {
+export class NewArticleComponent implements OnInit {
 
   id: string;
   data: any;
@@ -51,6 +45,7 @@ export class ArticleEditComponent implements OnInit {
   industryVisible; /* 控制行业显现的Boolean */
   putData: any;
   createAt;
+  sucesscode;
   @Input() imgUrl;
 
 
@@ -127,56 +122,48 @@ export class ArticleEditComponent implements OnInit {
   }): void {
     console.log(value.num);
     this.industry = value.num;
-  } /* 获取行业 码 */
+  } /*  ngModelChange 获取行业 码 */
 
   constructor(
-    public _activeRouter: ActivatedRoute,
     public httpservice: HttpInterceptorService,
-    private location: Location
+    private location: Location /* 路由返回 */
   ) {}
 
   ngOnInit(): any {
-    this.id = this._activeRouter.snapshot.params['id']; /* 获取点进来的id号码 */
-    console.log(this.id);
-    this.httpservice.getArticleEdit(this.id).subscribe((res: Response) => {
-      this.data = res.json();
-      this.data = this.data.data.article; /* 获取该条id的信息 */
-      console.log(this.data);
-      this.title = this.data.title; /* 初始化title */
-      this.content = this.data.content; /* 初始化说明 */
-      this.interLink = this.data.url; /* 初始化跳转链接 */
-      this.statu = this.data.status; /* 角色状态 草稿还是上线 */
-      this.imgUrl = this.data.img; /* 图片地址 */
-      this.type = this.data.type; /*  */
-      this.industry = this.data.industry; /* 行业 */
-      this.createAt = this.data.createAt;
-      this.selectedValue = this.optionList[+this.data.type]; /* 初始化类型 */
-      if (+this.data.type === 3) {
-        this.industryVisible = true;
-      }
-      this.selectedValueTwo = this.optionListTwo[+this.data.industry]; /* 初始化行业 */
-    });
   }
 
   onSubmit(): any {
-    this.putData = `title=${this.title}&status=${this.statu}&
-    img=${this.imgUrl} &content=${this.content}&url=${this.interLink}&industry=${this.industry}&
-    createAt=${this.createAt}&type=${this.type}`; /* 发送数据 */
+    console.log(typeof this.type);
+    if (this.industry !== undefined) {
+      this.putData = `title=${this.title}&type=${this.type}&status=${this.statu}&
+      img=${this.imgUrl} &content=${this.content}&url=${this.interLink}&industry=${this.industry}`; /* 发送数据 */
+    } else {
+      this.putData = `title=${this.title}&type=${this.type}&status=${this.statu}&
+      img=${this.imgUrl} &content=${this.content}&url=${this.interLink}`; /* 发送数据 */
+    }
     console.log(this.putData);
-    this.httpservice.putEditAticle(this.id, this.putData).subscribe((res: Response) => {
+
+    this.httpservice.addArticle(this.putData).subscribe((res: Response) => {
       console.log(res.json());
+      this.sucesscode = res.json();
+      this.sucesscode = this.sucesscode.code;
+      if (this.sucesscode === 0 ) {
+        alert ('成功');
+      } else {
+        alert('失败');
+      }
+
     });
-  } /* button按钮的点击方法 */
+  } /* button按钮的点击方法 发送HTTP请求 */
+
   geturl(event: any) {
     this.imgUrl = event;
     console.log(this.imgUrl);
   }  /* 监听获取子路由传的imgurl */
-
   upLine(): boolean {
     this.statu = 2;
     console.log(this.statu);
     this.onSubmit();
-    alert('编辑成功');
     this.location.back();
     return false;
   } /* 上线 */
@@ -189,4 +176,5 @@ export class ArticleEditComponent implements OnInit {
   goBack(): void {
     this.location.back();
   } /* 返回上一级 */
+
 }

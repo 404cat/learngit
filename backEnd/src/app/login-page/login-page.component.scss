@@ -15,12 +15,14 @@ body {
   background: url(../img/bg-photo.jpg)no-repeat;
   background-size: cover;
   .frame-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     width: 500px;
     height: 310px;
     border-radius: 5px;
-    background: #d0d4d9;
-    z-index: 1;
-    box-shadow: 4px 5px 1px #9fa6ad;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 1; // box-shadow: 4px 5px 1px #9fa6ad;
     form {
       display: flex;
       flex-direction: column;
@@ -62,6 +64,8 @@ body {
   height: 100%;
   background: #fff;
   border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 0 1000px white inset; 
 }
 
 .name-box {
@@ -100,11 +104,12 @@ body {
   position: relative;
   width: 80%;
   height: 50px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 300;
   color: #fff;
-  letter-spacing: 4px;
-  background: #03A9F4;
+  // letter-spacing: 4px;
+  // background: #03A9F4;
+  background: #00adfbb0;
   border-radius: 5px;
   &:active {
     right: 5px;

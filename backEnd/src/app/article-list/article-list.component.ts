@@ -1,15 +1,17 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  Input,
+  OnDestroy
 } from '@angular/core';
 import {
   HttpInterceptorService
 } from '../http-interceptor.service';
 import {
-  ActivatedRoute
+  ActivatedRoute,
+  Params,
+  Router
 } from '@angular/router';
-
-import {GetSingleDataService } from './get-single-data.service';
 
 @Component({
   selector: 'app-article-list',
@@ -22,7 +24,11 @@ export class ArticleListComponent implements OnInit {
   data: any = {};
   articleList: Array < string > = [];
   id: any;
+  page;
+  size;
   singleData: any;
+  putData;
+  total;
 
   changeType(value: any) {
     switch (value) {
@@ -58,22 +64,26 @@ export class ArticleListComponent implements OnInit {
 
   constructor(
     private httpInterceptorService: HttpInterceptorService, /* 实例化HTTP请求类 */
-    private getSingleData: GetSingleDataService, /* 获取点击的单挑数据的服务 */
-  ) { }
+  ) {  }
 
 
   ngOnInit() {
     this.getArticle(); /* 初始化获取文章信息信息 */
   }
 
+  getpagination(event: any) {
+    this.putData = event;
+    console.log(this.putData);
+    this.getArticle();
+  } /* 获取分页的请求信息，监听分页组件的点击事件， 并发送请求 */
+
   getArticle() {
-    this.httpInterceptorService.getArticleList().subscribe((res: Response) => {
+    this.httpInterceptorService.getArticleList(this.putData).subscribe((res: Response) => {
       this.data = res.json();
       console.log(this.data);
       this.articleList = this.data.data.articleList;
-      console.log(this.articleList);
     }); /* 获取article数据, 在oninit中调用 */
-  }
+  } /* 获取文章的HTTP请求 */
 
   changedStatu(statu: number, id: number, value: any): Boolean {
     if (statu === 1) {
@@ -89,10 +99,7 @@ export class ArticleListComponent implements OnInit {
     }); /* put 更改状态，通过回调函数调用获取文章数据的函数，这样就能实现实时刷新了 */
     return false;
   } /* 点击上下线功能 */
-
-  getdata(al: any) {
-    // console.log(al);
-    this.getSingleData.GetSingleData(al);
-  } /* 获取点击的数据 */
-
+  getSearch(event: any) {
+    this.articleList = event;
+  }
 }

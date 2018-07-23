@@ -1,6 +1,7 @@
-<div>
+<app-search-article (getSearch)='getSearch($event)'></app-search-article>
+<div class="listTitle">
   <span>Article列表</span>
-  <span>+新增</span>
+  <a class="newArticle" [routerLink]="['../new']">+新增</a>
 </div>
 <table class="listBox">
   <thead>
@@ -44,4 +45,6 @@
     <!-- 操作 -->
   </tr>
 </table>
+<app-pagination [input]='total' (pagination)='getpagination($event)'></app-pagination>
+
 <!-- <router-outlet></router-outlet> -->

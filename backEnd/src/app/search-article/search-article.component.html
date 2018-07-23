@@ -1,0 +1,31 @@
+<div class="search">
+  <div class="dateBox">
+    <span>按时间搜索</span>
+    <nz-range-picker class="slectDate" [nzFormat]="dateFormat" [(ngModel)]='dateValue' ></nz-range-picker>
+  </div>
+  <!-- <div class="slect"> -->
+  <span>{{dateValue}}</span>
+  <div>
+    <span>
+      <strong>类型：</strong>
+    </span>
+    <nz-select name="selected" style="min-width: 280px;" [compareWith]="compareFn" [(ngModel)]="selectedValue" (ngModelChange)="log($event)"
+      nzAllowClear nzPlaceHolder="请选择类型">
+      <nz-option *ngFor="let option of optionList; let num = index" [nzValue]="option" [nzLabel]="option.label"></nz-option>
+    </nz-select>
+  </div>
+  <div>
+    <span>
+      <strong>状态：</strong>
+    </span>
+    <nz-select name="selectedTwo" style="min-width: 280px;" [compareWith]="compareFn" [(ngModel)]="selectedValueTwo" (ngModelChange)="getIndustry($event)"
+      nzAllowClear nzPlaceHolder="请选择状态">
+      <nz-option *ngFor="let option1 of optionListTwo" [nzValue]="option1" [nzLabel]="option1.label"></nz-option>
+    </nz-select>
+  </div>
+  <!-- </div> -->
+  <div>
+    <button nz-button nzType="primary" (click)='dateToMs()'>搜索</button>
+    <button nz-button nzType="danger">清空</button>
+  </div>
+</div>

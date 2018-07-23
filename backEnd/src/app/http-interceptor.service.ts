@@ -31,22 +31,30 @@ const putpOptions = new RequestOptions({
 
 export class HttpInterceptorService {
 
-  getArticleList(): any {
+  getArticleList(value: any): any {
+    // return this.http.get('/carrots-admin-ajax/a/article/search', options);
+    return this.http.get('/carrots-admin-ajax/a/article/search?' + value, options);
+  } /* 按条件获取文章列表 , 也是list的初始化请求 */
+
+  getSearchData() {
     return this.http.get('/carrots-admin-ajax/a/article/search', options);
-  } /* 获取文章列表 */
+  } /* 分页组件查找和 */
 
   changeStatu(value: any): any {
     console.log(value);
     return this.http.put('/carrots-admin-ajax/a/u/article/status', value, putpOptions);
-  }
+  } /* 上下线请求 */
 
   getArticleEdit(value: any): any {
-    // console.log('id:   ' + value);
-    return this.http.get('/carrots-admin-ajax/a/article/' + value, options); /* 获取编辑文章的单挑数据 */
-  }
+    return this.http.get('/carrots-admin-ajax/a/article/' + value, options);
+  } /* 获取编辑文章的单条数据 */
 
   putEditAticle(id: any, data: any): any {
-    return this.http.put('/carrots-admin-ajax/a/u/article/' + id, data, putpOptions);
+    return this.http.put('/carrots-admin-ajax/a/u/article/' + id, data, putpOptions); /* 文章编辑的请求 */
+  }
+
+  addArticle(value: any): any {
+    return this.http.post('/carrots-admin-ajax/a/u/article', value, putpOptions);
   }
 
   constructor(public http: Http, ) {

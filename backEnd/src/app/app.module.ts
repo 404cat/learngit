@@ -53,7 +53,9 @@ registerLocaleData(zh);
 import { CommonModule } from '@angular/common';
 import { FileUploadModule } from 'ng2-file-upload';
 import { UploadFileComponent } from './article-edit/upload-file/upload-file.component';
-
+import { PaginationComponent } from './article-list/pagination/pagination.component';
+import { NewArticleComponent } from './new-article/new-article.component';
+import { SearchArticleComponent } from './search-article/search-article.component';
 
 
 
@@ -66,8 +68,11 @@ import { UploadFileComponent } from './article-edit/upload-file/upload-file.comp
     BackendMainComponent, /* 后主页 */
     CitySelectComponent, /* 省�, �区联动模块 */
     ArticleListComponent, /* article列表 */
-     UploadFileComponent,
+    UploadFileComponent,
+    NewArticleComponent,
+    SearchArticleComponent,
     ArticleEditComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule, /* 浏览器模块 */

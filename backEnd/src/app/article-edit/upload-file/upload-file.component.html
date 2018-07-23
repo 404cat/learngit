@@ -5,8 +5,8 @@
     />
   </a>
 </div>
-<img *ngIf="previeShow" [src]="previewImg" alt="" style="max-width: 100%">
-<img *ngIf='!previeShow && initPreviewShow' src="{{data.img}}" alt="" style="max-width: 100%">
+<img *ngIf="previeShow" [src]="previewImg" alt="" style="max-width: 100%"> <!-- 上传后的图片显示 -->
+<img *ngIf='!previeShow && initPreviewShow' src="{{data.img}}" alt="" style="max-width: 100%"> <!-- 初始图片显示 -->
 
 <table class="uploadInfo">
   <thead>
@@ -25,10 +25,10 @@
       <nz-progress [nzPercent]="uploader.progress" [nzShowInfo]="false"></nz-progress>
     </td>
     <td>
-      <button (click)='uploadFile()'>submit</button>
+      <a (click)='uploadFile()'>上传</a>
     </td>
     <td>
-      <button (click)='clear()'>clear</button>
+      <a (click)='clear()'>clear</a>
     </td>
   </tr>
 </table>

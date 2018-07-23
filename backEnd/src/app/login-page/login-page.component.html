@@ -2,17 +2,17 @@
 <div class="bg-photo">
   <div class="frame-box">
     <form>
-      <p class="login-word">登录框</p>
+      <!-- <p class="login-word">登录框</p> -->
       <div class="name-box">
         <i></i>
-        <input name="name" #newname type="text" class="user-name">
+        <input name="name" #newname type="text" class="user-name" placeholder="Username">
       </div>
       <div class="password-box">
         <i></i>
-        <input name="password" #newpwd type="password" class="user-password">
+        <input name="password" #newpwd type="password" class="user-password" >
       </div>
       <button (click)='submit(newname,newpwd)' class="submit">
-        登录
+        Log in
       </button>
       <p class="login-info" *ngIf=data.message>{{data.message}}</p>
     </form>
