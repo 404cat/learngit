@@ -57,7 +57,8 @@ import { PaginationComponent } from './article-list/pagination/pagination.compon
 import { NewArticleComponent } from './new-article/new-article.component';
 import { SearchArticleComponent } from './search-article/search-article.component';
 
-
+import {LoggedInguard} from './guard/loggedIn.guard';
+import {AuthService} from './service/authService';
 
 
 
@@ -87,8 +88,11 @@ import { SearchArticleComponent } from './search-article/search-article.componen
   ],
   providers: [{
     provide: NZ_I18N,
-    useValue: zh_CN
-  }],
+    useValue: zh_CN,
+  },
+  AuthService,
+  LoggedInguard
+],
   /** 配置 ng-zorro-antd 国际化 **/
   bootstrap: [AppComponent]
 })

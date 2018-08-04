@@ -7,9 +7,11 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { NewArticleComponent } from './new-article/new-article.component';
 
+import { LoggedInguard } from './guard/loggedIn.guard';
+
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent}, /* 定义登录页路由 */
-  { path: 'backend/main', component: BackendMainComponent,
+  { path: 'backend/main', component: BackendMainComponent, canActivate: [LoggedInguard],
   children:
   [
     { path: 'articleList', component: ArticleListComponent, }, /* 文章列表路由 */

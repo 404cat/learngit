@@ -2,10 +2,11 @@ import {
   Component,
   OnInit,
   Output,
+  Input,
   EventEmitter,
 } from '@angular/core';
 import {HttpInterceptorService } from '../http-interceptor.service';
-import { ArticleListComponent } from '../article-list/article-list.component';
+import {GetSearchInfoService} from '../service/get-search-info.service';
 
 @Component({
   selector: 'app-search-article',
@@ -20,8 +21,10 @@ export class SearchArticleComponent implements OnInit {
   dateValue;
   statu;
   type;
+  selectedValue;
+  selectedValueTwo;
   @Output() getSearch = new EventEmitter();
-
+  @Output() clearSearch = new EventEmitter();
   optionList = [{
       label: '首页banner',
       value: '首页banner',
@@ -58,7 +61,7 @@ export class SearchArticleComponent implements OnInit {
 
   constructor(
     private httpService: HttpInterceptorService,
-    private articleListComponent: ArticleListComponent
+    private getSearchInfoService: GetSearchInfoService,
   ) {}
 
   ngOnInit() {}
@@ -85,21 +88,25 @@ export class SearchArticleComponent implements OnInit {
     const [x , y ] = this.dateValue;
     this.dateone = new Date(x).getTime(); /* 开始时间 */
     this.datetwo = new Date(y).getTime(); /* 结束时间 */
-    // let searchData = {
-    //   startAt: this.dateone,
-    //   endAt: this.datetwo,
-    //   type: this.type,
-    //   status: this.statu,
-    // };
     const searchData = `startAt=${this.dateone}&endAt=${this.datetwo}&type=${this.type}&status=${this.statu}`;
     /* 日期转换成时间戳 */
     console.log(searchData);
     this.httpService.getArticleList(searchData).subscribe((res: Response) => {
       console.log(res.json());
       this.data = res.json();
+      console.log(this.data.data.total);
+      // this.getSearchInfoService.getTotals(this.data.data.total); /* 向同级获取total的服务发送total数据 */
+      this.getSearchInfoService.emitTotalChangeEvent(this.data.data.total);
       this.data =  this.data.data.articleList;
       this.getSearch.emit(this.data); /* 向父级发送搜索到的数据 */
     });
-    // this.articleListComponent.getArticle();
   }
+
+  clear(): any {
+    this.dateValue = null;
+    this.selectedValue = null;
+    this.selectedValueTwo = null;
+    return this.clearSearch.emit();
+  } /* 清除按钮，父级监听点击清除 */
+
 }

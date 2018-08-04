@@ -11,6 +11,10 @@ import {
   Router
 } from '@angular/router'; /* 导入路由模块 */
 
+import {
+  AuthService
+} from '../service/authService';
+
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -21,21 +25,25 @@ import {
 export class LoginPageComponent implements OnInit {
 
   data: any = {};
-
+  newname;
+  newpwd;
 
   constructor(
     private loginpage: LogiPageService, /* 把获取HTTP的函数实例化给变量loginpage */
     private router: Router,
+    private authService: AuthService,
   ) {}
 
-  submit(name: HTMLInputElement, password: HTMLInputElement): boolean {
+  submit(): boolean {
 
-    const postData = `name=${name.value}&pwd=${password.value}`; /* 获取输入的值 */
+    const postData = `name=${this.newname}&pwd=${this.newpwd}`; /* 获取输入的值 */
 
     this.loginpage.getData(postData).subscribe((res: Response) => {
       this.data = res.json();
       if (this.data.message === 'success') {
-        // this.router.navigateByUrl('backend/main');
+        console.log(this.data.message);
+        this.authService.login(this.data.message);
+        this.router.navigateByUrl('backend/main');
       }
     });
 

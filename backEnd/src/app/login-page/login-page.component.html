@@ -1,20 +1,44 @@
 <!-- 登录页面 -->
 <div class="bg-photo">
   <div class="frame-box">
-    <form>
-      <!-- <p class="login-word">登录框</p> -->
+    <form #loginForm='ngForm'>
+
       <div class="name-box">
         <i></i>
-        <input name="name" #newname type="text" class="user-name" placeholder="Username">
+        <input name="name" [(ngModel)]='newname' #name='ngModel' required minlength="4" type="text" class="user-name" placeholder="Username">
       </div>
+      <div style="height: 20px; margin-bottom: 5px; color: red;">
+        <!-- <div [hidden]="name.valid || name.pristine">* Name is required</div> -->
+        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.errors.required">
+            Name is required.
+          </div>
+          <div *ngIf="name.errors.minlength">
+            Name must be at least 4 characters long.
+          </div>
+        </div>
+      </div>
+
       <div class="password-box">
         <i></i>
-        <input name="password" #newpwd type="password" class="user-password" >
+        <input name="password" [(ngModel)]='newpwd' #Pwd='ngModel' required minlength="5" type="password" class="user-password" placeholder="Password">
       </div>
-      <button (click)='submit(newname,newpwd)' class="submit">
-        Log in
-      </button>
-      <p class="login-info" *ngIf=data.message>{{data.message}}</p>
+      <div style="height: 20px; margin-bottom: 5px; color: red;">
+        <!-- <div [hidden]="Pwd.valid || Pwd.pristine">* password is required</div> -->
+        <div *ngIf="Pwd.invalid && (Pwd.dirty || Pwd.touched)">
+          <div *ngIf="Pwd.errors.required">
+            password is required.
+          </div>
+          <div *ngIf="Pwd.errors.minlength">
+            password must be at least 4 characters long.
+          </div>
+        </div>
+      </div>
+      <button type="submit" (click)='submit()' class="submit" [disabled]="!loginForm.form.valid"> Log in</button>
+
+      <div style="height: 20px; margin-bottom: 5px;">
+        <p class="login-info" *ngIf=data.message>{{data.message}}</p>
+      </div>
     </form>
   </div>
 </div>

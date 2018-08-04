@@ -8,7 +8,9 @@ import {
 import {
   HttpInterceptorService
 } from '../../http-interceptor.service';
-
+import {
+  GetSearchInfoService
+} from '../../service/get-search-info.service';
 
 @Component({
   selector: 'app-pagination',
@@ -23,28 +25,30 @@ export class PaginationComponent implements OnInit {
   number = 50;
   data;
   article;
-  // nzPageSizeChange: EventEmitter<number>;
   @Output() pagination = new EventEmitter();
   @Input() input;
 
   constructor(
     private httpService: HttpInterceptorService,
-    // nzPageSizeChange = new EventEmitter(),
+    private getSearchInfoService: GetSearchInfoService,
   ) {}
 
   ngOnInit() {
     this.getData();
+    this.getSearchInfoService.getTotalChangeEmitter().subscribe( total  => {
+      this.total = total;
+      console.log(this.total);
+    });
   }
 
   getData() {
-    // this.nzPageSizeChange.emit();
     const put = `page=${this.pageIndex}&size=${this.size}`;
     this.pagination.emit(put);
     this.httpService.getSearchData().subscribe((Response) => {
       this.data = Response.json();
       this.data = this.data.data;
       this.total = this.data.total; /* 获取文章总数 */
-    });
+    }); /* 获取分页查找的数据 */
   }
 
   onchange(event: any) {

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //     class Point {
+
+        //         constructor(x, y) {
+        //             this.x = x;
+        //             this.y = y;
+        //             // this.name = 'hehe';
+        //         }
+        //         toString() {
+        //             return '(' + this.x + ', ' + this.y + ')';
+        //         }
+        //         // name = 'me'
+
+        //     }
+        // var a = new Point(1, 3);
+        // var c = new Point();
+        // // a.name = 'haha';
+        // // a._proto_.toString()
+        // console.log(a.name);
+        // console.log(c.name);
+        // // console.log(Point.prototype.isPrototypeOf(a));
+        // console.log(Object.getPrototypeOf(a).toString);
+
+        // function person(x) {
+        // console.log(this.x = x);
+        // }
+
+        // class person {
+        //     // age = 12;
+        //     constructor(x) {
+        //         console.log(this.x = x );
+        //     }
+        // }
+        // person.prototype.name='nico';
+        // var a = new person(1);
+        // a.name = 'haha';
+        // var b = new person();
+        // console.log(a.age);
+        // console.log(a.name);
+        // console.log(b.name);
+
+
+        // data :{
+        //     name ='hehe',
+        //     age = 19;
+        // }
+        // console.log(serialize(data));
+        // /* —————————————————————————————— */
+        // function person1 (x) {
+        //     console.log(this.x  =  x);
+        // }
+        // var b = new person1 (2);
+        // person.prototype.name = 'hehe';
+        // person.prototype.constructor = function (x) { console.log(this.x = x ) }
+
+
+        // person.prototype = {
+        // constructor(x) {
+        // console.log(this.x = x);
+        // }
+        // }
+
+
+
+        // class Point { /* ... */ }
+        // class ColorPoint extends Point {
+        //     constructor(x) {
+        //         super()
+        //         this.x = x  ;
+        //         console.log(this.x);
+        //     }
+        // }
+        // let cp = new ColorPoint('s'); // ReferenceError
+
+
+        // function foo() {
+        //     console.log(this.a);
+        //     // bar.apply({a:2},arguments);
+        //     bar.apply({a: 2}, arguments);
+        // }
+
+        // function bar (b) {
+        //     console.log(this.a  + b);
+        // }
+
+        // var a =1 ;
+        // foo(6,1);
+
+
+        // var f = function () {
+        //     console.log(this.x);
+        // }
+
+        // var obj = {
+
+        // f: function () { 
+        //     var x = 2;
+        //     console.log(this.x) },
+        // }; 
+
+        // var x = 1;
+        // function b () {
+        //     // x:3,
+        //     this.obj = function () {
+        //         var x = 2;
+        //         console.log(this.x);
+        //     }
+        // }
+        // b.prototype.x = 3;
+        // c = new b();
+        // c.obj() // 3
+
+
+        //     var point = {
+        //         x: 0,
+        //         y: 0,
+        //         moveTo: function (x, y) {
+        //             // 内部函数
+        //             var moveX = function (x) {
+        //                 this.x = x; //this 绑定到了哪里？
+        //             };
+        //             // 内部函数
+        //             var moveY = function (y) {
+        //                 this.y = y; //this 绑定到了哪里？
+        //             };
+
+        //             moveX(x);
+        //             moveY(y);
+        //         }
+        //     };
+        //     point.moveTo(1, 1);
+        //     console.log(point.x); //==>0 
+        //    console.log(point.y); //==>0 
+
+        function Point(x, y) {
+            this.x = x;
+            this.y = y;
+            console.log(this.x);
+            console.log(this.y);
+
+            this.moveTo = function (x, y) {
+                this.x = x;
+                this.y = y;
+                console.log(this.x);
+                console.log(this.y);
+            }
+        }
+
+        var p1 = new Point(0, 0);
+        // var p2 = {
+            // x: 0,
+            // y: 0
+        // };
+        function p2 () {  }
+        p1.moveTo(1, 1);
+        p1.moveTo.apply(this, [10, 10]);
+
+        // var x =1;
+
+
+
+        // // 单独执行
+        // f() // 1
+
+        // // obj 环境执行
+        // var a = {
+        //     "first name": 2
+        // }
+
+        // var c = 'first name';
+
+        // a[c]
+        // console.log(a['first name']);
+
+
+        //     function foo() {
+        //         console.log('foo1');
+        //     }
+
+        //     foo(); // foo2
+
+        //     function foo() {
+        //         console.log('foo2');
+        //     }
+
+        //     foo(); // foo2 
+
+
+        //     console.log(window instanceof Object);
+
+        //     function bar() {
+        //         a = 1;
+        //         console.log(a);
+        //     }
+
+        //     bar();
+
+
+        //     var foo = 1;
+
+        //     var fooReference = {
+        //         base: EnvironmentRecord,
+        //         name: 'foo',
+        //         strict: false
+        //     };
+
+        //    console.log(GetValue(fooReference)) // 1;
+
+        //     va
+        // function foo (){
+
+        // }
+    </script>
+</body>
+
+</html>

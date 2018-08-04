@@ -57,6 +57,9 @@ export class HttpInterceptorService {
     return this.http.post('/carrots-admin-ajax/a/u/article', value, putpOptions);
   }
 
+  deleteArticle(value: any): any {
+    return this.http.delete('/carrots-admin-ajax/a/u/article/' + value, );
+  }
   constructor(public http: Http, ) {
     this.http = http; /* 把实例化的http赋值，这样在下面好调用 */
   }

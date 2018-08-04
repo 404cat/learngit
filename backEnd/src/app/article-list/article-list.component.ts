@@ -99,7 +99,17 @@ export class ArticleListComponent implements OnInit {
     }); /* put 更改状态，通过回调函数调用获取文章数据的函数，这样就能实现实时刷新了 */
     return false;
   } /* 点击上下线功能 */
+
   getSearch(event: any) {
     this.articleList = event;
-  }
+  } /* 获取查找的数据，刷新列表 */
+  clearSearch() {
+    this.getArticle();
+  } /* 鉴定查找组件的清除，刷新列表 */
+  deleteArticle(id: any) {
+    this.httpInterceptorService.deleteArticle(id).subscribe((res: Response) => {
+      console.log(res.json());
+    });
+    this.getArticle();
+  } /* 删除文章后刷新页面 */
 }

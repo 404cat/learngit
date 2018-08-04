@@ -1,10 +1,10 @@
 <div class="search">
   <div class="dateBox">
     <span>按时间搜索</span>
-    <nz-range-picker class="slectDate" [nzFormat]="dateFormat" [(ngModel)]='dateValue' ></nz-range-picker>
+    <nz-range-picker class="slectDate"  [nzFormat]="dateFormat" [(ngModel)]='dateValue' ></nz-range-picker>
   </div>
   <!-- <div class="slect"> -->
-  <span>{{dateValue}}</span>
+  <!-- <span>{{dateValue}}</span> -->
   <div>
     <span>
       <strong>类型：</strong>
@@ -26,6 +26,6 @@
   <!-- </div> -->
   <div>
     <button nz-button nzType="primary" (click)='dateToMs()'>搜索</button>
-    <button nz-button nzType="danger">清空</button>
+    <button nz-button nzType="danger" (click)=clear()>清空</button>
   </div>
 </div>

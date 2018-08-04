@@ -1,4 +1,5 @@
-<app-search-article (getSearch)='getSearch($event)'></app-search-article>
+<app-search-article (getSearch)='getSearch($event)' (clearSearch)='clearSearch()'></app-search-article>
+<!-- 查找 -->
 <div class="listTitle">
   <span>Article列表</span>
   <a class="newArticle" [routerLink]="['../new']">+新增</a>
@@ -40,7 +41,7 @@
     <td>
       <a on-click='changedStatu(al.status,al.id)'>{{changeStatus(al.status)}}</a>
       <a on-click='getdata(al)' [routerLink]="['../articleEdit',al.id]">编辑</a>
-      <a>删除</a>
+      <a on-click='deleteArticle(al.id)'>删除</a>
     </td>
     <!-- 操作 -->
   </tr>

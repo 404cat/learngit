@@ -5,6 +5,13 @@ import {
 import {
   HttpInterceptorService
 } from '../http-interceptor.service';
+import {
+  Router
+} from '@angular/router';
+
+import {
+  AuthService
+} from '../service/authService';
 
 @Component({
   selector: 'app-backend-main',
@@ -31,17 +38,24 @@ export class BackendMainComponent implements OnInit {
 
   constructor(
     private httpservice: HttpInterceptorService,
+    private router: Router,
+    private authService: AuthService,
   ) {}
 
   ngOnInit() {
-    this.getArticle();
+    // this.getArticle();
   }
-  getArticle() {
-    this.httpservice.getSearchData().subscribe((Response) => {
-      console.log(Response.json());
-      this.size = Response.json();
-      this.size = this.size.data.size;
-      console.log(this.size);
-    });
-  }
+  // getArticle() {
+  //   this.httpservice.getSearchData().subscribe((Response) => {
+  //     console.log(Response.json());
+  //     this.size = Response.json();
+  //     this.size = this.size.data.size;
+  //     console.log(this.size);
+  //   });
+  // }
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('login');
+  } /* 退出至登录页 */
+
 }

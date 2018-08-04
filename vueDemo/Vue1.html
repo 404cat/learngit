@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="components-demo">
+        <button-counter></button-counter>
+    </div>
+
+
+
+    <script>
+        Vue.component('button-counter', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+        })
+
+
+
+        new Vue({
+            el: '#components-demo'
+        })
+    </script>
+
+
+
+</body>
+
+</html>
+
+
+<!-- 
+    1、Vue的特性是什么？
+    2、在Vue中构成一个组件的要素是什么？
+    3、组件的文件应该怎么构成？
+        如何创建组件？
+        组件中的data是干嘛用的？
+        
+    4、template元素是什么？
+    5、如何在js中选中元素？
+    6、选中元素一定要用 id  ？ el  ？
+
+
+    1、对象语法，动态切换class，通过v-bind：class绑定
+    2、数组语法，应用多个class
+    3、v-if 在HTML模板中写条件判断，v-else是紧跟在v-if的判断指令，不紧跟的话就不会被识别。2.0新增的 v-else-if 指令
+    4、<template元素可以看成不可见的包裹元素>
+    5、key属性可以让两个元素完全独立，不复用他们
+    6、v-show 根据条件展示元素的，切换元素的display属性
+    7、v-if 会真正的渲染和销毁， v-show 不管条件是否满足都会渲染元素，它做的仅仅是切换元素的display属性。
+    8、v-for 可以进行列表循环，语法为 item in(或者of) items  item为变量也叫做数组的迭代别名，items为源数据组。
+    9、和angular一样，v-for也可以选择数组的index值。
+    10、v-for 也可以用来迭代对象的属性，
+    11、同一节点 v-for 的优先级比 v-if 要更高，所以如果想让for渲染出来的元素都执行if判断，就把if包裹至for中，反之亦然
+    12、v-on 指令监听 DOM 事件，语法 v-on:event=""      
+    13、v-model 指令在元素上创建双向数据绑定，负责监听用户的输入事件以更新数据，
+
+
+    14、组件 使用 Vue.component('name',{})创建，
+            组件中的data必须是一个函数
+        1、组件使用需注册，注册分为全局和局部，
+        2、通过prop 向子组件传递数据
+
+    推荐把三个文件写到一个vue 文件中，
+    
+ -->
